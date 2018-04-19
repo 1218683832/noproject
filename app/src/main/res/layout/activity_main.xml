@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.mrrun.module_view.SearchView
+        android:id="@+id/searchview"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/shap_searchview_bg"
+        android:drawableLeft="@drawable/icon_search"
+        android:drawablePadding="8dp"
+        android:drawableRight="@drawable/icon_cancl"
+        android:focusableInTouchMode="true"
+        android:gravity="left|center_vertical"
+        android:hint="搜索"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:textSize="14sp">
+    </com.mrrun.module_view.SearchView>
+
+    <Button
+        android:id="@+id/share"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchview"
+        android:text="分享到朋友圈"
+        android:layout_marginTop="8dp"/>
+
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/share"/>
+
+</RelativeLayout>

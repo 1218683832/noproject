@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="SearchView">
+        <!-- 左边图标 -->
+        <attr name="drawableLeft" format="reference|integer"/>
+        <!-- 右边图标 -->
+        <attr name="drawableRight" format="reference|integer"/>
+    </declare-styleable>
+</resources>
