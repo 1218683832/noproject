@@ -1,16 +1,22 @@
-package com.mrrun.module_share;
+package com.mrrun.module_share.wx;
 
 import android.content.Context;
 
+import com.mrrun.module_share.Debug;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXTextObject;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
+/**
+ * @author lipin
+ * @version 1.0
+ * @date 2018/04/13
+ */
 public class TT {
 
-    private static final String WX_APPID = "wx96679743830ae7a6";
+    public static final String WX_APPID = "wx9667974383";
 
     private IWXAPI wxApi;
 
