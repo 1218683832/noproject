@@ -30,9 +30,15 @@
         android:text="分享到朋友圈"
         android:layout_marginTop="8dp"/>
 
-    <EditText
-        android:layout_width="100dp"
-        android:layout_height="30dp"
-        android:layout_below="@+id/share"/>
+    <com.mrrun.module_view.Dialer
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@+id/share"
+        android:background="#fffaaa">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"/>
+    </com.mrrun.module_view.Dialer>
 
 </RelativeLayout>

@@ -1,4 +1,4 @@
-package com.mrrun.module_share;
+package com.mrrun.module_view;
 
 import android.util.Log;
 
@@ -17,7 +17,7 @@ public class Debug {
 
     public static void D(String msg){
         if (DEGUG) {
-            Log.d("module_share", msg);
+            Log.d("module_view", msg);
         }
     }
 }

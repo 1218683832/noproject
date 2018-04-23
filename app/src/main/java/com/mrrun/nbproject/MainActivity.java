@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.mrrun.module_share.TT;
-import com.mrrun.module_share.WXScene;
+import com.mrrun.module_share.wx.TT;
+import com.mrrun.module_share.wx.WXScene;
 import com.mrrun.module_view.SearchView;
 
 public class MainActivity extends AppCompatActivity {
@@ -17,6 +17,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         uiShare();
         uiSearchView();
+        uiDialer();
+    }
+
+    private void uiDialer() {
     }
 
     private void uiSearchView() {
