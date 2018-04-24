@@ -7,7 +7,9 @@ import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 /**
@@ -18,6 +20,10 @@ import android.widget.TextView;
  * 拨号盘
  */
 public class Dialer extends ViewGroup{
+
+    private int mWidth = 0;
+
+    private int mHeight = 0;
 
     public Dialer(Context context) {
         super(context);
@@ -33,14 +39,29 @@ public class Dialer extends ViewGroup{
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
-        int childLeft;
+        mWidth = this.getMeasuredWidth();
+        mHeight = this.getMeasuredHeight();
+        Debug.D("mWidth: " + mWidth);
+        Debug.D("mHeight: " + mHeight);
+        int widthFactor = mWidth / 3;
+        int childLeft = 0;
+        int childRight = 0;
+        int childTop = 0;
+        int childBottom = 0;
         final int count = getChildCount();
         for(int i = 0; i <= count; i++) {
             final int children = i;
             final View child = getChildAt(children);
             if (child == null) {
             } else if (child.getVisibility() != View.GONE) {
-                child.layout(-20,0,100 * i + 100,100 * i + 100);
+                int hIndex = i / 3;
+                int lIndex = i % 3;
+                Debug.D("hIndex: " + hIndex);
+                Debug.D("lIndex: " + lIndex);
+                childLeft = childLeft + child.getPaddingLeft();
+                childTop = childTop + childBottom;
+                childBottom = childBottom + child.getMeasuredHeight();
+                child.layout(widthFactor * hIndex, childTop, widthFactor * hIndex + widthFactor, childBottom);
             }
         }
     }
@@ -82,6 +103,6 @@ public class Dialer extends ViewGroup{
         Paint paint = new Paint();
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
         paint.setShader(new Shader());
-        canvas.drawLine(0, 0, 200, 200, paint);
+//        canvas.drawLine(0, 0, 200, 200, paint);
     }
 }
