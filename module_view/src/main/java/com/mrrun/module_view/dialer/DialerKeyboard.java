@@ -1,39 +1,36 @@
-package com.mrrun.module_view;
+package com.mrrun.module_view.dialer;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Shader;
 import android.util.AttributeSet;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+
+import com.mrrun.module_view.Debug;
 
 /**
  * @author lipin
  * @version 1.0
  * @date 2018/04/18
- *
- * 拨号盘
+ * <p>
+ * 拨号器键盘
  */
-public class Dialer extends ViewGroup{
+public class DialerKeyboard extends ViewGroup {
 
     private int mWidth = 0;
 
     private int mHeight = 0;
 
-    public Dialer(Context context) {
+    public DialerKeyboard(Context context) {
         super(context);
     }
 
-    public Dialer(Context context, AttributeSet attrs) {
+    public DialerKeyboard(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public Dialer(Context context, AttributeSet attrs, int defStyleAttr) {
+    public DialerKeyboard(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
@@ -49,21 +46,21 @@ public class Dialer extends ViewGroup{
         int childTop = 0;
         int childBottom = 0;
         final int count = getChildCount();
-        for(int i = 0; i <= count; i++) {
-            final int children = i;
-            final View child = getChildAt(children);
-            if (child == null) {
-            } else if (child.getVisibility() != View.GONE) {
-                int hIndex = i / 3;
-                int lIndex = i % 3;
-                Debug.D("hIndex: " + hIndex);
-                Debug.D("lIndex: " + lIndex);
-                childLeft = childLeft + child.getPaddingLeft();
-                childTop = childTop + childBottom;
-                childBottom = childBottom + child.getMeasuredHeight();
-                child.layout(widthFactor * hIndex, childTop, widthFactor * hIndex + widthFactor, childBottom);
-            }
-        }
+//        for(int i = 0; i <= count; i++) {
+//            final int children = i;
+//            final View child = getChildAt(children);
+//            if (child == null) {
+//            } else if (child.getVisibility() != View.GONE) {
+//                int hIndex = i / 3;
+//                int lIndex = i % 3;
+//                Debug.D("hIndex: " + hIndex);
+//                Debug.D("lIndex: " + lIndex);
+//                childLeft = childLeft + child.getPaddingLeft();
+//                childTop = childTop + childBottom;
+//                childBottom = childBottom + child.getMeasuredHeight();
+//                child.layout(widthFactor * hIndex, childTop, widthFactor * hIndex + widthFactor, childBottom);
+//            }
+//        }
     }
 
     @Override
@@ -103,6 +100,22 @@ public class Dialer extends ViewGroup{
         Paint paint = new Paint();
         paint.setStyle(Paint.Style.FILL_AND_STROKE);
         paint.setShader(new Shader());
-//        canvas.drawLine(0, 0, 200, 200, paint);
+
+        mWidth = this.getMeasuredWidth();// 容器的宽度
+        mHeight = this.getMeasuredHeight();// 容器的高度
+        Debug.D("mWidth: " + mWidth);
+        Debug.D("mHeight: " + mHeight);
+        int widthFactor = mWidth / 3;// 三分之一宽度
+        int heightFactor = mHeight / 3;// 三分之一高度
+        final int count = 15;// 总共画15个View
+        for (int i = 0; i <= count; i++) {
+
+            final int children = i;
+            int hIndex = i / 3;
+            int lIndex = i % 3;
+            Debug.D("hIndex: " + hIndex);
+            Debug.D("lIndex: " + lIndex);
+            canvas.drawLine(10 * hIndex, 10 * lIndex, 10, 10, paint);
+        }
     }
 }

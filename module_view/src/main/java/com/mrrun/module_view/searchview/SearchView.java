@@ -1,4 +1,4 @@
-package com.mrrun.module_view;
+package com.mrrun.module_view.searchview;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

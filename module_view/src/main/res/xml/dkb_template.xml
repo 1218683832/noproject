@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 拨号器键盘模版xml文件 -->
+<!--
+ dkb_bg:拨号器键盘背景
+ key_xmargin：拨号器键盘键与键之间的水平间距
+ key_ymargin：拨号器键盘键与键之间的竖直间距
+ -->
+<dkb_template
+    dkb_bg=""
+    key_xmargin="0%p"
+    key_ymargin="0%p">
+
+    <!-- Normal key -->
+    <key_type
+        id="0"
+        bg="" />
+
+    <!-- Function key -->
+    <key_type
+        id="1"
+        bg="" />
+</dkb_template>

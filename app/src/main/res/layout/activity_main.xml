@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.mrrun.module_view.SearchView
+    <com.mrrun.module_view.searchview.SearchView
         android:id="@+id/searchview"
         android:layout_width="match_parent"
         android:layout_height="36dp"
@@ -20,7 +20,7 @@
         android:paddingLeft="8dp"
         android:paddingRight="8dp"
         android:textSize="14sp">
-    </com.mrrun.module_view.SearchView>
+    </com.mrrun.module_view.searchview.SearchView>
 
     <Button
         android:id="@+id/share"
@@ -30,7 +30,7 @@
         android:text="分享到朋友圈"
         android:layout_marginTop="8dp"/>
 
-    <com.mrrun.module_view.Dialer
+    <com.mrrun.module_view.dialer.DialerKeyboard
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/share"
@@ -65,6 +65,6 @@
             android:layout_height="30dp"
             android:paddingLeft="40dp"
             android:background="@color/colorPrimaryDark"/>
-    </com.mrrun.module_view.Dialer>
+    </com.mrrun.module_view.dialer.DialerKeyboard>
 
 </RelativeLayout>

@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import com.mrrun.module_share.wx.TT;
 import com.mrrun.module_share.wx.WXScene;
-import com.mrrun.module_view.SearchView;
+import com.mrrun.module_view.searchview.SearchView;
 
 public class MainActivity extends AppCompatActivity {
 
