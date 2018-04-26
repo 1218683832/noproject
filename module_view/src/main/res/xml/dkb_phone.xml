@@ -1,1 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+<keyboard
+    skb_template=""
+    width="25%p"
+    height="25%p"
+    key_type="0"
+    repeat="false"
+    balloon="false">
+
+    <row>
+        <key icon="" code="8">
+            <toggle_state state_id="" label="("/>
+        </key>
+    </row>
+</keyboard>
