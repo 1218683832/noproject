@@ -31,6 +31,7 @@
         android:layout_marginTop="8dp"/>
 
     <com.mrrun.module_view.dialer.DialerKeyboard
+        android:id="@+id/dkb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/share"
@@ -67,4 +68,10 @@
             android:background="@color/colorPrimaryDark"/>
     </com.mrrun.module_view.dialer.DialerKeyboard>
 
+    <Button
+        android:id="@+id/loadXmlData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dkb"
+        android:text="加载解析xml"/>
 </RelativeLayout>
