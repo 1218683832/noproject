@@ -9,7 +9,8 @@
 
     <row>
         <key icon="" code="8">
-            <toggle_state state_id="" label="("/>
+        </key>
+        <key icon="" >
         </key>
     </row>
 </keyboard>
