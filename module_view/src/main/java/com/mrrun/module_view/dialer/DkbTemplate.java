@@ -6,9 +6,6 @@ import java.util.Vector;
 
 public class DkbTemplate implements Tag {
     private int mDkbTemplateId; // 模版的xml文件资源ID，也是模版在软键盘池中的ID
-    /**
-     * 标签的属性
-     */
     private Drawable mDkbBg;
     private float mKeyXMargin = 0;
     private float mKeyYMargin = 0;

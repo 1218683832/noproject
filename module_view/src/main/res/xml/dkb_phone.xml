@@ -2,10 +2,7 @@
 <keyboard
     skb_template=""
     width="25%p"
-    height="25%p"
-    key_type="0"
-    repeat="false"
-    balloon="false">
+    height="25%p">
 
     <row>
         <key icon="" code="8">
