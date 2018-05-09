@@ -1,1 +1,1 @@
-include ':app', ':module_share', ':module_view', ':module_utils', ':module_okhttp3'
+include ':app', ':module_share', ':module_view', ':module_utils', ':module_okhttp3', ':module_retrofit2'
