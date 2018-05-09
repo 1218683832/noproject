@@ -1,32 +1,36 @@
-package com.mrrun.module_okhttp3.execute;
+package com.mrrun.module_okhttp3.simpleexample.execute;
 
+import java.io.File;
 import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
- * post请求之json参数形式
+ * 文件上传
  */
-public class PostJsonExample {
+public class FileUpExample {
     // 客户端
     OkHttpClient client = new OkHttpClient();
 
-    MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-
-    public PostJsonExample() {
+    public FileUpExample() {
     }
 
-    public String execute(String url, String json){
-        RequestBody requestBody = RequestBody.create(JSON, json);
-        // 请求数据
+    public String execute(String url) {
+        RequestBody fileBody = RequestBody.create(MediaType.parse("image/png"), new File(""));
+        RequestBody requestBody = new MultipartBody.Builder()
+                .addFormDataPart("file", "head_img", fileBody)
+                .addFormDataPart("name", "xiaoxiao")
+                .build();
+        // 请求头数据
         Request request = new Request.Builder()
-                .post(requestBody)
                 .url(url)
+                .post(requestBody)
                 .build();
         // 请求回调
         Call call = client.newCall(request);

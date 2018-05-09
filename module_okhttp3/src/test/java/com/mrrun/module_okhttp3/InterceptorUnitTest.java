@@ -1,8 +1,8 @@
 package com.mrrun.module_okhttp3;
 
-import com.mrrun.module_okhttp3.interceptors.LoggingInterceptor;
-import com.mrrun.module_okhttp3.interceptors.NetInterceptor;
-import com.mrrun.module_okhttp3.interceptors.ReadJsonInterceptor;
+import com.mrrun.module_okhttp3.simpleexample.interceptors.LoggingInterceptor;
+import com.mrrun.module_okhttp3.simpleexample.interceptors.NetInterceptor;
+import com.mrrun.module_okhttp3.simpleexample.interceptors.ReadJsonInterceptor;
 
 import org.junit.Test;
 

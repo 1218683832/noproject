@@ -1,10 +1,10 @@
 package com.mrrun.module_okhttp3;
 
-import com.mrrun.module_okhttp3.execute.FileDownloadExample;
-import com.mrrun.module_okhttp3.execute.FileUpExample;
-import com.mrrun.module_okhttp3.execute.GetExample;
-import com.mrrun.module_okhttp3.execute.PostFormExample;
-import com.mrrun.module_okhttp3.execute.PostJsonExample;
+import com.mrrun.module_okhttp3.simpleexample.execute.FileDownloadExample;
+import com.mrrun.module_okhttp3.simpleexample.execute.FileUpExample;
+import com.mrrun.module_okhttp3.simpleexample.execute.GetExample;
+import com.mrrun.module_okhttp3.simpleexample.execute.PostFormExample;
+import com.mrrun.module_okhttp3.simpleexample.execute.PostJsonExample;
 
 import org.junit.Test;
 
