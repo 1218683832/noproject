@@ -30,10 +30,12 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
-    // Rxjava1x+Retrofit2
-    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
-    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
     implementation 'io.reactivex:rxjava:1.2.7'
-    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-    implementation 'io.reactivex:rxandroid:1.2.1'
+
+//    // Rxjava1x+Retrofit2
+//    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+//    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+//    implementation 'io.reactivex:rxjava:1.2.7'
+//    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+//    implementation 'io.reactivex:rxandroid:1.2.1'
 }
