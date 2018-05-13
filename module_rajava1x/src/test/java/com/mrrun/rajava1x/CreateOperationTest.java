@@ -9,14 +9,12 @@ import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
 import rx.Subscriber;
-import rx.functions.Action1;
 import rx.functions.Func0;
-import rx.schedulers.Schedulers;
 
 /**
- * "创建"操作符测试create、just、from
+ * 创建操作符,用于创建Observable
  */
-public class OperationsUnitTest {
+public class CreateOperationTest {
 
     @Test
     public void createTest() {
