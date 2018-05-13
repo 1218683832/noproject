@@ -14,10 +14,10 @@ import rx.functions.Func0;
 /**
  * 创建操作符,用于创建Observable
  */
-public class CreateOperationTest {
+public class CreateOperation {
 
     @Test
-    public void createTest() {
+    public void create() {
         /**
          * create() 方法是RxJava最基本的创造事件序列的方法
          */
@@ -38,7 +38,7 @@ public class CreateOperationTest {
      * just() 快捷创建事件队列，将传入的参数依次发送出来。
      */
     @Test
-    public void justTest() {
+    public void just() {
         Observable.just("111", "222", "333")
                 .subscribe(new BaseObserver<String>() {
                 });
@@ -48,7 +48,7 @@ public class CreateOperationTest {
      * frim() 快捷创建事件队列，将传入的数组或 Iterable 拆分成具体对象后，依次发送出来。
      */
     @Test
-    public void fromTest() {
+    public void from() {
         String[] words = {"Hello", "Hi", "Aloha"};
         Observable.from(words)
                 .subscribe(new BaseObserver<String>() {
@@ -56,7 +56,7 @@ public class CreateOperationTest {
     }
 
     @Test
-    public void fromTest1() {
+    public void from1() {
         Future<String> futrue = Executors.newSingleThreadExecutor().submit(new Callable<String>() {
 
             @Override
@@ -75,7 +75,7 @@ public class CreateOperationTest {
      * emptry() 创建一个什么都不做直接通知完成的Observable
      */
     @Test
-    public void emptyTest() {
+    public void empty() {
         Observable.empty()// 直接调用onCompleted
                 .subscribe(new BaseObserver<Object>() {
                 });
@@ -85,7 +85,7 @@ public class CreateOperationTest {
      * error() 创建一个什么都不做直接通知错误的Observable
      */
     @Test
-    public void errorTest() {
+    public void error() {
         Observable.error(new NullPointerException())// 直接调用onError。这里可以自定义异常
                 .subscribe(new BaseObserver<Object>() {
                 });
@@ -94,7 +94,7 @@ public class CreateOperationTest {
     /**
      * never()  创建一个什么都不做的Observable
      */
-    public void neverTest() {
+    public void never() {
         Observable.never()// 啥都不做
                 .subscribe(new BaseObserver<Object>() {
                 });
@@ -105,7 +105,7 @@ public class CreateOperationTest {
      * 注意timer与interval都是默认运行在一个新线程上面
      */
     @Test
-    public void timerTest() {
+    public void timer() {
         Observable.timer(5, TimeUnit.SECONDS)// 延迟5秒
                 .subscribe(new BaseObserver<Long>() {
                 });
@@ -116,7 +116,7 @@ public class CreateOperationTest {
      * 注意timer与interval都是默认运行在一个新线程上面
      */
     @Test
-    public void timerTest1() {
+    public void timer1() {
         Observable.timer(0, 5, TimeUnit.SECONDS)// 间隔5秒执行
                 .subscribe(new BaseObserver<Long>() {
                 });
@@ -127,7 +127,7 @@ public class CreateOperationTest {
      * 注意timer与interval都是默认运行在一个新线程上面
      */
     @Test
-    public void intervalTest() {
+    public void interval() {
         Observable.interval(5, TimeUnit.SECONDS)//每隔5秒发送数据项，从0开始计数0,1,2,3....
                 .subscribe(new BaseObserver<Long>() {
                 });
@@ -137,7 +137,7 @@ public class CreateOperationTest {
      * range()  创建一个发射指定范围的整数序列的Observable<Integer>
      */
     @Test
-    public void rangeTest() {
+    public void range() {
         Observable.range(1, 10)
                 .subscribe(new BaseObserver<Integer>() {
                 });
@@ -148,7 +148,7 @@ public class CreateOperationTest {
      * 内部通过OnSubscribeDefer在订阅时调用Func0创建Observable
      */
     @Test
-    public void deferTest() {
+    public void defer() {
         Observable.defer(new Func0<Observable<String>>() {
             @Override
             public Observable<String> call() {
