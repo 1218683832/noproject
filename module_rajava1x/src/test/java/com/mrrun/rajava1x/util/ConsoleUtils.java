@@ -1,4 +1,4 @@
-package com.mrrun.rajava1x;
+package com.mrrun.rajava1x.util;
 
 public class ConsoleUtils {
 

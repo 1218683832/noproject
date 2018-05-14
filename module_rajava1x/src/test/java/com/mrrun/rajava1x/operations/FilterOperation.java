@@ -1,4 +1,6 @@
-package com.mrrun.rajava1x;
+package com.mrrun.rajava1x.operations;
+
+import com.mrrun.rajava1x.base.BaseObserver;
 
 import org.junit.Test;
 

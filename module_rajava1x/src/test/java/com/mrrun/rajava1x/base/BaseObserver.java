@@ -1,4 +1,6 @@
-package com.mrrun.rajava1x;
+package com.mrrun.rajava1x.base;
+
+import com.mrrun.rajava1x.util.ConsoleUtils;
 
 import rx.Observer;
 

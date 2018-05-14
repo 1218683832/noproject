@@ -1,12 +1,11 @@
-package com.mrrun.rajava1x;
+package com.mrrun.rajava1x.operations;
 
-import android.util.Log;
+import com.mrrun.rajava1x.base.BaseObserver;
 
 import org.junit.Test;
 
 import rx.Observable;
 import rx.Subscriber;
-import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
