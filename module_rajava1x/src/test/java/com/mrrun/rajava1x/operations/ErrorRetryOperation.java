@@ -4,7 +4,6 @@ import com.mrrun.rajava1x.base.BaseObserver;
 
 import org.junit.Test;
 
-import java.io.Serializable;
 import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
