@@ -4,7 +4,6 @@ import android.util.Log;
 
 /**
  * @author lipin
- *
  * @version 1.0
  */
 public class Debug {
