@@ -11,17 +11,30 @@ import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
 /**
  * @author lipin
- * @version 1.0
  * @date 2018/04/13
+ * @version 1.0
  */
-public class TT {
+public class WXShareManager {
 
     public static final String WX_APPID = "wx9667974383";
 
     private IWXAPI wxApi;
 
-    public TT(Context context) {
-        this.wxApi = WXAPIFactory.createWXAPI(context, WX_APPID, true);
+    private static WXShareManager WXShareManager;
+
+    public static WXShareManager getInstance(Context context){
+        if (WXShareManager == null){
+            synchronized (WXShareManager.class){
+                if (WXShareManager == null) {
+                    WXShareManager = new WXShareManager(context);
+                }
+            }
+        }
+        return WXShareManager;
+     }
+
+    private WXShareManager(Context context) {
+        this.wxApi = WXAPIFactory.createWXAPI(context.getApplicationContext(), WX_APPID, true);
         wxApi.registerApp(WX_APPID);
     }
 

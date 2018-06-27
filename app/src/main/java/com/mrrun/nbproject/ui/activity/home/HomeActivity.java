@@ -6,7 +6,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.mrrun.example.FloatWindowActivity;
+import com.mrrun.example.FloatWindowExampleActivity;
+import com.mrrun.example.ShareExampleActivity;
 import com.mrrun.nbproject.R;
 
 /**
@@ -41,13 +42,14 @@ public class HomeActivity extends AppCompatActivity {
         findViewById(R.id.btn_module_share).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, ShareExampleActivity.class));
             }
         });
         // 悬浮框模块
         findViewById(R.id.btn_module_floatview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, FloatWindowActivity.class));
+                startActivity(new Intent(HomeActivity.this, FloatWindowExampleActivity.class));
             }
         });
     }

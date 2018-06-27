@@ -6,7 +6,7 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.mrrun.module_share.Debug;
-import com.mrrun.module_share.wx.TT;
+import com.mrrun.module_share.wx.WXShareManager;
 import com.tencent.mm.opensdk.modelbase.BaseReq;
 import com.tencent.mm.opensdk.modelbase.BaseResp;
 import com.tencent.mm.opensdk.modelmsg.SendAuth;
@@ -35,7 +35,7 @@ public class WXEntryActivity extends Activity implements IWXAPIEventHandler {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        IWXAPI iwxapi = WXAPIFactory.createWXAPI(this, TT.WX_APPID, true);
+        IWXAPI iwxapi = WXAPIFactory.createWXAPI(this, WXShareManager.WX_APPID, true);
         // 接收到分享以及登录的intent传递handleIntent方法，处理结果
         iwxapi.handleIntent(getIntent(), this);
     }

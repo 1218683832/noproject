@@ -3,18 +3,16 @@ package com.mrrun.nbproject;
 import android.content.res.XmlResourceParser;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Xml;
 import android.view.View;
 import android.widget.Button;
 
-import com.mrrun.module_share.wx.TT;
+import com.mrrun.module_share.wx.WXShareManager;
 import com.mrrun.module_share.wx.WXScene;
 import com.mrrun.module_view.Debug;
 import com.mrrun.module_view.searchview.SearchView;
 
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
-import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.IOException;
 
@@ -84,12 +82,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void uiShare() {
-        final TT tt = new TT(this.getApplicationContext());
         Button share = findViewById(R.id.share);
         share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tt.share(WXScene.WXSceneSession);
+                WXShareManager.getInstance(MainActivity.this).share(WXScene.WXSceneSession);
             }
         });
     }
