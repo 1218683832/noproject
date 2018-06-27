@@ -33,7 +33,7 @@
         android:id="@+id/btn_show"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="btn_show_or_apply" />
+        android:text="btn_show" />
 
     <Button
         android:id="@+id/btn_dismiss2"
