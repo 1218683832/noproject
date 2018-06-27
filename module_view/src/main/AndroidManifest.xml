@@ -1,2 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mrrun.module_view" />
+    package="com.mrrun.module_view">
+
+    <application>
+        <activity android:name="com.mrrun.example.ViewExampleActivity"></activity>
+        <activity android:name="com.mrrun.example.SearchViewExampleActivity"></activity>
+    </application>
+</manifest>

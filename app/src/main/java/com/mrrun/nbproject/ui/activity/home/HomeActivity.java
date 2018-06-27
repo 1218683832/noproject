@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Toast;
 
 import com.mrrun.example.FloatWindowExampleActivity;
 import com.mrrun.example.ShareExampleActivity;
+import com.mrrun.example.ViewExampleActivity;
 import com.mrrun.nbproject.R;
 
 /**
@@ -30,12 +32,14 @@ public class HomeActivity extends AppCompatActivity {
         findViewById(R.id.btn_module_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, ViewExampleActivity.class));
             }
         });
         // 工具模块
         findViewById(R.id.btn_module_utils).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(HomeActivity.this, "未加入", Toast.LENGTH_SHORT).show();
             }
         });
         // 分享模块

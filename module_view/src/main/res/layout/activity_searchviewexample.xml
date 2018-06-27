@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.mrrun.module_view.searchview.SearchView
+        android:id="@+id/searchview"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/shap_searchview_bg"
+        android:drawableLeft="@drawable/icon_search"
+        android:drawablePadding="8dp"
+        android:drawableRight="@drawable/icon_cancl"
+        android:focusableInTouchMode="true"
+        android:gravity="left|center_vertical"
+        android:hint="搜索"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:textSize="14sp">
+    </com.mrrun.module_view.searchview.SearchView>
+</FrameLayout>

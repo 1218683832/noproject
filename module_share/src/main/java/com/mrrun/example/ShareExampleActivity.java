@@ -9,6 +9,11 @@ import com.mrrun.module_share.R;
 import com.mrrun.module_share.wx.WXShareManager;
 import com.mrrun.module_share.wx.WXScene;
 
+/**
+ * @author lipin
+ * @version 1.0
+ * @date 2016/06/25
+ */
 public class ShareExampleActivity extends AppCompatActivity {
     
     @Override

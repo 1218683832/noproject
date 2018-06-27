@@ -14,13 +14,14 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:visibility="gone"
-            app:title="@string/module_share"
-            app:titleTextColor="#ffffffff" />
+            app:title="@string/module_view"
+            app:titleTextColor="#ffffffff"/>
 
         <Button
-            android:id="@+id/btn_wxscenetimeline"
+            android:id="@+id/btn_searchview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="分享到微信朋友圈" />
+            android:text="搜索View" />
+
     </LinearLayout>
 </ScrollView>

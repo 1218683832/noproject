@@ -4,5 +4,4 @@
     <application>
         <activity android:name="com.mrrun.example.ShareExampleActivity"></activity>
     </application>
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 </manifest>
