@@ -17,8 +17,8 @@ import android.view.inputmethod.InputMethodManager;
 
 /**
  * @author lipin
- * @version 1.0
  * @date 2018/04/16
+ * @version 1.0
  *
  * 搜索框
  * 1、实时查询筛选结果接口；

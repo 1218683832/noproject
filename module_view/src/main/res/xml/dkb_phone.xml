@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- 定制的拨号器键盘xml文件 -->
+<!--
+    定义了:
+    dkb_template:采用哪个拨号器键盘模板;
+-->
 <keyboard
-    skb_template=""
+    dkb_template=""
     width="25%p"
     height="25%p">
 

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- 拨号器键盘模版xml文件 -->
 <!--
- dkb_bg:拨号器键盘背景
- key_xmargin：拨号器键盘键与键之间的水平间距
- key_ymargin：拨号器键盘键与键之间的竖直间距
- -->
+    定义了:
+    dkb_bg:拨号器键盘的背景图;
+    key_ymargin、key_ymargin:按键之间的横、竖向间距;
+    key_type:有哪些按键类型;
+-->
 <dkb_template
     dkb_bg=""
     key_xmargin="0%p"
