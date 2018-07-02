@@ -27,6 +27,19 @@ public class ViewExampleActivity extends AppCompatActivity {
         uiSearchView();
         uiDialer();
         uiBubbleFloatView();
+        uiAffirmButtonView();
+    }
+
+    /**
+     * 自定义确认按钮带动画效果
+     */
+    private void uiAffirmButtonView() {
+        findViewById(R.id.btn_affirmbuttonview).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ViewExampleActivity.this, AffirmButtonViewActivity.class));
+            }
+        });
     }
 
     /**

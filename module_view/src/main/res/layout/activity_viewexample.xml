@@ -35,5 +35,11 @@
             android:layout_height="wrap_content"
             android:text="气泡浮动View及动画" />
 
+        <Button
+            android:id="@+id/btn_affirmbuttonview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="自定义确认按钮带动画效果" />
+
     </LinearLayout>
 </ScrollView>

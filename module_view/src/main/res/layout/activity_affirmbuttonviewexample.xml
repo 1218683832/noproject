@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <com.mrrun.module_view.affirmbtn.AffirmButtonView
+        android:id="@+id/affirmbuttonview"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary">
+    </com.mrrun.module_view.affirmbtn.AffirmButtonView>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="25dp"
+        android:background="@color/colorAccent">
+    </View>
+</LinearLayout>
