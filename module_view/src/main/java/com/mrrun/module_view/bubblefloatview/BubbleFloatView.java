@@ -72,7 +72,7 @@ public class BubbleFloatView extends View {
         paint1.setAlpha(60);
         CircleBean circleBean1 = CircleBean.builder()
                 .buildAmplitude(20)
-                .buildP0(new PointF(width / 3, height / 3),(float) (width / 11))
+                .buildP0(new PointF(width / 3, height / 3), (float) (width / 11))
                 .buildPaint(paint1)
                 .create();
         mCircleBeans.add(circleBean1);
@@ -82,7 +82,7 @@ public class BubbleFloatView extends View {
         paint2.setAlpha(60);
         CircleBean circleBean2 = CircleBean.builder()
                 .buildAmplitude(20)
-                .buildP0(new PointF(width / 2, height / 2),(float) (width / 9))
+                .buildP0(new PointF(width / 2, height / 2), (float) (width / 9))
                 .buildPaint(paint2)
                 .create();
         mCircleBeans.add(circleBean2);
@@ -92,7 +92,7 @@ public class BubbleFloatView extends View {
         paint3.setAlpha(60);
         CircleBean circleBean3 = CircleBean.builder()
                 .buildAmplitude(20)
-                .buildP0(new PointF(width / 4, height / 5),(float) (width / 13))
+                .buildP0(new PointF(width / 4, height / 5), (float) (width / 13))
                 .buildPaint(paint3)
                 .create();
         mCircleBeans.add(circleBean3);
@@ -156,6 +156,11 @@ public class BubbleFloatView extends View {
         }
     }
 
+    /**
+     * 浮动动画
+     *
+     * @return
+     */
     private ValueAnimator floatAnimation() {
         ValueAnimator floatAnimator = ValueAnimator.ofFloat(0, 1);
         floatAnimator.setDuration(3000);
@@ -244,7 +249,7 @@ class CircleBean {
     }
 
     public PointF getP(float value) {
-        if ( value < 0){
+        if (value < 0) {
         } else {
             pathMeasure.getPosTan(pathMeasure.getLength() * value, pos, tan);
             this.setP(new PointF(pos[0], pos[1]));
