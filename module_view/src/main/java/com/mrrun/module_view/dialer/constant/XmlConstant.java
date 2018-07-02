@@ -14,6 +14,9 @@ public class XmlConstant {
     public static class XmlTagName {
         public static final String XML_TAG_DKB_TEMPLATE = "dkb_template";
         public static final String XML_TAG_KEY_TYPE = "key_type";
+        public static final String XML_TAG_KEYBOARD= "keyboard";
+        public static final String XML_TAG_ROW = "row";
+        public static final String XML_TAG_KEY= "key";
     }
 
     /**
@@ -25,5 +28,12 @@ public class XmlConstant {
         public static final String XML_ATTR_KEY_YMARGIN = "key_ymargin";
         public static final String XML_ATTR_ID = "id";
         public static final String XML_ATTR_BG = "bg";
+        public static final String XML_ATTR_DKB_TEMPLATE = "dkb_template";
+        public static final String XML_ATTR_WIDTH = "width";
+        public static final String XML_ATTR_HEIGHT = "height";
+        public static final String XML_ATTR_ROW_ID = "row_id";
+        public static final String XML_ATTR_ICON = "icon";
+        public static final String XML_ATTR_CODE = "code";
+        public static final String XML_ATTR_KEY_TYPE = "key_type";
     }
 }

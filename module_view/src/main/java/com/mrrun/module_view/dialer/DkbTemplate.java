@@ -7,7 +7,7 @@ import java.util.Vector;
 /**
  * 拨号器键盘XML模板类
  */
-public class DkbTemplate implements Tag {
+public class DkbTemplate {
     private int mDkbTemplateId; // 模版的xml文件资源ID，也是模版在软键盘池中的ID
     private Drawable mDkbBg;
     private float mKeyXMargin = 0;
@@ -30,15 +30,15 @@ public class DkbTemplate implements Tag {
         this.mKeyYMargin = keyYMargin;
     }
 
-    public static SoftKeyType createKeyType(int d){
+    public static SoftKeyType createKeyType(int d) {
         return new SoftKeyType(d);
     }
 
     public boolean addKeyType(SoftKeyType keyType) {
-        if (!mKeyTypeList.isEmpty()){
-            for (SoftKeyType o:mKeyTypeList) {
+        if (!mKeyTypeList.isEmpty()) {
+            for (SoftKeyType o : mKeyTypeList) {
                 // 保证List中同类keyTypeIdmKeyTypeList
-                if (o.mKeyTypeId == keyType.mKeyTypeId){
+                if (o.mKeyTypeId == keyType.mKeyTypeId) {
                     return false;
                 }
             }
@@ -49,6 +49,17 @@ public class DkbTemplate implements Tag {
 
     public int getDkbTemplateId() {
         return mDkbTemplateId;
+    }
+
+    @Override
+    public String toString() {
+        return "DkbTemplate{" +
+                "mDkbTemplateId=" + mDkbTemplateId +
+                ", mDkbBg=" + mDkbBg +
+                ", mKeyXMargin=" + mKeyXMargin +
+                ", mKeyYMargin=" + mKeyYMargin +
+                ", mKeyTypeList=" + mKeyTypeList +
+                '}';
     }
 }
 
@@ -62,5 +73,13 @@ class SoftKeyType {
 
     public void setBackgrounds(Drawable bg) {
         this.mKeyBg = bg;
+    }
+
+    @Override
+    public String toString() {
+        return "SoftKeyType{" +
+                "mKeyTypeId=" + mKeyTypeId +
+                ", mKeyBg=" + mKeyBg +
+                '}';
     }
 }

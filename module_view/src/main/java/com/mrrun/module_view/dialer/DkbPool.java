@@ -38,21 +38,19 @@ public class DkbPool {
      * @return
      */
     public DkbTemplate getDkbTemplate(int dkbTemplateId, Context context) {
-        DkbTemplate dkbTemplate = null;
         for (int i = 0; i < mDkbTemplates.size(); i++) {
-            dkbTemplate = mDkbTemplates.elementAt(i);
+            DkbTemplate dkbTemplate = mDkbTemplates.elementAt(i);
             if (dkbTemplate.getDkbTemplateId() == dkbTemplateId) {
                 return dkbTemplate;
             }
         }
         if (null != context) {
-            XmlDialerKeyBoardLoader xdkbl = new XmlDialerKeyBoardLoader(context);
-            dkbTemplate = xdkbl.loadDbkTemplate(dkbTemplateId);
+            DkbTemplate dkbTemplate = XmlDialerKeyBoardLoader.getInstance(context).loadDbkTemplate(dkbTemplateId);
             if (null != dkbTemplate) {
                 mDkbTemplates.add(dkbTemplate);
                 return dkbTemplate;
             }
         }
-        return dkbTemplate;
+        return null;
     }
 }

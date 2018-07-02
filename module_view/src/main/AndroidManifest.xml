@@ -4,5 +4,7 @@
     <application>
         <activity android:name="com.mrrun.example.ViewExampleActivity"></activity>
         <activity android:name="com.mrrun.example.SearchViewExampleActivity"></activity>
+        <activity android:name="com.mrrun.example.DialerExampleActivity"></activity>
+        <activity android:name="com.mrrun.example.BubbleFloatViewActivitiy"></activity>
     </application>
 </manifest>

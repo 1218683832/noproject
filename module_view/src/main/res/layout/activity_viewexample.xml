@@ -15,13 +15,25 @@
             android:background="@color/colorPrimary"
             android:visibility="gone"
             app:title="@string/module_view"
-            app:titleTextColor="#ffffffff"/>
+            app:titleTextColor="#ffffffff" />
 
         <Button
             android:id="@+id/btn_searchview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="搜索View" />
+
+        <Button
+            android:id="@+id/btn_dialer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="拨号盘" />
+
+        <Button
+            android:id="@+id/btn_bubblefloatview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="气泡浮动View及动画" />
 
     </LinearLayout>
 </ScrollView>

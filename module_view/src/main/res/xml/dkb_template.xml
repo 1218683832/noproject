@@ -11,6 +11,11 @@
     key_xmargin="0%p"
     key_ymargin="0%p">
 
+    <!-- Invalid key -->
+    <key_type
+        id="-1"
+        bg="" />
+
     <!-- Normal key -->
     <key_type
         id="0"

@@ -3,14 +3,18 @@
 <!--
     定义了:
     dkb_template:采用哪个拨号器键盘模板;
+    width:横向每行中按键宽度占比;
+    height:竖向每行中按键高度占比;
 -->
 <keyboard
-    dkb_template=""
+    dkb_template="@xml/dkb_template"
     width="25%p"
     height="25%p">
 
     <row>
-        <key icon="" code="8">
+        <key icon="" code="8" key_type="0">
+        </key>
+        <key icon="" >
         </key>
         <key icon="" >
         </key>
