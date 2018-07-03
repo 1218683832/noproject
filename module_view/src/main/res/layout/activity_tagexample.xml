@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.mrrun.module_view.tagview.TagLayout
+        android:id="@+id/taglayout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+    </com.mrrun.module_view.tagview.TagLayout>
+
+    <Button
+        android:id="@+id/btn_addtag"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="@color/colorAccent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:text="添加TAG">
+    </Button>
+
+    <Button
+        android:id="@+id/btn_rmtag"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:background="@color/colorAccent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:text="移除TAG">
+    </Button>
+</RelativeLayout>

@@ -28,6 +28,19 @@ public class ViewExampleActivity extends AppCompatActivity {
         uiDialer();
         uiBubbleFloatView();
         uiAffirmButtonView();
+        uiTag();
+    }
+
+    /**
+     * 自定义标签布局
+     */
+    private void uiTag() {
+        findViewById(R.id.btn_taglayout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ViewExampleActivity.this, TagExampleActivity.class));
+            }
+        });
     }
 
     /**
