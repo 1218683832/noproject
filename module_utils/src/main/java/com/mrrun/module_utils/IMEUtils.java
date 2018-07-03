@@ -33,7 +33,6 @@ public class IMEUtils {
     public static void hideSoftInput(Context context, View tagView){
         InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(tagView.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-        imm.showSoftInput(tagView, InputMethodManager.SHOW_IMPLICIT);
     }
 
     /**

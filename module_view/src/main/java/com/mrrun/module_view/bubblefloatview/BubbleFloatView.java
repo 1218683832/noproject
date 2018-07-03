@@ -141,6 +141,10 @@ public class BubbleFloatView extends View {
         return 1280;
     }
 
+    //onDraw直接在画板Canvas对象上绘制
+    //(1)invalidate方法会执行onDraw过程，只能在UI线程调用
+    //(2)postInvalidate 可以在非UI线程调用，省去了Handler消息调用
+    //(3)RequestLayout 会执行onMeasure，onLayout ，onDraw
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);

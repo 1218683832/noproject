@@ -8,7 +8,18 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:background="@color/colorPrimary">
+        android:background="#eeeedd">
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:background="@color/colorAccent"
+            android:text="TextView1"/>
+        <TextView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="#ffffff"
+            android:gravity="center"
+            android:text="TextView2"/>
     </com.mrrun.module_view.tagview.TagLayout>
 
     <Button
