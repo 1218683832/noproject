@@ -15,6 +15,7 @@ import com.mrrun.module_view.Debug;
  * @date 2018/07/03
  */
 public class TagLayout extends ViewGroup {
+    private Context mContext;
     /**
      * ViewGroup宽度
      */
@@ -34,16 +35,19 @@ public class TagLayout extends ViewGroup {
 
     public TagLayout(Context context) {
         super(context);
+        mContext = context;
         init();
     }
 
     public TagLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
+        mContext = context;
         init();
     }
 
     public TagLayout(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        mContext = context;
         init();
     }
 
@@ -55,6 +59,7 @@ public class TagLayout extends ViewGroup {
     // 根据各个子View的大小，确定ViewGroup大小（重写onMeasure()方法）
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         mWidth = getMyWidth(0, widthMeasureSpec, heightMeasureSpec);
         mHeight = getMyHeight(0, widthMeasureSpec, heightMeasureSpec);
         setMeasuredDimension(mWidth, mHeight);
@@ -82,7 +87,7 @@ public class TagLayout extends ViewGroup {
                 int childHeight = childView.getMeasuredHeight();
                 Debug.D(String.format("onMeasure childView宽高：%d,%d", childWidth, childHeight));
                 if (childLift + childWidth > mWidth) {// 一行排不下了
-                    childLift = 0;
+                    childLift = childWidth;
                     lineHeight = lineHeight + childHeight;
                 } else {// 不用加这个子View的高
                     childLift = childLift + childWidth;
@@ -129,5 +134,29 @@ public class TagLayout extends ViewGroup {
             childView.layout(childLeft, childTop, childLeft + childWidth, childTop + childHeight);
             childLeft = childLeft + childWidth;
         }
+    }
+
+    private TagView.OnTagClickListener onTagClickListener;
+
+    public void setOnTagClickListener(TagView.OnTagClickListener onTagClickListener) {
+        this.onTagClickListener = onTagClickListener;
+    }
+
+    /**
+     * 添加Tag
+     *
+     * @param content tag内容
+     */
+    public void addTag(String content) {
+        TagView view = new TagView(mContext,content);
+        view.setOnTagClickListener(onTagClickListener);
+        this.addView(view);
+    }
+
+    /**
+     *  移除所有Tags
+     */
+    public void removeAllTags(){
+        this.removeAllViews();
     }
 }

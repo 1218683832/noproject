@@ -15,13 +15,13 @@
             android:background="@color/colorAccent"
             android:padding="10dp"
             android:textSize="16sp"
-            android:text="TextView1"/>
+            android:text="TAG1"/>
         <com.mrrun.module_view.tagview.TagView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#ffffff"
             android:textSize="9sp"
-            android:text="TextView2"/>
+            android:text="TAG2"/>
     </com.mrrun.module_view.tagview.TagLayout>
 
     <Button
@@ -41,6 +41,7 @@
         android:background="@color/colorAccent"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
         android:text="移除TAG">
     </Button>
 </RelativeLayout>
