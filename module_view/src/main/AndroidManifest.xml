@@ -8,5 +8,6 @@
         <activity android:name="com.mrrun.example.BubbleFloatViewActivitiy"></activity>
         <activity android:name="com.mrrun.example.AffirmButtonViewActivity"></activity>
         <activity android:name="com.mrrun.example.TagExampleActivity"></activity>
+        <activity android:name="com.mrrun.example.WXLoadDialogActivity"></activity>
     </application>
 </manifest>

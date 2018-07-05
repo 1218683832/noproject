@@ -29,6 +29,19 @@ public class ViewExampleActivity extends AppCompatActivity {
         uiBubbleFloatView();
         uiAffirmButtonView();
         uiTag();
+        uiWXloadDialog();
+    }
+
+    /**
+     * 仿微信支付的加载视图对话框
+     */
+    private void uiWXloadDialog() {
+        findViewById(R.id.btn_wxloaddialog).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ViewExampleActivity.this, WXLoadDialogActivity.class));
+            }
+        });
     }
 
     /**

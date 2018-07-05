@@ -47,5 +47,11 @@
             android:layout_height="wrap_content"
             android:text="自定义标签布局" />
 
+        <Button
+            android:id="@+id/btn_wxloaddialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="仿微信支付加载对话框" />
+
     </LinearLayout>
 </ScrollView>
