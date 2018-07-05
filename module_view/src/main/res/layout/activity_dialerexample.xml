@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="36dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/shap_searchview_bg"
+        android:background="@drawable/searchview_shap"
         android:drawableLeft="@drawable/icon_search"
         android:drawablePadding="8dp"
         android:drawableRight="@drawable/icon_cancl"

@@ -6,33 +6,33 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.mrrun.module_view.R;
-import com.mrrun.module_view.dialog.load.WXLoadDialog;
+import com.mrrun.module_view.dialog.notification.NotificationDialog;
 
-public class WXLoadDialogActivity extends AppCompatActivity {
+public class NotificationDialogActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wxloaddialogxample);
+        setContentView(R.layout.activity_notificationdialogxample);
         getSupportActionBar().setTitle(R.string.module_view);
         initView();
     }
 
     private void initView() {
-        final WXLoadDialog wxLoadDialog = new WXLoadDialog(this);
+        final NotificationDialog notificationDialog = new NotificationDialog(this, "ss");
         findViewById(R.id.btn_show).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (null != wxLoadDialog){
-                    wxLoadDialog.show();
+                if (null != notificationDialog){
+                    notificationDialog.show();
                 }
             }
         });
         findViewById(R.id.btn_hide).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (null != wxLoadDialog && wxLoadDialog.isShowing()){
-                    wxLoadDialog.dismiss();
+                if (null != notificationDialog && notificationDialog.isShowing()){
+                    notificationDialog.dismiss();
                 }
             }
         });

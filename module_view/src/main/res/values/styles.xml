@@ -26,4 +26,9 @@
     <style name="dialog_load_style" parent="base_dialog_style">
         <item name="android:backgroundDimEnabled">false</item>
     </style>
+
+    <style name="dialog_notification_style" parent="base_dialog_style">
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.3</item>
+    </style>
 </resources>

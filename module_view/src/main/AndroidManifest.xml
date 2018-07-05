@@ -9,5 +9,6 @@
         <activity android:name="com.mrrun.example.AffirmButtonViewActivity"></activity>
         <activity android:name="com.mrrun.example.TagExampleActivity"></activity>
         <activity android:name="com.mrrun.example.WXLoadDialogActivity"></activity>
+        <activity android:name="com.mrrun.example.NotificationDialogActivity"></activity>
     </application>
 </manifest>

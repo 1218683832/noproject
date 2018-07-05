@@ -53,5 +53,11 @@
             android:layout_height="wrap_content"
             android:text="仿微信支付加载对话框" />
 
+        <Button
+            android:id="@+id/btn_notificationdialog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="仿微信信息通知视图对话框" />
+
     </LinearLayout>
 </ScrollView>

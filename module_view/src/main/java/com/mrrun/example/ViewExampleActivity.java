@@ -30,6 +30,19 @@ public class ViewExampleActivity extends AppCompatActivity {
         uiAffirmButtonView();
         uiTag();
         uiWXloadDialog();
+        uiNotificationDialog();
+    }
+
+    /**
+     * 仿仿微信信息通知视图对话框
+     */
+    private void uiNotificationDialog() {
+        findViewById(R.id.btn_notificationdialog).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ViewExampleActivity.this, NotificationDialogActivity.class));
+            }
+        });
     }
 
     /**
