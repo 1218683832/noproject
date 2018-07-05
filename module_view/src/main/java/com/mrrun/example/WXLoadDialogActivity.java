@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.mrrun.module_view.R;
-import com.mrrun.module_view.dialog.WXLoadDialog;
+import com.mrrun.module_view.dialog.load.WXLoadDialog;
 
 public class WXLoadDialogActivity extends AppCompatActivity {
 

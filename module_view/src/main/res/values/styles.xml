@@ -8,15 +8,22 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="dialog_style" parent="@android:style/Theme.Dialog">
+    <style name="base_dialog_style" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item><!--边框-->
         <item name="android:windowIsFloating">true</item><!--是否浮现在activity之上-->
-        <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowIsTranslucent">true</item><!--半透明-->
+        <item name="android:windowContentOverlay">@null</item><!-- 是否有覆盖 -->
         <item name="android:windowNoTitle">true</item><!--无标题-->
-        <item name="android:background">@android:color/transparent</item>
-        <item name="android:windowBackground">@android:color/transparent</item><!--背景透明-->
-        <item name="android:backgroundDimEnabled">false</item><!--模糊-->
-        <item name="android:backgroundDimAmount">0.45</item>
+        <item name="android:background">@android:color/transparent</item><!-- 整个屏幕背景是透明的 -->
+        <item name="android:windowBackground">@android:color/transparent</item><!--内容窗口背景色背景透明-->
+        <item name="android:backgroundDimAmount">0.3</item><!-- 整个屏幕背景的灰度值：默认是黑色的 ：遮障层的灰度-->
+        <item name="android:backgroundDimEnabled">true
+        </item><!-- dialog的整个屏幕的背景是否有遮障层,当设置这个最后时，android:backgroundDimAmount、background不起作用-->
+        <!-- 重要，Dialog进出的显示动画 -->
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
+
+    <style name="dialog_load_style" parent="base_dialog_style">
+        <item name="android:backgroundDimEnabled">false</item>
     </style>
 </resources>

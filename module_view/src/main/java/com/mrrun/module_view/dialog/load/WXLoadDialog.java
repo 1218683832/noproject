@@ -1,4 +1,4 @@
-package com.mrrun.module_view.dialog;
+package com.mrrun.module_view.dialog.load;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -17,7 +17,7 @@ import com.mrrun.module_view.R;
 public class WXLoadDialog extends Dialog{
 
     public WXLoadDialog(@NonNull Context context) {
-        super(context, R.style.dialog_style);
+        super(context, R.style.dialog_load_style);
     }
 
     @Override
