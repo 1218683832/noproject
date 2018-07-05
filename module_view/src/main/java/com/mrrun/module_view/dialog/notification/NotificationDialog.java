@@ -15,26 +15,28 @@ import com.mrrun.module_view.R;
  *
  * @author lipin
  * @version 1.0
- * @date 2018/07/04
+ * @date 2018/07/05
  */
 public class NotificationDialog extends Dialog{
 
     private String message;
 
+    private TextView tvNotification;
+
     public NotificationDialog(@NonNull Context context, String message) {
-        super(context, R.style.dialog_load_style);
+        super(context, R.style.dialog_notification_style);
         this.message = message;
     }
 
     public NotificationDialog(@NonNull Context context, int stringResId) {
-        super(context, R.style.dialog_load_style);
+        super(context, R.style.dialog_notification_style);
         this.message = context.getResources().getString(stringResId);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.dialog_notification);
+        setContentView(R.layout.dialog_wxnotification);
         // 点击Dialog外部任意区域关闭Dialog
         setCanceledOnTouchOutside(false);
         initView();
@@ -45,6 +47,7 @@ public class NotificationDialog extends Dialog{
      * 初始化数据
      */
     private void initData() {
+        tvNotification.setText(message);
     }
 
     /**
@@ -57,8 +60,7 @@ public class NotificationDialog extends Dialog{
         params.x = -80;//设置x坐标
         params.y = -60;//设置y坐标
         win.setAttributes(params);*/
-        TextView tv_notification = findViewById(R.id.tv_notification);
-        tv_notification.setText(message);
+        tvNotification = findViewById(R.id.tv_notification);
         findViewById(R.id.btn_confirm).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

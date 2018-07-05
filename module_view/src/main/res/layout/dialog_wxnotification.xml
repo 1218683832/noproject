@@ -3,7 +3,7 @@
     android:layout_width="250dp"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:background="@drawable/dialog_load_shape"
+    android:background="@drawable/dialog_notification_shape"
     android:gravity="center"
     android:orientation="vertical">
 
@@ -11,24 +11,26 @@
         android:id="@+id/tv_notification"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:paddingTop="16dp"
         android:gravity="center"
         android:text="网络通信出现问题，请稍后再试。"
         android:textColor="#000000"
         android:textSize="15sp" />
 
-    <view
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="6dp"
-        android:background="#ff4da5"></view>
+        android:layout_height="0.5dp"
+        android:layout_marginTop="10dp"
+        android:background="#ff4da5">
+    </TextView>
 
     <TextView
         android:id="@+id/btn_confirm"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="6dp"
-        android:layout_marginTop="6dp"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
         android:text="确定"
         android:textColor="#3385ff"
         android:textSize="15sp" />

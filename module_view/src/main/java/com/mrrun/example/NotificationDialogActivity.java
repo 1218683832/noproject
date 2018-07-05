@@ -19,7 +19,7 @@ public class NotificationDialogActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        final NotificationDialog notificationDialog = new NotificationDialog(this, "ss");
+        final NotificationDialog notificationDialog = new NotificationDialog(this, "网络通信出现问题，请稍后再试。");
         findViewById(R.id.btn_show).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
