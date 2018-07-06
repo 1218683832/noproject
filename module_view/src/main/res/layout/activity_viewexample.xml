@@ -59,5 +59,11 @@
             android:layout_height="wrap_content"
             android:text="仿微信信息通知视图对话框" />
 
+        <Button
+            android:id="@+id/btn_paypsdinputview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="仿微信自定义支付密码输入框" />
+
     </LinearLayout>
 </ScrollView>

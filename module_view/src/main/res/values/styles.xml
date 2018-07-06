@@ -16,7 +16,7 @@
         <item name="android:windowNoTitle">true</item><!--无标题-->
         <item name="android:background">@android:color/transparent</item><!-- 整个屏幕背景是透明的 -->
         <item name="android:windowBackground">@android:color/transparent</item><!--内容窗口背景色背景透明-->
-        <item name="android:backgroundDimAmount">0.3</item><!-- 整个屏幕背景的灰度值：默认是黑色的 ：遮障层的灰度-->
+        <item name="android:backgroundDimAmount">0.4</item><!-- 整个屏幕背景的灰度值：默认是黑色的 ：遮障层的灰度-->
         <item name="android:backgroundDimEnabled">true
         </item><!-- dialog的整个屏幕的背景是否有遮障层,当设置这个最后时，android:backgroundDimAmount、background不起作用-->
         <!-- 重要，Dialog进出的显示动画 -->
@@ -29,6 +29,6 @@
 
     <style name="dialog_notification_style" parent="base_dialog_style">
         <item name="android:backgroundDimEnabled">true</item>
-        <item name="android:backgroundDimAmount">0.3</item>
+        <item name="android:backgroundDimAmount">0.4</item>
     </style>
 </resources>

@@ -10,5 +10,6 @@
         <activity android:name="com.mrrun.example.TagExampleActivity"></activity>
         <activity android:name="com.mrrun.example.WXLoadDialogActivity"></activity>
         <activity android:name="com.mrrun.example.NotificationDialogActivity"></activity>
+        <activity android:name="com.mrrun.example.PayPsdInputViewActivity"></activity>
     </application>
 </manifest>

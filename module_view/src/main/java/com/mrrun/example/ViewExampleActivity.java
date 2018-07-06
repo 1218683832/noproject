@@ -31,6 +31,19 @@ public class ViewExampleActivity extends AppCompatActivity {
         uiTag();
         uiWXloadDialog();
         uiNotificationDialog();
+        uiPayPsdInputView();
+    }
+
+    /**
+     * 仿微信自定义支付密码输入框
+     */
+    private void uiPayPsdInputView() {
+        findViewById(R.id.btn_paypsdinputview).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ViewExampleActivity.this, PayPsdInputViewActivity.class));
+            }
+        });
     }
 
     /**

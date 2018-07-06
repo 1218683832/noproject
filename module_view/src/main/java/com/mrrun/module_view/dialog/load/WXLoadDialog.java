@@ -8,7 +8,7 @@ import android.support.annotation.NonNull;
 import com.mrrun.module_view.R;
 
 /**
- * 仿微信支付的加载视图对话框
+ * 仿微信支付加载视图对话框
  *
  * @author lipin
  * @version 1.0
