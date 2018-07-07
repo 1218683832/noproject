@@ -202,7 +202,7 @@ public class PayPsdInputView extends AppCompatEditText {
         Debug.D(String.format("当前密码输入:%s", mPassword));
         if (textLength == MAX_INPUT_COUNT) {
             if (mOnPasswordInputListener != null) {
-                if (TextUtils.isEmpty(text)) {
+                if (!TextUtils.isEmpty(text)) {
                     mOnPasswordInputListener.finished(mPassword);
                     Debug.D(String.format("密码输入完成:%s", mPassword));
                 }
