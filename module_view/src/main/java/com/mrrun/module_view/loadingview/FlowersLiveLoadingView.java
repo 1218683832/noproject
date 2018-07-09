@@ -52,7 +52,7 @@ public class FlowersLiveLoadingView extends View {
     /**
      * 动画持续时间
      */
-    private final long ANIMATION_DRUATION = 800;
+    private final long ANIMATION_DRUATION = 700;
     /**
      * 动画开始时延迟时间
      */
