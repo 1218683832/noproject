@@ -117,7 +117,7 @@ public class LoadingLineView extends View {
             public void onAnimationUpdate(ValueAnimator animation) {
                 int a = (int) animation.getAnimatedValue();
                 mProgressPaint.setAlpha(a);
-                Debug.D(String.format("当前颜色值%d", a));
+                Debug.D(String.format("当前alpha值%d", a));
             }
         });
         return animator;

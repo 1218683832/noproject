@@ -6,7 +6,7 @@
     <com.mrrun.module_view.loadingview.LoadingLineView
         android:id="@+id/loadingprogressview"
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_margin="10dp"
+        android:layout_height="3dp"
+        android:layout_margin="14dp"
         android:background="#e6e6e6"/>
 </LinearLayout>
