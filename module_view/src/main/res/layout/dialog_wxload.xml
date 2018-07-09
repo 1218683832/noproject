@@ -21,7 +21,7 @@
         android:textColor="#ffffff"
         android:textSize="15sp" />
 
-    <com.mrrun.module_view.loadingview.LoadingView
+    <com.mrrun.module_view.loadingview.LoadingDotView
         android:id="@+id/loadingview"
         android:layout_width="match_parent"
         android:layout_height="20dp"

@@ -7,7 +7,7 @@ import android.support.annotation.NonNull;
 
 import com.mrrun.module_view.Debug;
 import com.mrrun.module_view.R;
-import com.mrrun.module_view.loadingview.LoadingView;
+import com.mrrun.module_view.loadingview.LoadingDotView;
 
 /**
  * 仿微信支付加载视图对话框
@@ -18,7 +18,7 @@ import com.mrrun.module_view.loadingview.LoadingView;
  */
 public class WXLoadDialog extends Dialog{
 
-    private LoadingView mLoadingView;
+    private LoadingDotView mLoadingDotView;
 
     public WXLoadDialog(@NonNull Context context) {
         super(context, R.style.dialog_load_style);
@@ -43,14 +43,14 @@ public class WXLoadDialog extends Dialog{
         params.x = -80;//设置x坐标
         params.y = -60;//设置y坐标
         win.setAttributes(params);*/
-        mLoadingView = findViewById(R.id.loadingview);
+        mLoadingDotView = findViewById(R.id.loadingview);
     }
 
     @Override
     public void show() {
         super.show();
-        if (null != mLoadingView){
-            mLoadingView.startLoading();
+        if (null != mLoadingDotView){
+            mLoadingDotView.startLoading();
         }
         Debug.D("show");
     }
@@ -58,8 +58,8 @@ public class WXLoadDialog extends Dialog{
     @Override
     public void dismiss() {
         super.dismiss();
-        if (null != mLoadingView) {
-            mLoadingView.stopLoading();
+        if (null != mLoadingDotView) {
+            mLoadingDotView.stopLoading();
         }
         Debug.D("dismiss");
     }

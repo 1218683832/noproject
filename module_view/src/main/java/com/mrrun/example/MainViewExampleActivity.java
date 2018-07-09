@@ -13,7 +13,7 @@ import com.mrrun.module_view.R;
  * @version 1.0
  * @date 2016/06/25
  */
-public class ViewExampleActivity extends AppCompatActivity {
+public class MainViewExampleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,6 +32,19 @@ public class ViewExampleActivity extends AppCompatActivity {
         uiWXloadDialog();
         uiNotificationDialog();
         uiPayPsdInputView();
+        uiProgressView();
+    }
+
+    /**
+     * 进度View
+     */
+    private void uiProgressView() {
+        findViewById(R.id.btn_progressview).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, ProgressViewActivity.class));
+            }
+        });
     }
 
     /**
@@ -41,7 +54,7 @@ public class ViewExampleActivity extends AppCompatActivity {
         findViewById(R.id.btn_paypsdinputview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ViewExampleActivity.this, PayPsdInputViewActivity.class));
+                startActivity(new Intent(MainViewExampleActivity.this, PayPsdInputViewActivity.class));
             }
         });
     }
@@ -53,7 +66,7 @@ public class ViewExampleActivity extends AppCompatActivity {
         findViewById(R.id.btn_notificationdialog).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ViewExampleActivity.this, NotificationDialogActivity.class));
+                startActivity(new Intent(MainViewExampleActivity.this, NotificationDialogActivity.class));
             }
         });
     }
@@ -65,7 +78,7 @@ public class ViewExampleActivity extends AppCompatActivity {
         findViewById(R.id.btn_wxloaddialog).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ViewExampleActivity.this, WXLoadDialogActivity.class));
+                startActivity(new Intent(MainViewExampleActivity.this, WXLoadDialogActivity.class));
             }
         });
     }
@@ -77,7 +90,7 @@ public class ViewExampleActivity extends AppCompatActivity {
         findViewById(R.id.btn_taglayout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ViewExampleActivity.this, TagExampleActivity.class));
+                startActivity(new Intent(MainViewExampleActivity.this, TagExampleActivity.class));
             }
         });
     }
@@ -89,7 +102,7 @@ public class ViewExampleActivity extends AppCompatActivity {
         findViewById(R.id.btn_affirmbuttonview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ViewExampleActivity.this, AffirmButtonViewActivity.class));
+                startActivity(new Intent(MainViewExampleActivity.this, AffirmButtonViewActivity.class));
             }
         });
     }
@@ -101,7 +114,7 @@ public class ViewExampleActivity extends AppCompatActivity {
         findViewById(R.id.btn_bubblefloatview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ViewExampleActivity.this, BubbleFloatViewActivitiy.class));
+                startActivity(new Intent(MainViewExampleActivity.this, BubbleFloatViewActivitiy.class));
             }
         });
     }
@@ -113,7 +126,7 @@ public class ViewExampleActivity extends AppCompatActivity {
         findViewById(R.id.btn_dialer).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ViewExampleActivity.this, DialerExampleActivity.class));
+                startActivity(new Intent(MainViewExampleActivity.this, DialerExampleActivity.class));
             }
         });
     }
@@ -125,7 +138,7 @@ public class ViewExampleActivity extends AppCompatActivity {
         findViewById(R.id.btn_searchview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ViewExampleActivity.this, SearchViewExampleActivity.class));
+                startActivity(new Intent(MainViewExampleActivity.this, SearchViewExampleActivity.class));
             }
         });
     }

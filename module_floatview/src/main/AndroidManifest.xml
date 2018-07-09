@@ -3,7 +3,7 @@
     package="com.mrrun.module_floatview">
 
     <application>
-        <activity android:name="com.mrrun.example.FloatWindowExampleActivity"></activity>
+        <activity android:name="com.mrrun.example.MainFloatWindowExampleActivity"></activity>
     </application>
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 </manifest>

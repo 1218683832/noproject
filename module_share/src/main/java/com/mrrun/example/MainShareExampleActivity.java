@@ -14,7 +14,7 @@ import com.mrrun.module_share.wx.WXScene;
  * @version 1.0
  * @date 2016/06/25
  */
-public class ShareExampleActivity extends AppCompatActivity {
+public class MainShareExampleActivity extends AppCompatActivity {
     
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class ShareExampleActivity extends AppCompatActivity {
         findViewById(R.id.btn_wxscenetimeline).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                WXShareManager.getInstance(ShareExampleActivity.this).share(WXScene.WXSceneSession);
+                WXShareManager.getInstance(MainShareExampleActivity.this).share(WXScene.WXSceneSession);
             }
         });
     }

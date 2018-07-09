@@ -7,9 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-import com.mrrun.example.FloatWindowExampleActivity;
-import com.mrrun.example.ShareExampleActivity;
-import com.mrrun.example.ViewExampleActivity;
+import com.mrrun.example.MainFloatWindowExampleActivity;
+import com.mrrun.example.MainShareExampleActivity;
+import com.mrrun.example.MainViewExampleActivity;
 import com.mrrun.nbproject.R;
 
 /**
@@ -32,7 +32,7 @@ public class HomeActivity extends AppCompatActivity {
         findViewById(R.id.btn_module_view).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ViewExampleActivity.class));
+                startActivity(new Intent(HomeActivity.this, MainViewExampleActivity.class));
             }
         });
         // 工具模块
@@ -46,14 +46,14 @@ public class HomeActivity extends AppCompatActivity {
         findViewById(R.id.btn_module_share).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, ShareExampleActivity.class));
+                startActivity(new Intent(HomeActivity.this, MainShareExampleActivity.class));
             }
         });
         // 悬浮框模块
         findViewById(R.id.btn_module_floatview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, FloatWindowExampleActivity.class));
+                startActivity(new Intent(HomeActivity.this, MainFloatWindowExampleActivity.class));
             }
         });
     }

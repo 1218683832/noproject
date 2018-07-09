@@ -18,7 +18,7 @@ import com.mrrun.module_view.Debug;
  * @version 1.0
  * @date 2018 /07/07
  */
-public class LoadingView extends View {
+public class LoadingDotView extends View {
 
     private Context mContext;
     private DisplayMetrics dm;
@@ -47,13 +47,13 @@ public class LoadingView extends View {
         }
     };
 
-    public LoadingView(Context context) {
+    public LoadingDotView(Context context) {
         super(context);
         mContext = context;
         init();
     }
 
-    public LoadingView(Context context, @Nullable AttributeSet attrs) {
+    public LoadingDotView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
         init();

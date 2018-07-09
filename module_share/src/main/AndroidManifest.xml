@@ -2,6 +2,6 @@
     package="com.mrrun.module_share">
 
     <application>
-        <activity android:name="com.mrrun.example.ShareExampleActivity"></activity>
+        <activity android:name="com.mrrun.example.MainShareExampleActivity"></activity>
     </application>
 </manifest>

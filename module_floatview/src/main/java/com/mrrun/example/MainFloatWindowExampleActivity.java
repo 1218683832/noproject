@@ -14,7 +14,7 @@ import com.mrrun.module_floatview.permission.CallFloatViewWindowManager;
  * @version 1.0
  * @date 2016/06/25
  */
-public class FloatWindowExampleActivity extends Activity {
+public class MainFloatWindowExampleActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class FloatWindowExampleActivity extends Activity {
         findViewById(R.id.btn_show_or_apply).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                CallFloatViewWindowManager.getInstance().applyOrShowFloatWindow(FloatWindowExampleActivity.this);
+                CallFloatViewWindowManager.getInstance().applyOrShowFloatWindow(MainFloatWindowExampleActivity.this);
             }
         });
         findViewById(R.id.btn_dismiss1).setOnClickListener(new View.OnClickListener() {
@@ -42,7 +42,7 @@ public class FloatWindowExampleActivity extends Activity {
         findViewById(R.id.btn_show).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FloatViewWindowManager.getInstance().showFloatView(FloatWindowExampleActivity.this);
+                FloatViewWindowManager.getInstance().showFloatView(MainFloatWindowExampleActivity.this);
             }
         });
         findViewById(R.id.btn_dismiss2).setOnClickListener(new View.OnClickListener() {
