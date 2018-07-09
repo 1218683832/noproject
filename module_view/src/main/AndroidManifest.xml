@@ -12,5 +12,6 @@
         <activity android:name="com.mrrun.example.NotificationDialogActivity"></activity>
         <activity android:name="com.mrrun.example.PayPsdInputViewActivity"></activity>
         <activity android:name="com.mrrun.example.ProgressViewActivity"></activity>
+        <activity android:name="com.mrrun.example.FlowersLiveLoadingVIewActivity"></activity>
     </application>
 </manifest>

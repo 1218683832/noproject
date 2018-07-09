@@ -33,6 +33,19 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiNotificationDialog();
         uiPayPsdInputView();
         uiProgressView();
+        uiFlowersLiveLoadingView();
+    }
+
+    /**
+     * 仿花束直播加载动画View
+     */
+    private void uiFlowersLiveLoadingView() {
+        findViewById(R.id.btn_flowersliveloadingview).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, FlowersLiveLoadingVIewActivity.class));
+            }
+        });
     }
 
     /**

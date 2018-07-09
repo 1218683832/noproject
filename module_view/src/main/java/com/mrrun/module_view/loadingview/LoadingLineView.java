@@ -56,6 +56,7 @@ public class LoadingLineView extends View {
     private void init() {
         initData();
         initPaint();
+
     }
 
     private void initPaint() {
@@ -83,7 +84,7 @@ public class LoadingLineView extends View {
         mViewCenterY = h / 2;
         mMaxDistanceX = mViewWidth / 2;
         Debug.D("onSizeChanged mMaxDistanceX = " + mMaxDistanceX);
-        startAnimation();
+
     }
 
     @Override
@@ -123,16 +124,22 @@ public class LoadingLineView extends View {
         return animator;
     }
 
-    private void startAnimation(){
+    public void startAnimation(){
         if (!animatorSet.isRunning()){
-            animatorSet.play(horizontalGrowthAnimation()).with(alphaAnimation());
-            animatorSet.setDuration(800);
-            animatorSet.start();
+            // 让布局实例化好之后再去开启动画
+            post(new Runnable() {
+                @Override
+                public void run() {
+                    animatorSet.play(horizontalGrowthAnimation()).with(alphaAnimation());
+                    animatorSet.setDuration(800);
+                    animatorSet.start();
+                }
+            });
         }
     }
 
     private void stopAnimation(){
-        if (animatorSet.isRunning()){
+        if (animatorSet.isRunning() || animatorSet.isPaused()){
             animatorSet.cancel();
         }
     }
@@ -142,6 +149,4 @@ public class LoadingLineView extends View {
         super.onDetachedFromWindow();
         stopAnimation();
     }
-
-
 }
