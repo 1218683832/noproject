@@ -16,7 +16,7 @@ import com.mrrun.module_view.Debug;
 /**
  * 从中心向两端扩散的动态加载进度动态View。
  * 需求1：水平方向动态加载；
- * 需求2：
+ * 需求2：从中心向两端扩散；
  *
  * @author lipin
  * @version 1.0
