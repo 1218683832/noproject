@@ -52,11 +52,17 @@ public class FlowersLiveLoadingView extends View {
     /**
      * 动画持续时间
      */
-    private final long ANIMATION_DRUATION = 700;
+    private final long ANIMATION_DRUATION = 800;
+    /**
+     * 动画开始时延迟时间
+     */
+    private final int START_DELAY = 220;
     /**
      * 小圆半径
      */
     private int RADIUS = 6;
+
+    private int distance = 0;
 
     private AnimatorSet animatorSet;
 
@@ -100,9 +106,9 @@ public class FlowersLiveLoadingView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         // 画左边小圆
-        canvas.drawCircle(mCenterX - d, mCenterY, RADIUS, mLeftPaint);
+        canvas.drawCircle(mCenterX - distance, mCenterY, RADIUS, mLeftPaint);
         // 画右边小圆
-        canvas.drawCircle(mCenterX + d, mCenterY, RADIUS, mRightPaint);
+        canvas.drawCircle(mCenterX + distance, mCenterY, RADIUS, mRightPaint);
         // 画中间小圆
         canvas.drawCircle(mCenterX, mCenterY, RADIUS, mCenterPaint);
 
@@ -110,8 +116,9 @@ public class FlowersLiveLoadingView extends View {
 
     private void startAnimation() {
         if (!animatorSet.isRunning()) {
-            animatorSet.play(outTranslationAnimation());
+            animatorSet.play(loadingAnimation());
             animatorSet.setDuration(ANIMATION_DRUATION);
+            animatorSet.setStartDelay(START_DELAY);
             post(new Runnable() {
                 @Override
                 public void run() {
@@ -141,19 +148,18 @@ public class FlowersLiveLoadingView extends View {
         return paint;
     }
 
-    int d = 0;
-
     /**
-     *
+     * 加载动画
      */
-    private ValueAnimator outTranslationAnimation() {
+    private ValueAnimator loadingAnimation() {
         ValueAnimator animator = ValueAnimator.ofInt(0, MAX_TRANSLATION_DISTANCE, 0);
         animator.setInterpolator(new LinearInterpolator());
         animator.setRepeatCount(-1);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
-                d = (int) animation.getAnimatedValue();
+                distance = (int) animation.getAnimatedValue();
+                Debug.D(String.format("onAnimationUpdate translation distance %d", distance));
                 invalidate();
             }
         });
@@ -180,7 +186,7 @@ public class FlowersLiveLoadingView extends View {
     }
 
     private void stopAnimation() {
-        if (animatorSet.isRunning() || animatorSet.isPaused()){
+        if (animatorSet.isRunning() || animatorSet.isPaused()) {
             animatorSet.cancel();
         }
     }
