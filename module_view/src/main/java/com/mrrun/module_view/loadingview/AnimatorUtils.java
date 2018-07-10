@@ -78,7 +78,6 @@ public class AnimatorUtils {
         if (animatorSet.isPaused()) {
             // 2018/07/10
             // 解决Activity从stop状态恢复到resume状态后View显示动画继续不流畅问题
-
             view.postDelayed(new Runnable() {
                 @Override
                 public void run() {
