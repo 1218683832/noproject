@@ -7,8 +7,11 @@ import android.view.View;
 
 import com.mrrun.module_view.R;
 import com.mrrun.module_view.dialog.load.WXLoadDialog;
+import com.mrrun.module_view.loadingview.FlowersLiveLoadingView;
 
 public class FlowersLiveLoadingVIewActivity extends AppCompatActivity {
+
+    FlowersLiveLoadingView loadingView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -19,5 +22,30 @@ public class FlowersLiveLoadingVIewActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        loadingView = findViewById(R.id.flowersliveloadingview);
+        findViewById(R.id.start).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadingView.startAnimation();
+            }
+        });
+        findViewById(R.id.stop).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadingView.stopAnimation();
+            }
+        });
+        findViewById(R.id.pause).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadingView.pauseAnimation();
+            }
+        });
+        findViewById(R.id.resume).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loadingView.resumeAnimation();
+            }
+        });
     }
 }

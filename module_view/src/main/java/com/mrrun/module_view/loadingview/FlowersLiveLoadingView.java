@@ -66,6 +66,8 @@ public class FlowersLiveLoadingView extends View {
 
     private AnimatorSet animatorSet;
 
+    private ValueAnimator mLoadingAnimator;
+
     public FlowersLiveLoadingView(Context context) {
         super(context);
         init();
@@ -74,6 +76,25 @@ public class FlowersLiveLoadingView extends View {
     public FlowersLiveLoadingView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         init();
+    }
+
+    @Override
+    protected void onWindowVisibilityChanged(int visibility) {
+        super.onWindowVisibilityChanged(visibility);
+        Debug.D(String.format("onWindowVisibilityChanged visibility %d", visibility));
+        if (View.GONE == visibility){
+            pauseAnimation();
+        } else if (View.VISIBLE == visibility){
+            resumeAnimation();
+        }
+    }
+
+    public void resumeAnimation() {
+        AnimatorUtils.resumeAnimation(animatorSet, this);
+    }
+
+    public void pauseAnimation() {
+        AnimatorUtils.pauseAnimation(animatorSet);
     }
 
     private void init() {
@@ -103,6 +124,12 @@ public class FlowersLiveLoadingView extends View {
     }
 
     @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        Debug.D("onAttachedToWindow");
+    }
+
+    @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         // 画左边小圆
@@ -111,21 +138,18 @@ public class FlowersLiveLoadingView extends View {
         canvas.drawCircle(mCenterX + distance, mCenterY, RADIUS, mRightPaint);
         // 画中间小圆
         canvas.drawCircle(mCenterX, mCenterY, RADIUS, mCenterPaint);
-
     }
 
-    private void startAnimation() {
-        if (!animatorSet.isRunning()) {
-            animatorSet.play(loadingAnimation());
+    public void startAnimation() {
+        // 2018/07/10
+        // 优化问题,解决多次开始停止动画保证只加入一次LoadingAnimatior
+        if (null == mLoadingAnimator){
+            mLoadingAnimator = loadingAnimation();
+            animatorSet.play(mLoadingAnimator);
             animatorSet.setDuration(ANIMATION_DRUATION);
             animatorSet.setStartDelay(START_DELAY);
-            post(new Runnable() {
-                @Override
-                public void run() {
-                    animatorSet.start();
-                }
-            });
         }
+        AnimatorUtils.startAnimation(animatorSet, this);
     }
 
     private void resetCoordinate() {
@@ -185,9 +209,7 @@ public class FlowersLiveLoadingView extends View {
         stopAnimation();
     }
 
-    private void stopAnimation() {
-        if (animatorSet.isRunning() || animatorSet.isPaused()) {
-            animatorSet.cancel();
-        }
+    public void stopAnimation() {
+        AnimatorUtils.stopAnimation(animatorSet);
     }
 }
