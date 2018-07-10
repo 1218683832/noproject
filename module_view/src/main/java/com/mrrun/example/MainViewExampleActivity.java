@@ -33,17 +33,30 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiNotificationDialog();
         uiPayPsdInputView();
         uiProgressView();
-        uiFlowersLiveLoadingView();
+        uiFlowersLiveLoadingView1();
+        uiFlowersLiveLoadingView2();
     }
 
     /**
-     * 仿花束直播加载动画View
+     * 仿花束直播加载动画View2。网上的写法
      */
-    private void uiFlowersLiveLoadingView() {
-        findViewById(R.id.btn_flowersliveloadingview).setOnClickListener(new View.OnClickListener() {
+    private void uiFlowersLiveLoadingView2() {
+        findViewById(R.id.btn_flowersliveloadingview2).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainViewExampleActivity.this, FlowersLiveLoadingVIewActivity.class));
+                startActivity(new Intent(MainViewExampleActivity.this, FlowersLiveLoadingView2Activity.class));
+            }
+        });
+    }
+
+    /**
+     * 仿花束直播加载动画View1
+     */
+    private void uiFlowersLiveLoadingView1() {
+        findViewById(R.id.btn_flowersliveloadingview1).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, FlowersLiveLoadingView1Activity.class));
             }
         });
     }

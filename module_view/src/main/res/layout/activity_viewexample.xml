@@ -72,10 +72,16 @@
             android:text="进度条View" />
 
         <Button
-            android:id="@+id/btn_flowersliveloadingview"
+            android:id="@+id/btn_flowersliveloadingview1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="仿花束直播加载动画View1" />
+
+        <Button
+            android:id="@+id/btn_flowersliveloadingview2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="仿花束直播加载动画View2" />
 
     </LinearLayout>
 </ScrollView>

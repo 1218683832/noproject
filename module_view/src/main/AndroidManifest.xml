@@ -12,6 +12,7 @@
         <activity android:name="com.mrrun.example.NotificationDialogActivity"></activity>
         <activity android:name="com.mrrun.example.PayPsdInputViewActivity"></activity>
         <activity android:name="com.mrrun.example.ProgressViewActivity"></activity>
-        <activity android:name="com.mrrun.example.FlowersLiveLoadingVIewActivity"></activity>
+        <activity android:name="com.mrrun.example.FlowersLiveLoadingView1Activity"></activity>
+        <activity android:name="com.mrrun.example.FlowersLiveLoadingView2Activity"></activity>
     </application>
 </manifest>

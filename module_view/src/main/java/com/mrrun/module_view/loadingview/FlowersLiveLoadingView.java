@@ -52,7 +52,7 @@ public class FlowersLiveLoadingView extends View {
     /**
      * 动画持续时间
      */
-    private final long ANIMATION_DRUATION = 750;
+    private final long ANIMATION_DRUATION = 700;
     /**
      * 动画开始时延迟时间
      */
@@ -60,7 +60,7 @@ public class FlowersLiveLoadingView extends View {
     /**
      * 小圆半径
      */
-    private int RADIUS = 6;
+    private int RADIUS = 5;
 
     private int distance = 0;
 

@@ -6,17 +6,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.mrrun.module_view.R;
-import com.mrrun.module_view.dialog.load.WXLoadDialog;
+import com.mrrun.module_view.loadingview.FlowersLiveLoadingLayout;
 import com.mrrun.module_view.loadingview.FlowersLiveLoadingView;
 
-public class FlowersLiveLoadingVIewActivity extends AppCompatActivity {
+public class FlowersLiveLoadingView2Activity extends AppCompatActivity {
 
-    FlowersLiveLoadingView loadingView;
+    FlowersLiveLoadingLayout loadingView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_flowersliveloadingviewexample);
+        setContentView(R.layout.activity_flowersliveloadingviewexample2);
         getSupportActionBar().setTitle(R.string.module_view);
         initView();
     }
@@ -26,25 +26,21 @@ public class FlowersLiveLoadingVIewActivity extends AppCompatActivity {
         findViewById(R.id.start).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadingView.startAnimation();
             }
         });
         findViewById(R.id.stop).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadingView.stopAnimation();
             }
         });
         findViewById(R.id.pause).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadingView.pauseAnimation();
             }
         });
         findViewById(R.id.resume).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                loadingView.resumeAnimation();
             }
         });
     }
