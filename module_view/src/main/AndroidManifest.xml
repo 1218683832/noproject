@@ -14,5 +14,6 @@
         <activity android:name="com.mrrun.example.ProgressViewActivity"></activity>
         <activity android:name="com.mrrun.example.FlowersLiveLoadingView1Activity"></activity>
         <activity android:name="com.mrrun.example.FlowersLiveLoadingView2Activity"></activity>
+        <activity android:name="com.mrrun.example.ColorTrackViewActivity"></activity>
     </application>
 </manifest>

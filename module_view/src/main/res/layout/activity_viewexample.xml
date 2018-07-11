@@ -83,5 +83,11 @@
             android:layout_height="wrap_content"
             android:text="仿花束直播加载动画View2" />
 
+        <Button
+            android:id="@+id/btn_colortrackview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="玩转文字变色View" />
+
     </LinearLayout>
 </ScrollView>

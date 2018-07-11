@@ -35,10 +35,20 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiProgressView();
         uiFlowersLiveLoadingView1();
         uiFlowersLiveLoadingView2();
+        uiColorTrackView();
+    }
+
+    private void uiColorTrackView() {
+        findViewById(R.id.btn_colortrackview).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, ColorTrackViewActivity.class));
+            }
+        });
     }
 
     /**
-     * 仿花束直播加载动画View2。网上的写法
+     * 玩转文字变色View
      */
     private void uiFlowersLiveLoadingView2() {
         findViewById(R.id.btn_flowersliveloadingview2).setOnClickListener(new View.OnClickListener() {
