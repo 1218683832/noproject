@@ -1,4 +1,4 @@
-package com.mrrun.module_view.loadingview;
+package com.mrrun.module_view;
 
 import android.animation.AnimatorSet;
 import android.view.View;
@@ -11,7 +11,7 @@ import android.view.ViewConfiguration;
  * @version 1.0
  * @date 2018/07/10
  */
-public class AnimatorUtils {
+public class AnimatorUtil {
     /**
      * 默认延迟进入动画时间
      */

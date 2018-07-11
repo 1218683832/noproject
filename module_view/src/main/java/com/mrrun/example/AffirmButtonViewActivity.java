@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.mrrun.module_view.R;
-import com.mrrun.module_view.affirmbtn.AffirmButtonView;
+import com.mrrun.module_view.affirmbutton.AffirmButtonView;
 
 public class AffirmButtonViewActivity extends AppCompatActivity {
 

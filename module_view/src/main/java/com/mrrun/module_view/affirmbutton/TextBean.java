@@ -1,4 +1,4 @@
-package com.mrrun.module_view.affirmbtn;
+package com.mrrun.module_view.affirmbutton;
 
 import android.graphics.Paint;
 import android.graphics.RectF;

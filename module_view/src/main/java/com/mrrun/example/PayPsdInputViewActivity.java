@@ -3,11 +3,9 @@ package com.mrrun.example;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
 import android.widget.Toast;
 
 import com.mrrun.module_view.R;
-import com.mrrun.module_view.affirmbtn.AffirmButtonView;
 import com.mrrun.module_view.inputview.PayPsdInputView;
 
 public class PayPsdInputViewActivity extends AppCompatActivity {

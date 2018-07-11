@@ -1,4 +1,4 @@
-package com.mrrun.module_view.affirmbtn;
+package com.mrrun.module_view.affirmbutton;
 
 import android.animation.AnimatorSet;
 import android.animation.ValueAnimator;
@@ -103,8 +103,15 @@ public class AffirmButtonView extends View {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         this.mWidth = getMeasuredWidth();
         this.mHeight = getMeasuredHeight();
+        Debug.D("onMeasure");
         Debug.D("mWidth = " + mWidth);
         Debug.D("mHeight = " + mHeight);
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+        Debug.D("onLayout");
     }
 
     @Override
@@ -138,6 +145,7 @@ public class AffirmButtonView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        Debug.D("onDraw");
         super.onDraw(canvas);
         drawRoundRect(canvas);
         drawText(canvas);

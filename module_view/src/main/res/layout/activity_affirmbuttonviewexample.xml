@@ -5,12 +5,12 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <com.mrrun.module_view.affirmbtn.AffirmButtonView
+    <com.mrrun.module_view.affirmbutton.AffirmButtonView
         android:id="@+id/affirmbuttonview"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/colorPrimary">
-    </com.mrrun.module_view.affirmbtn.AffirmButtonView>
+    </com.mrrun.module_view.affirmbutton.AffirmButtonView>
 
     <View
         android:layout_width="1dp"

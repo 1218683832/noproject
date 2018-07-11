@@ -14,6 +14,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
+import com.mrrun.module_view.AnimatorUtil;
 import com.mrrun.module_view.Debug;
 
 /**
@@ -90,11 +91,11 @@ public class FlowersLiveLoadingView extends View {
     }
 
     public void resumeAnimation() {
-        AnimatorUtils.resumeAnimation(animatorSet, this);
+        AnimatorUtil.resumeAnimation(animatorSet, this);
     }
 
     public void pauseAnimation() {
-        AnimatorUtils.pauseAnimation(animatorSet);
+        AnimatorUtil.pauseAnimation(animatorSet);
     }
 
     private void init() {
@@ -149,7 +150,7 @@ public class FlowersLiveLoadingView extends View {
             animatorSet.setDuration(ANIMATION_DRUATION);
             animatorSet.setStartDelay(START_DELAY);
         }
-        AnimatorUtils.startAnimation(animatorSet, this);
+        AnimatorUtil.startAnimation(animatorSet, this);
     }
 
     private void resetCoordinate() {
@@ -210,6 +211,6 @@ public class FlowersLiveLoadingView extends View {
     }
 
     public void stopAnimation() {
-        AnimatorUtils.stopAnimation(animatorSet);
+        AnimatorUtil.stopAnimation(animatorSet);
     }
 }
