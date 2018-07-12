@@ -36,6 +36,19 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiFlowersLiveLoadingView1();
         uiFlowersLiveLoadingView2();
         uiColorTrackView();
+        uiQQStepProgressView();
+    }
+
+    /**
+     * 仿QQ运动步数进度效果
+     */
+    private void uiQQStepProgressView() {
+        findViewById(R.id.btn_qqstepprogressview).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, QQStepProgressViewActivity.class));
+            }
+        });
     }
 
     private void uiColorTrackView() {

@@ -5,73 +5,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.mrrun.module_view.searchview.SearchView
-        android:id="@+id/searchview"
-        android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/searchview_shap"
-        android:drawableLeft="@drawable/icon_search"
-        android:drawablePadding="8dp"
-        android:drawableRight="@drawable/icon_cancl"
-        android:focusableInTouchMode="true"
-        android:gravity="left|center_vertical"
-        android:hint="搜索"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
-        android:textSize="14sp">
-    </com.mrrun.module_view.searchview.SearchView>
-
     <Button
-        android:id="@+id/share"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/searchview"
-        android:text="分享到朋友圈"
-        android:layout_marginTop="8dp"/>
-
-    <!--<com.mrrun.module_view.dialer.DialerKeyboard-->
-        <!--android:id="@+id/dkb"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_below="@+id/share"-->
-        <!--android:background="#fffaaa">-->
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="17dp"-->
-            <!--android:paddingLeft="20dp"-->
-            <!--android:background="@mipmap/call_2"/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="5dp"-->
-            <!--android:paddingLeft="40dp"-->
-            <!--android:background="@color/colorPrimaryDark"/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="20dp"-->
-            <!--android:paddingLeft="40dp"-->
-            <!--android:background="@color/colorPrimaryDark"/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="20dp"-->
-            <!--android:paddingLeft="40dp"-->
-            <!--android:background="@color/colorPrimaryDark"/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="25dp"-->
-            <!--android:paddingLeft="40dp"-->
-            <!--android:background="@color/colorPrimaryDark"/>-->
-        <!--<ImageView-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="30dp"-->
-            <!--android:paddingLeft="40dp"-->
-            <!--android:background="@color/colorPrimaryDark"/>-->
-    <!--</com.mrrun.module_view.dialer.DialerKeyboard>-->
-
-    <Button
-        android:id="@+id/loadXmlData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/share"
-        android:text="加载解析xml"/>
+        android:text="新联系UI"/>
 </RelativeLayout>
