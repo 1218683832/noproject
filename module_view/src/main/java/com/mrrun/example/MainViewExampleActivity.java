@@ -37,6 +37,19 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiFlowersLiveLoadingView2();
         uiColorTrackView();
         uiQQStepProgressView();
+        uiLineProgressView();
+    }
+
+    /**
+     * 直线型进度效果View
+     */
+    private void uiLineProgressView() {
+        findViewById(R.id.btn_lineprogressview).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, LineProgressViewActivity.class));
+            }
+        });
     }
 
     /**

@@ -16,5 +16,6 @@
         <activity android:name="com.mrrun.example.FlowersLiveLoadingView2Activity"></activity>
         <activity android:name="com.mrrun.example.ColorTrackViewActivity"></activity>
         <activity android:name="com.mrrun.example.QQStepProgressViewActivity"></activity>
+        <activity android:name="com.mrrun.example.LineProgressViewActivity"></activity>
     </application>
 </manifest>

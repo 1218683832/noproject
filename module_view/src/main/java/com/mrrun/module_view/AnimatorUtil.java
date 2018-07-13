@@ -15,7 +15,7 @@ public class AnimatorUtil {
     /**
      * 默认延迟进入动画时间
      */
-    public static long FADE_START_TIME = ViewConfiguration.getScrollDefaultDelay() + 125;
+    public static long DELAY_START_TIME = ViewConfiguration.getScrollDefaultDelay() + 125;
 
     /**
      * Start animation.
@@ -83,7 +83,7 @@ public class AnimatorUtil {
                 public void run() {
                     animatorSet.resume();
                 }
-            }, FADE_START_TIME);
+            }, DELAY_START_TIME);
         }
     }
 }

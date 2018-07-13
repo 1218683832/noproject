@@ -95,5 +95,11 @@
             android:layout_height="wrap_content"
             android:text="仿QQ运动步数进度效果" />
 
+        <Button
+            android:id="@+id/btn_lineprogressview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="直线型进度效果View" />
+
     </LinearLayout>
 </ScrollView>

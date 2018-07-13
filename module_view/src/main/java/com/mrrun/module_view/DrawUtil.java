@@ -28,4 +28,18 @@ public class DrawUtil {
         float dy = (fontMetrics.descent - fontMetrics.ascent) / 2 - fontMetrics.descent;
         return dy;
     }
+
+    /**
+     * Measure text.
+     * 测量文字宽度
+     *
+     * @param paint
+     *         the paint
+     * @param text
+     *         the text
+     * @return the float text width
+     */
+    public static float measureText(Paint paint, String text){
+        return paint.measureText(text);
+    }
 }
