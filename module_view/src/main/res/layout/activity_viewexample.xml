@@ -101,5 +101,11 @@
             android:layout_height="wrap_content"
             android:text="直线型进度效果View" />
 
+        <Button
+            android:id="@+id/btn_ratingbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="自定义评分控件" />
+
     </LinearLayout>
 </ScrollView>

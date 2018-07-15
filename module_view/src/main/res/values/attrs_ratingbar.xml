@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="RatingBar">
+        <!-- 显示的星型数量，必须是一个整形值 -->
+        <attr name="numStars" format="reference|integer"/>
+        <!-- 默认的评分，必须是浮点类型 -->
+        <attr name="rating" format="reference|float"/>
+        <!-- 未评分图标 -->
+        <attr name="starNormal" format="reference"/>
+        <!-- 已评分图标 -->
+        <attr name="starFoused" format="reference"/>
+    </declare-styleable>
+</resources>

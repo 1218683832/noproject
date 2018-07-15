@@ -38,6 +38,19 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiColorTrackView();
         uiQQStepProgressView();
         uiLineProgressView();
+        uiRatingBar();
+    }
+
+    /**
+     * 自定义评分控件
+     */
+    private void uiRatingBar() {
+        findViewById(R.id.btn_ratingbar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, RatingBarActivity.class));
+            }
+        });
     }
 
     /**
