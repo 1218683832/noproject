@@ -39,6 +39,19 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiQQStepProgressView();
         uiLineProgressView();
         uiRatingBar();
+        uiAlphabeticIndexView();
+    }
+
+    /**
+     * 字母索引列表
+     */
+    private void uiAlphabeticIndexView() {
+        findViewById(R.id.btn_alphabeticindexview).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, AlphabeticIndexViewActivity.class));
+            }
+        });
     }
 
     /**

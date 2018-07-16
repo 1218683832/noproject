@@ -18,5 +18,6 @@
         <activity android:name="com.mrrun.example.QQStepProgressViewActivity"></activity>
         <activity android:name="com.mrrun.example.LineProgressViewActivity"></activity>
         <activity android:name="com.mrrun.example.RatingBarActivity"></activity>
+        <activity android:name="com.mrrun.example.AlphabeticIndexViewActivity"></activity>
     </application>
 </manifest>
