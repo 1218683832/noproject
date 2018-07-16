@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:myandroid="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical">
 
     <com.mrrun.module_view.widget.AlphabeticIndexView
         android:id="@+id/alphabeticindexview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </com.mrrun.module_view.widget.AlphabeticIndexView>
+        android:layout_height="match_parent"
+        myandroid:index_gravity="center|right"
+        myandroid:index_interval="8dp"
+        myandroid:index_size="16sp"/>
 </LinearLayout>

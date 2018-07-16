@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AlphabeticIndexView">
+        <!-- 索引值文字大小 -->
+        <attr name="index_size" format="dimension"/>
+        <!-- 索引值之间间隔 -->
+        <attr name="index_interval" format="dimension"/>
+        <!-- 索引值位置 -->
+        <attr name="index_gravity">
+            <flag name="left" value="0"/>
+            <flag name="right" value="1"/>
+            <flag name="top" value="2"/>
+            <flag name="bottom" value="3"/>
+            <flag name="center" value="4"/>
+        </attr>
+        <!-- 索引未选中颜色 -->
+        <attr name="index_normal_color" format="reference|color"/>
+        <!-- 索引选中颜色 -->
+        <attr name="index_selected_color" format="reference|color"/>
+    </declare-styleable>
+</resources>
