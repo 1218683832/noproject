@@ -6,7 +6,6 @@ public class MeasureUtil {
 
     /**
      * Common measure width int.
-     * carry paddingleft and paddingright
      *
      * @param defValue
      *         the def value of width
@@ -31,13 +30,11 @@ public class MeasureUtil {
                 break;
         }
         result = mode == View.MeasureSpec.AT_MOST ? Math.min(result, val) : result;
-//        result = result + view.getPaddingLeft() + view.getPaddingRight();
         return result;
     }
 
     /**
      * Common measure height int.
-     * carry paddingtop and paddingbottom
      *
      * @param defValue
      *         the def value of width
@@ -62,7 +59,6 @@ public class MeasureUtil {
                 break;
         }
         result = mode == View.MeasureSpec.AT_MOST ? Math.min(result, val) : result;
-//        result = result + view.getPaddingTop() + view.getPaddingBottom();
         return result;
     }
 }
