@@ -31,7 +31,7 @@ public class MeasureUtil {
                 break;
         }
         result = mode == View.MeasureSpec.AT_MOST ? Math.min(result, val) : result;
-        result = result + view.getPaddingLeft() + view.getPaddingRight();
+//        result = result + view.getPaddingLeft() + view.getPaddingRight();
         return result;
     }
 
@@ -62,7 +62,7 @@ public class MeasureUtil {
                 break;
         }
         result = mode == View.MeasureSpec.AT_MOST ? Math.min(result, val) : result;
-        result = result + view.getPaddingTop() + view.getPaddingBottom();
+//        result = result + view.getPaddingTop() + view.getPaddingBottom();
         return result;
     }
 }
