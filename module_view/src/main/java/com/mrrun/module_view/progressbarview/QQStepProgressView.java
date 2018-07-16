@@ -70,8 +70,8 @@ public class QQStepProgressView extends View {
 //        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 //        int width = resolveSizeAndState(mViewWidth, widthMeasureSpec ,0);
 //        int height = resolveSizeAndState(mViewHeight, heightMeasureSpec, 0);
-        int width = MeasureUtil.commonMeasureWidth(mViewWidth, widthMeasureSpec, this);
-        int height = MeasureUtil.commonMeasureHeight(mViewHeight, heightMeasureSpec, this);
+        int width = MeasureUtil.commonMeasureWidth(mViewWidth, widthMeasureSpec);
+        int height = MeasureUtil.commonMeasureHeight(mViewHeight, heightMeasureSpec);
         mViewWidth = width;
         mViewHeight = height;
         setMeasuredDimension(width, height);

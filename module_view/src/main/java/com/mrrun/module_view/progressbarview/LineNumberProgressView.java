@@ -138,8 +138,8 @@ public class LineNumberProgressView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 //        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        mViewWidth = MeasureUtil.commonMeasureWidth(mViewWidth, widthMeasureSpec, this);
-        mViewHeight = MeasureUtil.commonMeasureHeight(mViewHeight, heightMeasureSpec, this);
+        mViewWidth = MeasureUtil.commonMeasureWidth(mViewWidth, widthMeasureSpec);
+        mViewHeight = MeasureUtil.commonMeasureHeight(mViewHeight, heightMeasureSpec);
         setMeasuredDimension(mViewWidth, mViewHeight);
         // 让进度文本在进度条上方
         mTextRecf.top = mViewHeight / 2 - mPaintWidth / 2 - recfHeight;

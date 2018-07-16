@@ -11,11 +11,9 @@ public class MeasureUtil {
      *         the def value of width
      * @param measureSpec
      *         the measure spec
-     * @param view
-     *         the view
      * @return the int
      */
-    public static int commonMeasureWidth(int defValue, int measureSpec, View view){
+    public static int commonMeasureWidth(int defValue, int measureSpec){
         int mode = View.MeasureSpec.getMode(measureSpec);
         int val = View.MeasureSpec.getSize(measureSpec);
         int result = 0;
@@ -40,11 +38,9 @@ public class MeasureUtil {
      *         the def value of width
      * @param measureSpec
      *         the measure spec
-     * @param view
-     *         the view
      * @return the int
      */
-    public static int commonMeasureHeight(int defValue, int measureSpec, View view){
+    public static int commonMeasureHeight(int defValue, int measureSpec){
         int mode = View.MeasureSpec.getMode(measureSpec);
         int val = View.MeasureSpec.getSize(measureSpec);
         int result = 0;
