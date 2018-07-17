@@ -19,5 +19,6 @@
         <activity android:name="com.mrrun.example.LineProgressViewActivity"></activity>
         <activity android:name="com.mrrun.example.RatingBarActivity"></activity>
         <activity android:name="com.mrrun.example.AlphabeticIndexViewActivity"></activity>
+        <activity android:name="com.mrrun.example.IndexSidebarActivity"></activity>
     </application>
 </manifest>

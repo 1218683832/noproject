@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="IndexSidebar">
+        <!-- 索引值文字大小 -->
+        <attr name="indexSize" format="dimension"/>
+        <!-- 索引值之间间隔 -->
+        <attr name="indexInterval" format="dimension"/>
+        <!-- 索引未选中颜色 -->
+        <attr name="indexNormalColor" format="reference|color"/>
+        <!-- 索引选中颜色 -->
+        <attr name="indexSelectedColor" format="reference|color"/>
+        <!-- 索引选中的背景颜色 -->
+        <attr name="indexSelectedBgColor" format="reference|color"/>
+    </declare-styleable>
+</resources>

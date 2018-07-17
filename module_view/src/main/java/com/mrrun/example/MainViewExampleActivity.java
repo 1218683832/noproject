@@ -40,6 +40,19 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiLineProgressView();
         uiRatingBar();
         uiAlphabeticIndexView();
+        uiIndexSidebar();
+    }
+
+    /**
+     * 索引侧边栏
+     */
+    private void uiIndexSidebar() {
+        findViewById(R.id.btn_indexsidebar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, IndexSidebarActivity.class));
+            }
+        });
     }
 
     /**

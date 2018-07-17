@@ -113,5 +113,11 @@
             android:layout_height="wrap_content"
             android:text="字母索引列表" />
 
+        <Button
+            android:id="@+id/btn_indexsidebar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="索引侧边栏" />
+
     </LinearLayout>
 </ScrollView>
