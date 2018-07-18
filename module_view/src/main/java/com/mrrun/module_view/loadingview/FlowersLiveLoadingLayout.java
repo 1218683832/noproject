@@ -139,11 +139,11 @@ public class FlowersLiveLoadingLayout extends RelativeLayout {
     }
 
     private CicrleView createCicrleView() {
-        CicrleView cicrleView = new CicrleView(mContext);
+        CicrleView circleView = new CicrleView(mContext);
         LayoutParams params = new LayoutParams(dp2x(10), dp2x(10));
         params.addRule(CENTER_IN_PARENT);
-        cicrleView.setLayoutParams(params);
-        return cicrleView;
+        circleView.setLayoutParams(params);
+        return circleView;
     }
 
     private void initData() {

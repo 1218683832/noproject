@@ -1,6 +1,7 @@
 package com.mrrun.module_view;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
@@ -34,5 +35,12 @@ public abstract class BaseView extends View implements IBaseView {
     public final void init(AttributeSet attrs) {
         initData(attrs);
         initPaint();
+    }
+
+    public final Paint createCommonPaint() {
+        Paint paint = new Paint();
+        paint.setAntiAlias(true);
+        paint.setDither(true);
+        return paint;
     }
 }

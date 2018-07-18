@@ -41,6 +41,19 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiRatingBar();
         uiAlphabeticIndexView();
         uiIndexSidebar();
+        uiLoadingView58();
+    }
+
+    /**
+     * 仿58同城LoadingView
+     */
+    private void uiLoadingView58() {
+        findViewById(R.id.btn_loadingview58).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, LoadingView58Activity.class));
+            }
+        });
     }
 
     /**

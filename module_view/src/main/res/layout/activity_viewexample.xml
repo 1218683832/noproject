@@ -119,5 +119,11 @@
             android:layout_height="wrap_content"
             android:text="索引侧边栏" />
 
+        <Button
+            android:id="@+id/btn_loadingview58"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="仿58同城LoadingView" />
+
     </LinearLayout>
 </ScrollView>

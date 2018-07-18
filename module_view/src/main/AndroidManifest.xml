@@ -20,5 +20,6 @@
         <activity android:name="com.mrrun.example.RatingBarActivity"></activity>
         <activity android:name="com.mrrun.example.AlphabeticIndexViewActivity"></activity>
         <activity android:name="com.mrrun.example.IndexSidebarActivity"></activity>
+        <activity android:name="com.mrrun.example.LoadingView58Activity"></activity>
     </application>
 </manifest>

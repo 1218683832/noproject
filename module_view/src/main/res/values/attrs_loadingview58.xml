@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="LoadingView58">
-        <!--&lt;!&ndash; 显示的星型数量，必须是一个整形值 &ndash;&gt;-->
-        <!--<attr name="numStars" format="reference|integer"/>-->
-        <!--&lt;!&ndash; 默认的评分，必须是浮点类型 &ndash;&gt;-->
-        <!--<attr name="rating" format="reference|float"/>-->
-        <!--&lt;!&ndash; 未评分图标 &ndash;&gt;-->
-        <!--<attr name="starNormal" format="reference"/>-->
-        <!--&lt;!&ndash; 已评分图标 &ndash;&gt;-->
-        <!--<attr name="starFoused" format="reference"/>-->
+        <!-- 阴影部分 -->
+        <attr name="loadingview58_shadow_background" format="reference"/>
+        <attr name="loadingview58_shadow_background_width" format="reference|dimension"/>
+        <attr name="loadingview58_shadow_background_height" format="reference|dimension"/>
+        <!-- 正方部分 -->
+        <attr name="loadingview58_square_color" format="reference|color"/>
+        <!-- 圓部分 -->
+        <attr name="loadingview58_circle_color" format="reference|color"/>
+        <!-- 三角部分 -->
+        <attr name="loadingview58_triangle_color" format="reference|color"/>
+        <!-- 加载文字部分 -->
+        <attr name="loadingview58_loadingtext" format="reference|string"/>
+        <attr name="loadingview58_loadingtext_size" format="reference|dimension"/>
+        <attr name="loadingview58_loadingtext_color" format="reference|color"/>
     </declare-styleable>
 </resources>

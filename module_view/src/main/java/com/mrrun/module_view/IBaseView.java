@@ -1,6 +1,5 @@
 package com.mrrun.module_view;
 
-import android.graphics.Paint;
 import android.util.AttributeSet;
 
 /**
@@ -14,5 +13,4 @@ public interface IBaseView {
     public void init(AttributeSet attrs);
     public void initData(AttributeSet attrs);
     public void initPaint();
-    public Paint createPaint();
 }
