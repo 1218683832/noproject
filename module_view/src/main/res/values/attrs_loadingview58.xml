@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LoadingView58">
+        <!--&lt;!&ndash; 显示的星型数量，必须是一个整形值 &ndash;&gt;-->
+        <!--<attr name="numStars" format="reference|integer"/>-->
+        <!--&lt;!&ndash; 默认的评分，必须是浮点类型 &ndash;&gt;-->
+        <!--<attr name="rating" format="reference|float"/>-->
+        <!--&lt;!&ndash; 未评分图标 &ndash;&gt;-->
+        <!--<attr name="starNormal" format="reference"/>-->
+        <!--&lt;!&ndash; 已评分图标 &ndash;&gt;-->
+        <!--<attr name="starFoused" format="reference"/>-->
+    </declare-styleable>
+</resources>
