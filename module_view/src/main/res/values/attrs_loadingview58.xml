@@ -15,5 +15,6 @@
         <attr name="loadingview58_loadingtext" format="reference|string"/>
         <attr name="loadingview58_loadingtext_size" format="reference|dimension"/>
         <attr name="loadingview58_loadingtext_color" format="reference|color"/>
+        <attr name="loadingview58_fallheight" format="reference|dimension"/>
     </declare-styleable>
 </resources>

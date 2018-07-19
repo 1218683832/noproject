@@ -42,13 +42,15 @@ public class LoadingView58 extends LinearLayout implements IBaseView {
 
     private int mCircleColor = Color.parseColor("#ff1a75");
 
-    private int mTriangleColor = Color.YELLOW;
+    private int mTriangleColor = Color.parseColor("#ff8000");
 
     private int mSquareColor = Color.BLUE;
+
+    private int mFallHeight = 80;
     /**
      * 阴影部分的宽高
      */
-    private int mShadowWidth = 35, mShadowHeight = 10;
+    private int mShadowWidth = 32, mShadowHeight = 10;
     private Drawable mShadowDraable = null;
 
     private String mLoadingText = "玩命加载中...";
@@ -78,42 +80,43 @@ public class LoadingView58 extends LinearLayout implements IBaseView {
         initData(attrs);
         initPaint();
         initView();
-        post(new Runnable() {
+        initAnimation();
+        AnimatorUtil.startAnimation(animatorSet,this);
+    }
+
+    private void initAnimation() {
+        animatorSet.setStartDelay(AnimatorUtil.DELAY_START_TIME);
+        animatorSet.play(shadowZoomOutAnimation()).after(shadowZoomInAnimation());
+        animatorSet.start();
+        animatorSet.addListener(new Animator.AnimatorListener() {
             @Override
-            public void run() {
-                animatorSet.setStartDelay(AnimatorUtil.DELAY_START_TIME);
-                animatorSet.play(riseInAnimation()).with(rotateAnimation()).before(fallInAnimation());
+            public void onAnimationStart(Animator animation) {
+                if (!mShadowView.isShown()){
+                    mShadowView.setScaleX(0);
+                    mShadowView.setScaleY(0);
+                    mShadowView.setVisibility(VISIBLE);
+                }
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                Debug.D("onAnimationEnd");
+                animatorSet.setStartDelay(0);
                 animatorSet.start();
-                animatorSet.addListener(new Animator.AnimatorListener() {
-                    @Override
-                    public void onAnimationStart(Animator animation) {
+            }
 
-                    }
+            @Override
+            public void onAnimationCancel(Animator animation) {
+            }
 
-                    @Override
-                    public void onAnimationEnd(Animator animation) {
-                        Debug.D("onAnimationEnd");
-                        mShapeView.changeShape();
-                        animatorSet.setStartDelay(0);
-                        animatorSet.start();
-                    }
-
-                    @Override
-                    public void onAnimationCancel(Animator animation) {
-
-                    }
-
-                    @Override
-                    public void onAnimationRepeat(Animator animation) {
-
-                    }
-                });
+            @Override
+            public void onAnimationRepeat(Animator animation) {
             }
         });
     }
 
     private void initView() {
-        setBackgroundColor(Color.GRAY);
+        setBackground(null);
         setGravity(Gravity.CENTER);
         setOrientation(LinearLayout.VERTICAL);
         LinearLayout.LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -128,7 +131,11 @@ public class LoadingView58 extends LinearLayout implements IBaseView {
 
     private void addShapeViewToParent(ViewGroup parent) {
         mShapeView = new ShapeView(mContext, mShadowWidth, mCircleColor, mSquareColor, mTriangleColor);
+        LinearLayout.LayoutParams params = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        params.bottomMargin = mFallHeight;
+        mShapeView.setLayoutParams(params);
         parent.addView(mShapeView);
+
     }
 
     private void addTextViewToParent(ViewGroup parent) {
@@ -143,13 +150,16 @@ public class LoadingView58 extends LinearLayout implements IBaseView {
         parent.addView(textView);
     }
 
+    private ImageView mShadowView;
+
     private void addImageViewToParent(ViewGroup parent) {
-        ImageView imageView = new ImageView(mContext);
+        mShadowView = new ImageView(mContext);
         if (null != mShadowDraable) {
-            imageView.setBackground(mShadowDraable);
+            mShadowView.setBackground(mShadowDraable);
         }
-        imageView.setLayoutParams(new LayoutParams(mShadowWidth, mShadowHeight));
-        parent.addView(imageView);
+        mShadowView.setLayoutParams(new LayoutParams(mShadowWidth, mShadowHeight));
+        mShadowView.setVisibility(GONE);
+        parent.addView(mShadowView);
     }
 
     @Override
@@ -161,6 +171,7 @@ public class LoadingView58 extends LinearLayout implements IBaseView {
         mTriangleColor = array.getColor(R.styleable.LoadingView58_loadingview58_triangle_color, mTriangleColor);
         mShadowWidth = (int) array.getDimension(R.styleable.LoadingView58_loadingview58_shadow_background_width, dp2px(mShadowWidth));
         mShadowHeight = (int) array.getDimension(R.styleable.LoadingView58_loadingview58_shadow_background_height, dp2px(mShadowHeight));
+        mFallHeight = (int) array.getDimension(R.styleable.LoadingView58_loadingview58_fallheight, dp2px(mFallHeight));
         String text = array.getString(R.styleable.LoadingView58_loadingview58_loadingtext);
         if (null != text) {
             mLoadingText = text;
@@ -168,7 +179,7 @@ public class LoadingView58 extends LinearLayout implements IBaseView {
         mLoadingTextSize = array.getDimensionPixelOffset(R.styleable.LoadingView58_loadingview58_loadingtext_size, sp2px(mLoadingTextSize));
         mLoadingTextColor = array.getColor(R.styleable.LoadingView58_loadingview58_loadingtext_color, mLoadingTextColor);
         array.recycle();
-        Debug.D(String.format("mCircleColor=%d,mSquareColor=%d,mTriangleColor=%d", mCircleColor, mSquareColor, mTriangleColor));
+        Debug.D(String.format("mCircleColor=%d,mSquareColor=%d,mTriangleColor=%d,mFallHeight=%d", mCircleColor, mSquareColor, mTriangleColor,mFallHeight));
     }
 
     private int sp2px(int spValue) {
@@ -204,7 +215,7 @@ public class LoadingView58 extends LinearLayout implements IBaseView {
      * @return
      */
     private ObjectAnimator riseInAnimation() {
-        ObjectAnimator animator = ObjectAnimator.ofFloat(mShapeView, "translationY", 0, -150);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(mShapeView, "translationY", mFallHeight, 0);
 //        animator.setRepeatCount(Animation.INFINITE);
         animator.setDuration(DURATION);
         animator.setInterpolator(new DecelerateInterpolator());
@@ -212,15 +223,33 @@ public class LoadingView58 extends LinearLayout implements IBaseView {
     }
 
     /**
-     * Shape落动画
+     * Shape下落动画
      *
      * @return
      */
     private ObjectAnimator fallInAnimation() {
-        ObjectAnimator animator = ObjectAnimator.ofFloat(mShapeView, "translationY", -150, 0);
+        ObjectAnimator animator = ObjectAnimator.ofFloat(mShapeView, "translationY", 0, mFallHeight);
 //        animator.setRepeatCount(Animation.INFINITE);
         animator.setDuration(DURATION);
-//        animator.setInterpolator(new AccelerateInterpolator());
+        animator.setInterpolator(new AccelerateInterpolator());
+        animator.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                mShapeView.changeShape();
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+            }
+        });
         return animator;
     }
 
@@ -235,6 +264,42 @@ public class LoadingView58 extends LinearLayout implements IBaseView {
         animator.setDuration(DURATION);
         animator.setInterpolator(new AccelerateInterpolator());
         return animator;
+    }
+
+    /**
+     * 阴影缩小动画
+     *
+     * @return
+     */
+    private Animator shadowZoomOutAnimation() {
+        ObjectAnimator animatorX = ObjectAnimator.ofFloat(mShadowView, "scaleX", 1, 0);
+        ObjectAnimator animatorY = ObjectAnimator.ofFloat(mShadowView, "scaleY", 1, 0);
+//        animator.setRepeatCount(Animation.INFINITE);
+        animatorX.setDuration(DURATION);
+        animatorX.setInterpolator(new DecelerateInterpolator());
+        animatorY.setDuration(DURATION);
+        animatorY.setInterpolator(new DecelerateInterpolator());
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playTogether(animatorX,animatorY,riseInAnimation(),rotateAnimation());
+        return animatorSet;
+    }
+
+    /**
+     * 阴影放大动画
+     *
+     * @return
+     */
+    private Animator shadowZoomInAnimation() {
+        ObjectAnimator animatorX = ObjectAnimator.ofFloat(mShadowView, "scaleX", 0, 1);
+        ObjectAnimator animatorY = ObjectAnimator.ofFloat(mShadowView, "scaleY", 0, 1);
+//        animator.setRepeatCount(Animation.INFINITE);
+        animatorX.setDuration(DURATION);
+        animatorX.setInterpolator(new AccelerateInterpolator());
+        animatorY.setDuration(DURATION);
+        animatorY.setInterpolator(new AccelerateInterpolator());
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playTogether(animatorX,animatorY,fallInAnimation());
+        return animatorSet;
     }
 }
 
