@@ -13,7 +13,7 @@ import android.view.View;
  * @version 1.0
  * @date 2018/07/18
  */
-public abstract class BaseView extends View{
+public abstract class BaseView extends View {
 
     protected Context mContext;
 

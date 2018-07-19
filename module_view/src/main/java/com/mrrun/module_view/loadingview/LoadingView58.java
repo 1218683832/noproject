@@ -34,7 +34,7 @@ import com.mrrun.module_view.R;
  * @version 1.0
  * @date 2018/07/18
  */
-public class LoadingView58 extends LinearLayout{
+public class LoadingView58 extends LinearLayout {
 
     private static final long DURATION = 400;
     private Context mContext;
@@ -78,7 +78,7 @@ public class LoadingView58 extends LinearLayout{
         initData(attrs);
         initView();
         initAnimation();
-        AnimatorUtil.startAnimation(animatorSet,this);
+        AnimatorUtil.startAnimation(animatorSet, this);
     }
 
     private void initAnimation() {
@@ -88,7 +88,7 @@ public class LoadingView58 extends LinearLayout{
         animatorSet.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-                if (!mShadowView.isShown()){
+                if (!mShadowView.isShown()) {
                     mShadowView.setScaleX(0);
                     mShadowView.setScaleY(0);
                     mShadowView.setVisibility(VISIBLE);
@@ -175,7 +175,7 @@ public class LoadingView58 extends LinearLayout{
         mLoadingTextSize = array.getDimensionPixelOffset(R.styleable.LoadingView58_loadingview58_loadingtext_size, sp2px(mLoadingTextSize));
         mLoadingTextColor = array.getColor(R.styleable.LoadingView58_loadingview58_loadingtext_color, mLoadingTextColor);
         array.recycle();
-        Debug.D(String.format("mCircleColor=%d,mSquareColor=%d,mTriangleColor=%d,mFallHeight=%d", mCircleColor, mSquareColor, mTriangleColor,mFallHeight));
+        Debug.D(String.format("mCircleColor=%d,mSquareColor=%d,mTriangleColor=%d,mFallHeight=%d", mCircleColor, mSquareColor, mTriangleColor, mFallHeight));
     }
 
     private int sp2px(int spValue) {
@@ -188,13 +188,14 @@ public class LoadingView58 extends LinearLayout{
 
     /**
      * 优化性能
+     *
      * @param visibility
      */
     @Override
     public void setVisibility(int visibility) {
         super.setVisibility(View.INVISIBLE);
         ViewGroup parent = (ViewGroup) this.getParent();
-        if(parent != null){
+        if (parent != null) {
             parent.removeView(this);
             mShapeView.clearAnimation();
             this.removeAllViews();
@@ -272,7 +273,7 @@ public class LoadingView58 extends LinearLayout{
         animatorY.setDuration(DURATION);
         animatorY.setInterpolator(new DecelerateInterpolator());
         AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.playTogether(animatorX,animatorY,riseInAnimation(),rotateAnimation());
+        animatorSet.playTogether(animatorX, animatorY, riseInAnimation(), rotateAnimation());
         return animatorSet;
     }
 
@@ -290,7 +291,7 @@ public class LoadingView58 extends LinearLayout{
         animatorY.setDuration(DURATION);
         animatorY.setInterpolator(new AccelerateInterpolator());
         AnimatorSet animatorSet = new AnimatorSet();
-        animatorSet.playTogether(animatorX,animatorY,fallInAnimation());
+        animatorSet.playTogether(animatorX, animatorY, fallInAnimation());
         return animatorSet;
     }
 }
@@ -362,7 +363,7 @@ class ShapeView extends BaseView {
                 break;
             case ShapeView.TRIANGLE_SHAPE:
                 Path path = new Path();
-                path.moveTo(0,mViewHeight);
+                path.moveTo(0, mViewHeight);
                 path.lineTo(mViewWidth / 2, 0);
                 path.lineTo(mViewWidth, mViewHeight);
                 canvas.drawPath(path, mShapePaint);
