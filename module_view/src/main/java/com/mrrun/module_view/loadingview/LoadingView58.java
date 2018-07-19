@@ -25,7 +25,6 @@ import android.widget.TextView;
 import com.mrrun.module_view.AnimatorUtil;
 import com.mrrun.module_view.BaseView;
 import com.mrrun.module_view.Debug;
-import com.mrrun.module_view.IBaseView;
 import com.mrrun.module_view.R;
 
 /**
@@ -35,7 +34,7 @@ import com.mrrun.module_view.R;
  * @version 1.0
  * @date 2018/07/18
  */
-public class LoadingView58 extends LinearLayout implements IBaseView {
+public class LoadingView58 extends LinearLayout{
 
     private static final long DURATION = 400;
     private Context mContext;
@@ -75,10 +74,8 @@ public class LoadingView58 extends LinearLayout implements IBaseView {
 
     AnimatorSet animatorSet = new AnimatorSet();
 
-    @Override
     public void init(AttributeSet attrs) {
         initData(attrs);
-        initPaint();
         initView();
         initAnimation();
         AnimatorUtil.startAnimation(animatorSet,this);
@@ -162,7 +159,6 @@ public class LoadingView58 extends LinearLayout implements IBaseView {
         parent.addView(mShadowView);
     }
 
-    @Override
     public void initData(AttributeSet attrs) {
         TypedArray array = mContext.obtainStyledAttributes(attrs, R.styleable.LoadingView58);
         mShadowDraable = array.getDrawable(R.styleable.LoadingView58_loadingview58_shadow_background);
@@ -188,10 +184,6 @@ public class LoadingView58 extends LinearLayout implements IBaseView {
 
     private int dp2px(int dpValue) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, mContext.getResources().getDisplayMetrics());
-    }
-
-    @Override
-    public void initPaint() {
     }
 
     /**
@@ -324,6 +316,12 @@ class ShapeView extends BaseView {
         mTriangleColor = triangleColor;
         mCurShape = SQUARE_SHAPE;
         mShapePaint.setColor(mSquareColor);
+    }
+
+    @Override
+    protected void init(AttributeSet attrs) {
+        initData(attrs);
+        initPaint();
     }
 
     @Override

@@ -13,7 +13,7 @@ import android.view.View;
  * @version 1.0
  * @date 2018/07/18
  */
-public abstract class BaseView extends View implements IBaseView {
+public abstract class BaseView extends View{
 
     protected Context mContext;
 
@@ -31,16 +31,16 @@ public abstract class BaseView extends View implements IBaseView {
         init(attrs);
     }
 
-    @Override
-    public final void init(AttributeSet attrs) {
-        initData(attrs);
-        initPaint();
-    }
+    protected abstract void init(AttributeSet attrs);
 
-    public final Paint createCommonPaint() {
+    protected final Paint createCommonPaint() {
         Paint paint = new Paint();
         paint.setAntiAlias(true);
         paint.setDither(true);
         return paint;
     }
+
+    protected abstract void initData(AttributeSet attrs);
+
+    protected abstract void initPaint();
 }
