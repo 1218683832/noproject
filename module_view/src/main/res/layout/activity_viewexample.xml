@@ -125,5 +125,11 @@
             android:layout_height="wrap_content"
             android:text="仿58同城LoadingView" />
 
+        <Button
+            android:id="@+id/btn_dropdownmenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="常用多条件筛选菜单" />
+
     </LinearLayout>
 </ScrollView>

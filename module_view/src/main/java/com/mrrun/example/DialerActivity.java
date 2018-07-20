@@ -14,7 +14,7 @@ import com.mrrun.module_view.dialer.XmlDialerKeyBoardLoader;
  * @version 1.0
  * @date 2016/06/29
  */
-public class DialerExampleActivity extends AppCompatActivity {
+public class DialerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

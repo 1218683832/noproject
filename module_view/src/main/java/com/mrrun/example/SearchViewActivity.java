@@ -11,7 +11,7 @@ import com.mrrun.module_view.R;
  * @version 1.0
  * @date 2016/06/25
  */
-public class SearchViewExampleActivity extends AppCompatActivity {
+public class SearchViewActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

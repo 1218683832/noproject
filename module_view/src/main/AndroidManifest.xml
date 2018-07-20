@@ -3,11 +3,11 @@
 
     <application>
         <activity android:name="com.mrrun.example.MainViewExampleActivity"></activity>
-        <activity android:name="com.mrrun.example.SearchViewExampleActivity"></activity>
-        <activity android:name="com.mrrun.example.DialerExampleActivity"></activity>
+        <activity android:name="com.mrrun.example.SearchViewActivity"></activity>
+        <activity android:name="com.mrrun.example.DialerActivity"></activity>
         <activity android:name="com.mrrun.example.BubbleFloatViewActivitiy"></activity>
         <activity android:name="com.mrrun.example.AffirmButtonViewActivity"></activity>
-        <activity android:name="com.mrrun.example.TagExampleActivity"></activity>
+        <activity android:name="com.mrrun.example.TagActivity"></activity>
         <activity android:name="com.mrrun.example.WXLoadDialogActivity"></activity>
         <activity android:name="com.mrrun.example.NotificationDialogActivity"></activity>
         <activity android:name="com.mrrun.example.PayPsdInputViewActivity"></activity>
@@ -21,5 +21,6 @@
         <activity android:name="com.mrrun.example.AlphabeticIndexViewActivity"></activity>
         <activity android:name="com.mrrun.example.IndexSidebarActivity"></activity>
         <activity android:name="com.mrrun.example.LoadingView58Activity"></activity>
+        <activity android:name="com.mrrun.example.DropDownMenuActivity"></activity>
     </application>
 </manifest>

@@ -10,7 +10,7 @@ import com.mrrun.module_view.R;
 import com.mrrun.module_view.tagview.TagLayout;
 import com.mrrun.module_view.tagview.TagView;
 
-public class TagExampleActivity extends AppCompatActivity{
+public class TagActivity extends AppCompatActivity{
 
     private TagLayout tagLayout;
 
@@ -26,12 +26,12 @@ public class TagExampleActivity extends AppCompatActivity{
         tagLayout.setOnTagClickListener(new TagView.OnTagClickListener() {
             @Override
             public void onTagClick(String text) {
-                Toast.makeText(TagExampleActivity.this, "点击了Tag,内容是" + text, Toast.LENGTH_SHORT).show();
+                Toast.makeText(TagActivity.this, "点击了Tag,内容是" + text, Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onTagLongClick(String text) {
-                Toast.makeText(TagExampleActivity.this, "长按Tag,内容是" + text, Toast.LENGTH_SHORT).show();
+                Toast.makeText(TagActivity.this, "长按Tag,内容是" + text, Toast.LENGTH_SHORT).show();
                 tagLayout.removeAllTags();
             }
         });

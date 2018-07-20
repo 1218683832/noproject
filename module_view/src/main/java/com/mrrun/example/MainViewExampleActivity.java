@@ -42,6 +42,19 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiAlphabeticIndexView();
         uiIndexSidebar();
         uiLoadingView58();
+        uiDropDownMenu();
+    }
+
+    /**
+     * 常用多条件筛选菜单
+     */
+    private void uiDropDownMenu() {
+        findViewById(R.id.btn_dropdownmenu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, DropDownMenuActivity.class));
+            }
+        });
     }
 
     /**
@@ -204,7 +217,7 @@ public class MainViewExampleActivity extends AppCompatActivity {
         findViewById(R.id.btn_taglayout).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainViewExampleActivity.this, TagExampleActivity.class));
+                startActivity(new Intent(MainViewExampleActivity.this, TagActivity.class));
             }
         });
     }
@@ -240,7 +253,7 @@ public class MainViewExampleActivity extends AppCompatActivity {
         findViewById(R.id.btn_dialer).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainViewExampleActivity.this, DialerExampleActivity.class));
+                startActivity(new Intent(MainViewExampleActivity.this, DialerActivity.class));
             }
         });
     }
@@ -252,7 +265,7 @@ public class MainViewExampleActivity extends AppCompatActivity {
         findViewById(R.id.btn_searchview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainViewExampleActivity.this, SearchViewExampleActivity.class));
+                startActivity(new Intent(MainViewExampleActivity.this, SearchViewActivity.class));
             }
         });
     }
