@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.mrrun.module_view.R;
+import com.mrrun.module_view.menuview.ConditionListMenuView;
 
 /**
  * @author lipin
@@ -43,6 +44,19 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiIndexSidebar();
         uiLoadingView58();
         uiDropDownMenu();
+        uiConditionListMenuView();
+    }
+
+    /**
+     * 条件筛选菜单
+     */
+    private void uiConditionListMenuView() {
+        findViewById(R.id.btn_conditionlistmenuview).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, ConditionListMenuViewActivity.class));
+            }
+        });
     }
 
     /**

@@ -131,5 +131,11 @@
             android:layout_height="wrap_content"
             android:text="常用多条件筛选菜单" />
 
+        <Button
+            android:id="@+id/btn_conditionlistmenuview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="条件筛选菜单" />
+
     </LinearLayout>
 </ScrollView>

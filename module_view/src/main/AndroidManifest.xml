@@ -22,5 +22,6 @@
         <activity android:name="com.mrrun.example.IndexSidebarActivity"></activity>
         <activity android:name="com.mrrun.example.LoadingView58Activity"></activity>
         <activity android:name="com.mrrun.example.DropDownMenuActivity"></activity>
+        <activity android:name="com.mrrun.example.ConditionListMenuViewActivity"></activity>
     </application>
 </manifest>
