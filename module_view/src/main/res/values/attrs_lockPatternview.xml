@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LockPatternView">
+        <!-- 整个九宫格背景 -->
+        <attr name="viewBackground" format="reference|color"/>
+        <!-- 九宫格锁画笔颜色 -->
+        <attr name="ringNormalColor" format="reference|color"/>
+        <!-- 九宫格锁手指触摸后画笔颜色 -->
+        <attr name="ringTouchColor" format="reference|color"/>
+        <!-- 九宫格锁半径 -->
+        <attr name="lockRadius" format="reference|dimension"/>
+        <!-- 九宫格锁上下左右间隔 -->
+        <attr name="lockInterval" format="reference|dimension"/>
+    </declare-styleable>
+</resources>

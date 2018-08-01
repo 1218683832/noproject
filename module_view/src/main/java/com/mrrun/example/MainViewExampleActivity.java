@@ -45,6 +45,19 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiLoadingView58();
         uiDropDownMenu();
         uiConditionListMenuView();
+        uiLockPatternView();
+    }
+
+    /**
+     * 九宫格解锁
+     */
+    private void uiLockPatternView() {
+        findViewById(R.id.btn_lockpatternview).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, LockPatternViewActivity.class));
+            }
+        });
     }
 
     /**
