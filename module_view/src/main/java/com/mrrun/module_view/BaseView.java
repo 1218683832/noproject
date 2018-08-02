@@ -29,7 +29,6 @@ public abstract class BaseView extends View {
     public BaseView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         mContext = context;
-        init(attrs);
     }
 
     protected abstract void init(AttributeSet attrs);

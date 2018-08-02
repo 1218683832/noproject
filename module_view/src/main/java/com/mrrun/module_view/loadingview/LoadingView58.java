@@ -316,7 +316,7 @@ class ShapeView extends BaseView {
         mSquareColor = squareColor;
         mTriangleColor = triangleColor;
         mCurShape = SQUARE_SHAPE;
-        mShapePaint.setColor(mSquareColor);
+        init(null);
     }
 
     @Override
@@ -332,6 +332,7 @@ class ShapeView extends BaseView {
     @Override
     public void initPaint() {
         mShapePaint = createCommonPaint();
+        mShapePaint.setColor(mSquareColor);
     }
 
     public void changeShape() {

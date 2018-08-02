@@ -76,7 +76,7 @@ public class LockPatternView extends BaseView {
     /**
      * 锁的半径
      */
-    private int mLockR = 80;
+    private int mLockR = 36;
     /**
      * 锁内圆圈的半径
      */
@@ -84,7 +84,7 @@ public class LockPatternView extends BaseView {
     /**
      * 锁的上下左右间隔
      */
-    private int mLockInterval = 80;
+    private int mLockInterval = 44;
     /**
      * 界面正常情况下的锁
      */
@@ -123,10 +123,17 @@ public class LockPatternView extends BaseView {
 
     public LockPatternView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        mNornalPaint.setColor(mLockNormalColor);
-        mTouchPaint.setColor(mLockTouchColor);
-        mTouchFillPaint.setColor(mLockTouchColor);
-        mBackgroudPaint.setColor(mBackgroundColor);
+        init(attrs);
+    }
+
+    @Override
+    protected void init(AttributeSet attrs) {
+        initData(attrs);
+        initPaint();
+        initListener();
+    }
+
+    private void initListener() {
         setOnTouchListener(new OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -148,12 +155,6 @@ public class LockPatternView extends BaseView {
     }
 
     @Override
-    protected void init(AttributeSet attrs) {
-        initData(attrs);
-        initPaint();
-    }
-
-    @Override
     protected void initData(AttributeSet attrs) {
         TypedArray array = mContext.obtainStyledAttributes(attrs, R.styleable.LockPatternView);
         mBackgroundColor = array.getColor(R.styleable.LockPatternView_viewBackground, mBackgroundColor);
@@ -170,14 +171,18 @@ public class LockPatternView extends BaseView {
     protected void initPaint() {
         mNornalPaint = createCommonPaint();
         mNornalPaint.setStyle(Paint.Style.STROKE);
+        mNornalPaint.setColor(mLockNormalColor);
 
         mTouchPaint = createCommonPaint();
         mTouchPaint.setStyle(Paint.Style.STROKE);
+        mTouchPaint.setColor(mLockTouchColor);
 
         mTouchFillPaint = createCommonPaint();
         mTouchFillPaint.setStyle(Paint.Style.FILL);
+        mTouchFillPaint.setColor(mLockTouchColor);
 
         mBackgroudPaint = createCommonPaint();
+        mBackgroudPaint.setColor(mBackgroundColor);
     }
 
     @Override
