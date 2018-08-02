@@ -44,7 +44,7 @@ public class LockPatternView extends BaseView {
     /**
      * 九宫格锁正常颜色红色
      */
-    private int mLockNormalColor = Color.RED;
+    private int mLockNormalColor = Color.WHITE;
     /**
      * 九宫格锁手指触摸划过后情况下画笔
      */
@@ -76,7 +76,7 @@ public class LockPatternView extends BaseView {
     /**
      * 锁的半径
      */
-    private int mLockR = 66;
+    private int mLockR = 80;
     /**
      * 锁内圆圈的半径
      */
@@ -84,7 +84,7 @@ public class LockPatternView extends BaseView {
     /**
      * 锁的上下左右间隔
      */
-    private int mLockInterval = 66;
+    private int mLockInterval = 80;
     /**
      * 界面正常情况下的锁
      */
