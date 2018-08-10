@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.mrrun.module_view.widget.LockPatternView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:myandroid="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/lockpatternview"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    myandroid:viewBackground="@color/color_000000">
-</com.mrrun.module_view.widget.LockPatternView>
+    android:background="@color/color_000000"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:textColor="@color/color_ff8000"
+        android:text="@string/set_gesture_password"/>
+    <com.mrrun.module_view.widget.LockPatternView
+        android:id="@+id/lockpatternview"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        myandroid:viewBackground="@color/color_000000"/>
+</LinearLayout>
+

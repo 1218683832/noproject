@@ -1,3 +1,11 @@
 <resources>
     <string name="module_view">module_view</string>
+    <string name="set_gesture_password">为保护您的个人隐私，请设置手势密码</string>
+    <string name="set_gesture_password_again">再次绘制，确保两次绘制的手势一致</string>
+    <string name="set_gesture_password_fail">与上次绘制不一致，请重新设置</string>
+    <string name="set_gesture_password_secceed">手势密码设置成功</string>
+    <string name="draw_unlock">请绘制解锁密码</string>
+    <string name="unlock_gesture_password_fail">解锁手势密码错了</string>
+    <string name="unlock_gesture_password_secceed">解锁手势密码正确</string>
+    <string name="unlock_gesture_password_fail2">解锁手势密码错了，你还可以输入几次</string>
 </resources>
