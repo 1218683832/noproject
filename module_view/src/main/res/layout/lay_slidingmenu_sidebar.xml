@@ -296,7 +296,7 @@
             android:id="@+id/settinglay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="24dp"
             android:layout_marginLeft="24dp"
             android:gravity="center"
             android:orientation="horizontal"
@@ -304,14 +304,14 @@
             app:layout_constraintLeft_toLeftOf="parent">
 
             <ImageView
-                android:layout_width="26dp"
-                android:layout_height="26dp"
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
                 android:src="@drawable/icon_setting" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
+                android:layout_marginLeft="4dp"
                 android:text="设置"
                 android:textColor="@color/color_cccccc"
                 android:textSize="12sp" />
@@ -321,23 +321,23 @@
             android:id="@+id/discoverlay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginRight="24dp"
+            android:layout_marginBottom="24dp"
+            android:layout_marginRight="40dp"
             android:gravity="center"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintRight_toRightOf="parent">
 
             <ImageView
-                android:layout_width="26dp"
-                android:layout_height="26dp"
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
                 android:src="@drawable/icon_discover" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="3dp"
                 android:text="发现"
                 android:textColor="@color/color_cccccc"
                 android:textSize="12sp" />
