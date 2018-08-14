@@ -17,6 +17,7 @@
     <color name="color_00ffff">#00ffff</color>
     <color name="color_ffa1a1a1">#ffa1a1a1</color>
     <color name="color_ff0d6cf9">#ff0d6cf9</color>
+    <color name="color_cccccc">#cccccc</color>
 
     <!-- base color -->
     <color name="color_000000">#000000</color>

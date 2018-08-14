@@ -143,5 +143,11 @@
             android:layout_height="wrap_content"
             android:text="九宫格解锁" />
 
+        <Button
+            android:id="@+id/btn_slidingmenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="仿掌上英雄联盟侧滑菜单栏" />
+
     </LinearLayout>
 </ScrollView>

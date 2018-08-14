@@ -24,5 +24,6 @@
         <activity android:name="com.mrrun.example.DropDownMenuActivity"></activity>
         <activity android:name="com.mrrun.example.ConditionListMenuViewActivity"></activity>
         <activity android:name="com.mrrun.example.LockPatternViewActivity"></activity>
+        <activity android:name="com.mrrun.example.SlidingMenu4LoLActivity"></activity>
     </application>
 </manifest>

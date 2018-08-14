@@ -46,6 +46,19 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiDropDownMenu();
         uiConditionListMenuView();
         uiLockPatternView();
+        uiLoLSlidingMenu();
+    }
+
+    /**
+     * 仿掌上英雄联盟侧滑菜单栏
+     */
+    private void uiLoLSlidingMenu() {
+        findViewById(R.id.btn_slidingmenu).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, SlidingMenu4LoLActivity.class));
+            }
+        });
     }
 
     /**

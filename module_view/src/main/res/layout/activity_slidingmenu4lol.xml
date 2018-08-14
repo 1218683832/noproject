@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <com.mrrun.module_view.slidingmenu.pdalol.SlidingMenu
+        android:id="@+id/slidingmenu4lol"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <include layout="@layout/lay_slidingmenu_sidebar"/>
+        <include layout="@layout/lay_slidingmenu_contentview" android:visibility="gone"/>
+    </com.mrrun.module_view.slidingmenu.pdalol.SlidingMenu>
+</LinearLayout>
