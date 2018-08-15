@@ -243,7 +243,7 @@ public class SlidingMenu extends FrameLayout {
     }
 
     @Override
-    protected void onFinishInflate() {
+    protected void onFinishInflate() {// 布局xml解析完毕
         super.onFinishInflate();
         // 先判断ViewGroup中子View个数
         int count = this.getChildCount();
