@@ -18,7 +18,7 @@ import com.mrrun.module_view.Debug;
 
 /**
  * 仿酷狗音乐的侧滑菜单栏
- *
+ * <p>
  * 1、只允许向ViewGroup添加最多2个子View；
  * 2、展开/关闭内容View动画；
  * 3、拦截点击/滑动事件，响应展开/关闭内容View动画；
@@ -51,20 +51,21 @@ public class SlidingMenu extends FrameLayout {
     /**
      * 最多子View个数
      **/
-    private final int MAX_CHILDVIEW = 2;
+    private static final int MAX_CHILDVIEW = 2;
     /**
      * 可进行侧滑的比例检测值(View宽度的比例)
      **/
-    private final float SIDESLIP_RATIO_MIN = 0.1f;
-    private final float SIDESLIP_RATIO_MAX = 0.83f;
+    private static final float SIDESLIP_RATIO_MIN = 0.1f;
+    private static final float SIDESLIP_RATIO_MAX = 0.83f;
     /**
      * 可进行侧滑的范围值
      **/
     private float mSideRangWidthMin, mSideRangWidthMax;
+    private float mSlowWidth;
     /**
      * 遮盖的透明值范围值
      **/
-    private float MASK_ALPHA_MIN = 0.0f, MASK_ALPHA_MAX = 0.5f;
+    private static float MASK_ALPHA_MIN = 0.0f, MASK_ALPHA_MAX = 0.5f;
     /**
      * 侧滑菜单栏的打开关闭状态
      **/
@@ -73,7 +74,11 @@ public class SlidingMenu extends FrameLayout {
      * ViewGroup是否拦截事件
      **/
     private boolean mHasIntercept = false;
-    private long ANIM_DURATION = 250;
+    private static long ANIM_DURATION = 250;
+    /**
+     * 侧边栏放慢的速率
+     */
+    private static final float SLOW = 0.75f;
 
     public SlidingMenu(@NonNull Context context) {
         this(context, null);
@@ -109,9 +114,10 @@ public class SlidingMenu extends FrameLayout {
         this.mViewHeight = h;
         this.mSideRangWidthMin = mViewWidth * SIDESLIP_RATIO_MIN;
         this.mSideRangWidthMax = mViewWidth * SIDESLIP_RATIO_MAX;
+        this.mSlowWidth = mSideRangWidthMax * SLOW;
         Debug.D(String.format("mViewWidth, mViewHeight=(%d, %d)", mViewWidth, mViewHeight));
         Debug.D(String.format("mSideRangWidthMin, mSideRangWidthMax=(%f, %f)", mSideRangWidthMin, mSideRangWidthMax));
-        mSidebar.setTranslationX(-mSideRangWidthMax);
+        mSidebar.setTranslationX(-mSlowWidth);
     }
 
     @Override
@@ -170,6 +176,9 @@ public class SlidingMenu extends FrameLayout {
                     }
                 } else {
                     translationX = event.getX();
+                    if (translationX >= mSideRangWidthMax){
+                        translationX = mSideRangWidthMax;
+                    }
                     alpha = translationX * MASK_ALPHA_MAX / mSideRangWidthMax;
                     if (alpha <= MASK_ALPHA_MIN) {// 防止透明度抖动
                         alpha = MASK_ALPHA_MIN;
@@ -178,7 +187,7 @@ public class SlidingMenu extends FrameLayout {
                 Debug.D(String.format("translationX=" + translationX));
                 Debug.D(String.format("alpha=" + alpha));
                 mContentView.setTranslationX(translationX);
-                mSidebar.setTranslationX(translationX - mSideRangWidthMax);
+                mSidebar.setTranslationX(translationX * SLOW - mSlowWidth);
                 mMaskView.setAlpha(alpha);
                 mMaskView.setTranslationX(translationX);
                 break;
@@ -213,7 +222,7 @@ public class SlidingMenu extends FrameLayout {
                 Debug.D(String.format("alpha=" + alpha));
                 mMaskView.setAlpha(alpha);
                 mMaskView.setTranslationX(value);
-                mSidebar.setTranslationX(value - mSideRangWidthMax);
+                mSidebar.setTranslationX(value * SLOW - mSlowWidth);
             }
         });
     }
@@ -237,7 +246,7 @@ public class SlidingMenu extends FrameLayout {
                 mMaskView.setAlpha(alpha);
                 mMaskView.setTranslationX((Float) animation.getAnimatedValue());
                 mMaskView.setTranslationX(value);
-                mSidebar.setTranslationX(value - mSideRangWidthMax);
+                mSidebar.setTranslationX(value * SLOW - mSlowWidth);
             }
         });
     }

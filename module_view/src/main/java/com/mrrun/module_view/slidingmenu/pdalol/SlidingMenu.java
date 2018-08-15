@@ -14,7 +14,7 @@ import com.mrrun.module_view.Debug;
 
 /**
  * 仿掌上英雄联盟侧滑菜单栏
- *
+ * <p>
  * 1、只允许向ViewGroup添加最多2个子View；
  * 2、展开/关闭内容View动画；
  * 3、拦截点击/滑动事件，响应展开/关闭内容View动画；
@@ -23,27 +23,43 @@ import com.mrrun.module_view.Debug;
  * @version 1.0
  * @date 2018/08/13
  */
-public class SlidingMenu extends FrameLayout{
+public class SlidingMenu extends FrameLayout {
 
     private Context mContext;
-    /**ViewGroup的宽高**/
+    /**
+     * ViewGroup的宽高
+     **/
     private int mViewWidth, mViewHeight;
-    /**内容窗口**/
+    /**
+     * 内容窗口
+     **/
     private View mContentView;
-    /**侧边栏**/
+    /**
+     * 侧边栏
+     **/
     private View mSidebar;
-    /**最多子View个数**/
-    private final int MAX_CHILDVIEW = 2;
-    /**可进行侧滑的比例检测值(View宽度的比例)**/
-    private final float SIDESLIP_RATIO_MIN = 0.1f;
-    private final float SIDESLIP_RATIO_MAX = 0.8f;
-    /**可进行侧滑的范围值**/
+    /**
+     * 最多子View个数
+     **/
+    private static final int MAX_CHILDVIEW = 2;
+    /**
+     * 可进行侧滑的比例检测值(View宽度的比例)
+     **/
+    private static final float SIDESLIP_RATIO_MIN = 0.1f;
+    private static final float SIDESLIP_RATIO_MAX = 0.8f;
+    /**
+     * 可进行侧滑的范围值
+     **/
     private float mSideRangWidthMin, mSideRangWidthMax;
-    /**侧滑菜单栏的打开关闭状态**/
+    /**
+     * 侧滑菜单栏的打开关闭状态
+     **/
     private boolean mHasContentClosed = false;
-    /**ViewGroup是否拦截事件**/
+    /**
+     * ViewGroup是否拦截事件
+     **/
     private boolean mHasIntercept = false;
-    private long ANIM_DURATION = 250;
+    private static long ANIM_DURATION = 250;
 
     public SlidingMenu(@NonNull Context context) {
         this(context, null);
@@ -85,17 +101,17 @@ public class SlidingMenu extends FrameLayout{
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         mHasIntercept = false;
-        switch (ev.getAction()){
+        switch (ev.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 float downX = ev.getX();
                 float downY = ev.getY();
                 Debug.D(String.format("onInterceptTouchEvent--->手指按下时的坐标(%f, %f)", downX, downY));
                 // 内容未关闭且手指在侧边栏左边一定范围内按下时ViewGroup拦截事件
-                if (!mHasContentClosed && downX <= mSideRangWidthMin){
+                if (!mHasContentClosed && downX <= mSideRangWidthMin) {
                     mHasIntercept = true;
                 }
                 // 内容已关闭且手指在侧边栏右边一定范围内按下时ViewGroup拦截事件
-                else if (mHasContentClosed && downX >= mSideRangWidthMax){
+                else if (mHasContentClosed && downX >= mSideRangWidthMax) {
                     mHasIntercept = true;
                 }
                 break;
@@ -104,25 +120,29 @@ public class SlidingMenu extends FrameLayout{
         return mHasIntercept;
     }
 
-    /**手指初次按下时的坐标位置**/
+    /**
+     * 手指初次按下时的坐标位置
+     **/
     float downX, downY;
-    /**内容View平移的距离**/
+    /**
+     * 内容View平移的距离
+     **/
     float translationX;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         boolean result = false;
-        if (mHasIntercept){
+        if (mHasIntercept) {
             result = true;
         }
-        switch (event.getAction()){
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 downX = event.getX();
                 downY = event.getY();
                 Debug.D(String.format("onTouchEvent--->手指按下时的坐标(%f, %f)", downX, downY));
                 break;
             case MotionEvent.ACTION_MOVE:
-                if (!mHasContentClosed){
+                if (!mHasContentClosed) {
                     translationX = event.getX() - downX;
                 } else {
                     translationX = event.getX();
@@ -145,7 +165,7 @@ public class SlidingMenu extends FrameLayout{
     /**
      * 关闭内容动画
      */
-    private void closeContent(){
+    private void closeContent() {
         mHasContentClosed = true;
         ObjectAnimator animator = ObjectAnimator.ofFloat(mContentView, "translationX", translationX, mSideRangWidthMax);
         animator.setDuration(ANIM_DURATION);
@@ -156,7 +176,7 @@ public class SlidingMenu extends FrameLayout{
     /**
      * 展开内容动画
      */
-    private void expandContent(){
+    private void expandContent() {
         mHasContentClosed = false;
         ObjectAnimator animator = ObjectAnimator.ofFloat(mContentView, "translationX", translationX, 0);
         animator.setDuration(ANIM_DURATION);
@@ -169,7 +189,7 @@ public class SlidingMenu extends FrameLayout{
         super.onFinishInflate();
         // 先判断ViewGroup中子View个数
         int count = this.getChildCount();
-        if (count > MAX_CHILDVIEW){
+        if (count > MAX_CHILDVIEW) {
             throw new IllegalStateException(String.format("子View不能大于%d个", MAX_CHILDVIEW));
         }
         if (count < MAX_CHILDVIEW) {
