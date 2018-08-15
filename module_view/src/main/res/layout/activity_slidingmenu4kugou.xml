@@ -5,11 +5,11 @@
     android:orientation="vertical"
     android:gravity="center">
 
-    <com.mrrun.module_view.slidingmenu.pdalol.SlidingMenu
+    <com.mrrun.module_view.slidingmenu.kugou.SlidingMenu
         android:id="@+id/slidingmenu4lol"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-        <include layout="@layout/lay_4lol_slidingmenu_sidebar"/>
-        <include layout="@layout/lay_4lol_slidingmenu_contentview"/>
-    </com.mrrun.module_view.slidingmenu.pdalol.SlidingMenu>
+        <include layout="@layout/lay_4kugou_slidingmenu_sidebar"/>
+        <include layout="@layout/lay_4kugou_slidingmenu_contentview"/>
+    </com.mrrun.module_view.slidingmenu.kugou.SlidingMenu>
 </LinearLayout>

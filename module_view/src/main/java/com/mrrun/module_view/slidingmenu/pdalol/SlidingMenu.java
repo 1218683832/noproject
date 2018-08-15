@@ -46,11 +46,11 @@ public class SlidingMenu extends FrameLayout{
     private long ANIM_DURATION = 250;
 
     public SlidingMenu(@NonNull Context context) {
-        super(context, null);
+        this(context, null);
     }
 
     public SlidingMenu(@NonNull Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs, 0);
+        this(context, attrs, 0);
     }
 
     public SlidingMenu(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
