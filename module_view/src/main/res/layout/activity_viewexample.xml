@@ -154,5 +154,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="仿酷狗侧滑菜单栏" />
+
+        <Button
+            android:id="@+id/btn_slidingmenutantan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="仿探探侧滑菜单栏" />
     </LinearLayout>
 </ScrollView>

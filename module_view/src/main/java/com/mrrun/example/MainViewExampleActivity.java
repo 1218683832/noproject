@@ -48,6 +48,19 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiLockPatternView();
         uiLoLSlidingMenu();
         uiKugouSlidingMenu();
+        uiTantanSlidingMenu();
+    }
+
+    /**
+     * 仿探探侧滑菜单栏
+     */
+    private void uiTantanSlidingMenu() {
+        findViewById(R.id.btn_slidingmenutantan).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, SlidingMenu4TantanActivity.class));
+            }
+        });
     }
 
     /**

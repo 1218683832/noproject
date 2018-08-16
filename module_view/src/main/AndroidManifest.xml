@@ -26,5 +26,6 @@
         <activity android:name="com.mrrun.example.LockPatternViewActivity"></activity>
         <activity android:name="com.mrrun.example.SlidingMenu4LoLActivity"></activity>
         <activity android:name="com.mrrun.example.SlidingMenu4KugouActivity"></activity>
+        <activity android:name="com.mrrun.example.SlidingMenu4TantanActivity"></activity>
     </application>
 </manifest>
