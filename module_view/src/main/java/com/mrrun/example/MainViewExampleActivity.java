@@ -49,6 +49,19 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiLoLSlidingMenu();
         uiKugouSlidingMenu();
         uiTantanSlidingMenu();
+        uiVerticalDragListView();
+    }
+
+    /**
+     * 汽车之家折叠效果
+     */
+    private void uiVerticalDragListView() {
+        findViewById(R.id.btn_verticaldraglistview).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, VerticalDragListViewActivity.class));
+            }
+        });
     }
 
     /**
