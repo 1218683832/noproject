@@ -24,7 +24,7 @@ public class VerticalDragListView extends FrameLayout {
     private Context mContext;
     private View mMenuView;
     private View mDragListView;
-    private int mMenuHeight;
+    private int mMenuBottom, mMenuTop;
     private boolean mMenuIsOpen = false;
     private boolean mHasIntercepted = false;
     private ViewDragHelper viewDragHelper;
@@ -70,10 +70,10 @@ public class VerticalDragListView extends FrameLayout {
             @Override
             public int clampViewPositionVertical(@NonNull View child, int top, int dy) {
                 Debug.D(String.format("ViewDragHelper-clampViewPositionVertical--->当前childView=%s, top=%d, dy=%d", child.toString(), top, dy));
-                if (top <= 0) {
-                    top = 0;
-                } else if (top >= mMenuHeight) {
-                    top = mMenuHeight;
+                if (top <= mMenuTop) {
+                    top = mMenuTop;
+                } else if (top >= mMenuBottom) {
+                    top = mMenuBottom;
                 }
                 return top;
             }
@@ -82,8 +82,8 @@ public class VerticalDragListView extends FrameLayout {
             public void onViewReleased(@NonNull View releasedChild, float xvel, float yvel) {
                 Debug.D(String.format("ViewDragHelper-onViewReleased--->当前childView=%s, xvel=%f, yvel=%f", releasedChild.toString(), xvel, yvel));
                 // 手指松开的时候两者选择之一，要么打开要么关闭
-                if (releasedChild.getTop() >= mMenuHeight / 2){// 如果滑动超过一半则收手后自动定位到最底部
-                    viewDragHelper.smoothSlideViewTo(releasedChild, releasedChild.getLeft(), mMenuHeight);
+                if (releasedChild.getTop() >= mMenuBottom / 2){// 如果滑动超过一半则收手后自动定位到最底部
+                    viewDragHelper.smoothSlideViewTo(releasedChild, releasedChild.getLeft(), mMenuBottom);
                     mMenuIsOpen = true;
                 } else {// 如果滑动未超过一半则收手后自动定位到最顶部
                     viewDragHelper.smoothSlideViewTo(releasedChild, releasedChild.getLeft(), 0);
@@ -109,7 +109,15 @@ public class VerticalDragListView extends FrameLayout {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        mMenuHeight = mMenuView.getMeasuredHeight();
+    }
+
+    @Override
+    protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
+        super.onLayout(changed, left, top, right, bottom);
+        mMenuTop = mMenuView.getTop();
+        mMenuBottom = mMenuView.getBottom();
+        Debug.D("mMenuTop = " + mMenuTop);
+        Debug.D("mMenuBottom = " + mMenuBottom);
     }
 
     private float mDownY, mMoveY;
@@ -119,7 +127,16 @@ public class VerticalDragListView extends FrameLayout {
         // 需要处理滑动冲突
         mHasIntercepted = false;
         if (mMenuIsOpen){
-            mHasIntercepted = true;
+            switch (ev.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    mDownY = ev.getY();
+                    if (mDownY <= mMenuBottom && mDownY >= mMenuTop){
+                        mHasIntercepted = false;
+                    } else {
+                        mHasIntercepted = true;
+                    }
+                    break;
+            }
         } else {
             switch (ev.getAction()) {
                 case MotionEvent.ACTION_DOWN:

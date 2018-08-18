@@ -3,8 +3,12 @@ package com.mrrun.example;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.mrrun.module_view.R;
 
@@ -25,7 +29,20 @@ public class VerticalDragListViewActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        Button content = findViewById(R.id.content);
+        content.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(VerticalDragListViewActivity.this, "你点击了折叠内容", Toast.LENGTH_SHORT).show();
+            }
+        });
         listView = findViewById(R.id.list);
         listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(VerticalDragListViewActivity.this, "你列表内容+" + position, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
