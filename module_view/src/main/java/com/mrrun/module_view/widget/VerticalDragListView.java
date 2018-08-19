@@ -10,6 +10,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.FrameLayout;
+
 import com.mrrun.module_view.Debug;
 
 /**
@@ -82,7 +83,7 @@ public class VerticalDragListView extends FrameLayout {
             public void onViewReleased(@NonNull View releasedChild, float xvel, float yvel) {
                 Debug.D(String.format("ViewDragHelper-onViewReleased--->当前childView=%s, xvel=%f, yvel=%f", releasedChild.toString(), xvel, yvel));
                 // 手指松开的时候两者选择之一，要么打开要么关闭
-                if (releasedChild.getTop() >= mMenuBottom / 2){// 如果滑动超过一半则收手后自动定位到最底部
+                if (releasedChild.getTop() >= mMenuBottom / 2) {// 如果滑动超过一半则收手后自动定位到最底部
                     viewDragHelper.smoothSlideViewTo(releasedChild, releasedChild.getLeft(), mMenuBottom);
                     mMenuIsOpen = true;
                 } else {// 如果滑动未超过一半则收手后自动定位到最顶部
@@ -98,7 +99,7 @@ public class VerticalDragListView extends FrameLayout {
     @Override
     public void computeScroll() {
         super.computeScroll();
-        if(viewDragHelper.continueSettling(true)){
+        if (viewDragHelper.continueSettling(true)) {
             ViewCompat.postInvalidateOnAnimation(VerticalDragListView.this);
         }
     }
@@ -126,11 +127,11 @@ public class VerticalDragListView extends FrameLayout {
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         // 需要处理滑动冲突
         mHasIntercepted = false;
-        if (mMenuIsOpen){
+        if (mMenuIsOpen) {
             switch (ev.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     mDownY = ev.getY();
-                    if (mDownY <= mMenuBottom && mDownY >= mMenuTop){
+                    if (mDownY <= mMenuBottom && mDownY >= mMenuTop) {// 不拦截Menu里的事件
                         mHasIntercepted = false;
                     } else {
                         mHasIntercepted = true;
@@ -159,6 +160,7 @@ public class VerticalDragListView extends FrameLayout {
 
     /**
      * 判断View是否滚动到了最顶部,还能不能向上滚
+     *
      * @return
      */
     public boolean canChildScrollUp() {
