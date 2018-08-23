@@ -39,7 +39,7 @@ public class FileDownloadExample {
     }
 
     private void downloadFile(Response response) {
-      System.out.print("下载文件");
+        System.out.print("下载文件");
         InputStream is = null;
         is = response.body().byteStream();
         // TODO
