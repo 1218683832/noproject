@@ -50,6 +50,19 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiKugouSlidingMenu();
         uiTantanSlidingMenu();
         uiVerticalDragListView();
+        uiImmersiveStatusBar();
+    }
+
+    /**
+     * 沉浸式状态栏
+     */
+    private void uiImmersiveStatusBar() {
+        findViewById(R.id.btn_immersivestatusbar).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, ImmersiveStatusBarActivity.class));
+            }
+        });
     }
 
     /**

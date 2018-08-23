@@ -31,4 +31,7 @@
         <item name="android:backgroundDimEnabled">true</item>
         <item name="android:backgroundDimAmount">0.4</item>
     </style>
+
+    <style name="no_actionbar_sytle" parent="Theme.AppCompat.NoActionBar">
+    </style>
 </resources>
