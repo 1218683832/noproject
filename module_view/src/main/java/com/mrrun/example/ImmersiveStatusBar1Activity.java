@@ -1,10 +1,15 @@
 package com.mrrun.example;
 
+import android.app.Activity;
+import android.app.Dialog;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.mrrun.module_view.Debug;
 import com.mrrun.module_view.R;
@@ -46,7 +51,7 @@ public class ImmersiveStatusBar1Activity extends AppCompatActivity {
                 toolbar.setAlpha(a);
             }
         });
-
+        setWindowStatusBarColor(this, R.color.color_00ff99);
         toolbar.post(new Runnable() {
             @Override
             public void run() {
@@ -61,5 +66,46 @@ public class ImmersiveStatusBar1Activity extends AppCompatActivity {
                 Debug.D("viewHeight = " + viewHeight);
             }
         });
+    }
+
+    /**
+     * 设置状态栏颜色
+     *
+     * @param activity
+     * @param colorResId
+     */
+    public static void setWindowStatusBarColor(Activity activity, int colorResId) {
+        // 5.x环境下
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                Window window = activity.getWindow();
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(activity.getResources().getColor(colorResId));
+                //底部导航栏
+                //window.setNavigationBarColor(activity.getResources().getColor(colorResId));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 设置状态栏颜色
+     *
+     * @param dialog
+     * @param colorResId
+     */
+    public static void setWindowStatusBarColor(Dialog dialog, int colorResId) {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                Window window = dialog.getWindow();
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(dialog.getContext().getResources().getColor(colorResId));
+                //底部导航栏
+                //window.setNavigationBarColor(activity.getResources().getColor(colorResId));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
