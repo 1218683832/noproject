@@ -7,7 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
-import com.mrrun.example.MainFloatWindowExampleActivity;
+import com.mrrun.example.MainDesignExampleActivity;
 import com.mrrun.example.MainShareExampleActivity;
 import com.mrrun.example.MainViewExampleActivity;
 import com.mrrun.nbproject.R;
@@ -35,6 +35,13 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(new Intent(HomeActivity.this, MainViewExampleActivity.class));
             }
         });
+        // Design模块
+        findViewById(R.id.btn_module_design).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, MainDesignExampleActivity.class));
+            }
+        });
         // 工具模块
         findViewById(R.id.btn_module_utils).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +60,7 @@ public class HomeActivity extends AppCompatActivity {
         findViewById(R.id.btn_module_floatview).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(HomeActivity.this, MainFloatWindowExampleActivity.class));
+                startActivity(new Intent(HomeActivity.this, MainDesignExampleActivity.class));
             }
         });
     }

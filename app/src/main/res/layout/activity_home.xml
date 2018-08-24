@@ -19,6 +19,11 @@
             android:layout_height="wrap_content"
             android:text="module_view"/>
         <Button
+            android:id="@+id/btn_module_design"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="module_design"/>
+        <Button
             android:id="@+id/btn_module_utils"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

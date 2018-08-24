@@ -1,2 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.mrrun.module_design" />
+    package="com.mrrun.module_design" >
+    <application>
+        <activity android:name="com.mrrun.example.MainDesignExampleActivity"></activity>
+        <activity android:name="com.mrrun.example.DrawerLayoutActivity"></activity>
+    </application>
+</manifest>

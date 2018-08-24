@@ -12,7 +12,7 @@ import com.mrrun.module_floatview.permission.CallFloatViewWindowManager;
 /**
  * @author lipin
  * @version 1.0
- * @date 2016/06/25
+ * @date 2018/06/25
  */
 public class MainFloatWindowExampleActivity extends Activity {
 
