@@ -8,6 +8,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -26,6 +27,7 @@ public class ImmersiveStatusBar1Activity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setWindowStatusBarColor(this, R.color.color_00ff99);
         setContentView(R.layout.activity_immersivestatusbar1example);
         initView();
     }
@@ -51,7 +53,7 @@ public class ImmersiveStatusBar1Activity extends AppCompatActivity {
                 toolbar.setAlpha(a);
             }
         });
-        setWindowStatusBarColor(this, R.color.color_00ff99);
+
         toolbar.post(new Runnable() {
             @Override
             public void run() {
@@ -83,6 +85,17 @@ public class ImmersiveStatusBar1Activity extends AppCompatActivity {
                 window.setStatusBarColor(activity.getResources().getColor(colorResId));
                 //底部导航栏
                 //window.setNavigationBarColor(activity.getResources().getColor(colorResId));
+            } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                //先将状态栏设置为透明
+                Window window = activity.getWindow();
+                window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
+                        WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+                View decorView = window.getDecorView();
+                ViewGroup contentView = decorView.findViewById(android.R.id.content);
+                View view = contentView.getChildAt(0);
+                view.setBackgroundColor(colorResId);
+                view.setFitsSystemWindows(true);
             }
         } catch (Exception e) {
             e.printStackTrace();
