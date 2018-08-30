@@ -25,6 +25,19 @@ public class MainDesignExampleActivity extends AppCompatActivity {
     private void intView() {
         uiDrawerLayout();
         uiCDL_ABL();
+        uiCDL_FAB();
+    }
+
+    /**
+     * CoordinatorLayout+FloatingActionButton
+     */
+    private void uiCDL_FAB() {
+        findViewById(R.id.btn_cbl_fab).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainDesignExampleActivity.this, CDLFABActivity.class));
+            }
+        });
     }
 
     /**

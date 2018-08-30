@@ -28,5 +28,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="CoordinatorLayout+AppBarLayout" />
+
+        <Button
+            android:id="@+id/btn_cbl_fab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CoordinatorLayout+FloatingActionButton" />
     </LinearLayout>
 </ScrollView>

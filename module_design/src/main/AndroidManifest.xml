@@ -4,5 +4,6 @@
         <activity android:name="com.mrrun.example.MainDesignExampleActivity"></activity>
         <activity android:name="com.mrrun.example.DrawerLayoutActivity"></activity>
         <activity android:name="com.mrrun.example.CDLABLActivity"></activity>
+        <activity android:name="com.mrrun.example.CDLFABActivity"></activity>
     </application>
 </manifest>
