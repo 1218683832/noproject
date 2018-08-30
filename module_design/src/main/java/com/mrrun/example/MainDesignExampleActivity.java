@@ -24,6 +24,19 @@ public class MainDesignExampleActivity extends AppCompatActivity {
 
     private void intView() {
         uiDrawerLayout();
+        uiCDL_ABL();
+    }
+
+    /**
+     * CoordinatorLayout+AppBarLayout
+     */
+    private void uiCDL_ABL() {
+        findViewById(R.id.btn_cbl_abl).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainDesignExampleActivity.this, CDLABLActivity.class));
+            }
+        });
     }
 
     /**
