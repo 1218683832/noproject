@@ -12,7 +12,8 @@ public class CDLABLActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cdlabl);
-        getSupportActionBar().setTitle(R.string.module_design);
+        if (null != getSupportActionBar())
+            getSupportActionBar().setTitle(R.string.module_design);
         initView();
     }
 
