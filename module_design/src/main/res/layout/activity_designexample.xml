@@ -40,5 +40,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="AppBarLayout+CollapsingToolbarLayout" />
+
+        <Button
+            android:id="@+id/btn_abl_fab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="AppBarLayout+FloatingActionButton" />
     </LinearLayout>
 </ScrollView>

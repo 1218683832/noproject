@@ -8,5 +8,7 @@
         <activity android:name="com.mrrun.example.CDLFABActivity"></activity>
         <activity android:name="com.mrrun.example.ABLCTBLActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+        <activity android:name="com.mrrun.example.ABLFABActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
     </application>
 </manifest>

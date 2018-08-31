@@ -27,6 +27,19 @@ public class MainDesignExampleActivity extends AppCompatActivity {
         uiCDL_ABL();
         uiCDL_FAB();
         uiABL_CTBL();
+        uiABL_FAB();
+    }
+
+    /**
+     * AppBarLayout+FloatingActionButton
+     */
+    private void uiABL_FAB() {
+        findViewById(R.id.btn_abl_fab).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainDesignExampleActivity.this, ABLFABActivity.class));
+            }
+        });
     }
 
     /**
