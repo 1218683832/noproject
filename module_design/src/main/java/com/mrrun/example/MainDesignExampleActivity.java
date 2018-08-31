@@ -26,6 +26,19 @@ public class MainDesignExampleActivity extends AppCompatActivity {
         uiDrawerLayout();
         uiCDL_ABL();
         uiCDL_FAB();
+        uiABL_CTBL();
+    }
+
+    /**
+     * AppBarLayout+CollapsingToolbarLayout
+     */
+    private void uiABL_CTBL() {
+        findViewById(R.id.btn_abl_ctbl).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainDesignExampleActivity.this, ABLCTBLActivity.class));
+            }
+        });
     }
 
     /**
