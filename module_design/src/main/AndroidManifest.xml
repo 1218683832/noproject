@@ -11,5 +11,7 @@
         <activity android:name="com.mrrun.example.ABLFABActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <activity android:name="com.mrrun.example.BehaviorMoveActivity"></activity>
+        <activity android:name="com.mrrun.example.BehaviorUcFoldActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
     </application>
 </manifest>

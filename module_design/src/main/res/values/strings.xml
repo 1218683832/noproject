@@ -1,6 +1,7 @@
 <resources>
     <string name="module_design">module_design</string>
     <string name="view_move_behavior" translatable="false">com.mrrun.module_design.CustomMoveBehavior</string>
+    <string name="view_ucfold_behavior" translatable="false">com.mrrun.module_design.CustomUcFoldBehavior</string>
     <string name="large_text">（原标题：国防部:中国第二艘航母近日海试安全顺利,达到预期目的）
 
 8月30日下午，国防部举行例行记者会，国防部新闻发言人吴谦回答了记者提问。

@@ -29,6 +29,19 @@ public class MainDesignExampleActivity extends AppCompatActivity {
         uiABL_CTBL();
         uiABL_FAB();
         uiMoveBehavior();
+        uiUcFoldBehavior();
+    }
+
+    /**
+     * 仿UC折叠Behavior
+     */
+    private void uiUcFoldBehavior() {
+        findViewById(R.id.btn_ucfoldbehavior).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainDesignExampleActivity.this, BehaviorUcFoldActivity.class));
+            }
+        });
     }
 
     /**

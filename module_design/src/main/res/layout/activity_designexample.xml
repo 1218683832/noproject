@@ -52,5 +52,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="自定义滑动Behavior" />
+
+        <Button
+            android:id="@+id/btn_ucfoldbehavior"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="自定义仿UC折叠Behavior" />
     </LinearLayout>
 </ScrollView>
