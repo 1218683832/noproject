@@ -28,6 +28,19 @@ public class MainDesignExampleActivity extends AppCompatActivity {
         uiCDL_FAB();
         uiABL_CTBL();
         uiABL_FAB();
+        uiMoveBehavior();
+    }
+
+    /**
+     * MoveBehavior
+     */
+    private void uiMoveBehavior() {
+        findViewById(R.id.btn_movebehavior).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainDesignExampleActivity.this, BehaviorMoveActivity.class));
+            }
+        });
     }
 
     /**
