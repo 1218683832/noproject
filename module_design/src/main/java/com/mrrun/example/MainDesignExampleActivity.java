@@ -30,6 +30,19 @@ public class MainDesignExampleActivity extends AppCompatActivity {
         uiABL_FAB();
         uiMoveBehavior();
         uiUcFoldBehavior();
+        uiZoomInViewBehavior();
+    }
+
+    /**
+     * 放大Viewehavior
+     */
+    private void uiZoomInViewBehavior() {
+        findViewById(R.id.btn_zoominviewbehavior).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainDesignExampleActivity.this, BehaviorZoomInViewActivity.class));
+            }
+        });
     }
 
     /**
