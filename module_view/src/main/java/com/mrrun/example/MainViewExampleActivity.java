@@ -51,6 +51,19 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiTantanSlidingMenu();
         uiVerticalDragListView();
         uiImmersiveStatusBar();
+        uiBethel();
+    }
+
+    /**
+     * 贝塞尔
+     */
+    private void uiBethel() {
+        findViewById(R.id.btn_bethel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, BethelActivity.class));
+            }
+        });
     }
 
     /**

@@ -33,5 +33,7 @@
             android:name="com.mrrun.example.ImmersiveStatusBar1Activity"
             android:theme="@style/no_actionbar_sytle">
         </activity>
+        <activity android:name="com.mrrun.example.BethelActivity"></activity>
+        <activity android:name="com.mrrun.example.Bethel1Activity"></activity>
     </application>
 </manifest>
