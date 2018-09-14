@@ -35,5 +35,6 @@
         </activity>
         <activity android:name="com.mrrun.example.BethelActivity"></activity>
         <activity android:name="com.mrrun.example.Bethel1Activity"></activity>
+        <activity android:name="com.mrrun.example.Bethel2Activity"></activity>
     </application>
 </manifest>

@@ -25,5 +25,11 @@ public class BethelActivity extends AppCompatActivity {
                 startActivity(new Intent(BethelActivity.this, Bethel1Activity.class));
             }
         });
+        findViewById(R.id.btn_bethel_2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(BethelActivity.this, Bethel2Activity.class));
+            }
+        });
     }
 }

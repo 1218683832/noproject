@@ -3,17 +3,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <Button
-        android:id="@+id/btn_bethel_1"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="两个粘性圆"
-        />
+        android:text="點"/>
 
     <Button
-        android:id="@+id/btn_bethel_2"
-        android:layout_width="match_parent"
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="任意View控件拖拽"
-        />
+        android:text="點2"/>
 </LinearLayout>
