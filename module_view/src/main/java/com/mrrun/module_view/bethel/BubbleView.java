@@ -6,13 +6,11 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.PixelFormat;
 import android.graphics.PointF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.WindowManager;
 
 import com.mrrun.module_view.BaseView;
 import com.mrrun.module_view.Debug;
@@ -33,7 +31,9 @@ public class BubbleView extends BaseView{
     private Paint mPaint;
     private float mFixedPointRadius;
     private View mBindView;
-    WindowManager mWindowManager;
+    private Bitmap mDragBitmap;
+
+    private BuWindowManager buWindowManager;
 
     public BubbleView(Context context) {
         this(context, null);
@@ -50,14 +50,9 @@ public class BubbleView extends BaseView{
 
     @Override
     protected void init(AttributeSet attrs) {
+        buWindowManager = BuWindowManager.getInstance(mContext);
         setBackgroundColor(getResources().getColor(R.color.color_77b300));
-        mWindowManager = (WindowManager) mContext.getSystemService(Context.WINDOW_SERVICE);
-        // 布局参数
-        WindowManager.LayoutParams params = new WindowManager.LayoutParams() ;
-        // 背景要透明
-        params.format = PixelFormat.TRANSPARENT ;
-        // 在WindowManager上面要搞一个View，而这个View就是我们写好的 贝塞尔的View，然后把这个贝塞尔的View 添加到WindowManager上面来
-        mWindowManager.addView(this, params);
+        buWindowManager.addBubbleView(this);
         initData(attrs);
         initPaint();
     }
@@ -95,7 +90,7 @@ public class BubbleView extends BaseView{
                     // 初始化贝塞尔View上边的点
                     int[] location = new int[2];
                     mBindView.getLocationOnScreen(location);
-                    Bitmap bitmap = getBitmapByView(mBindView);
+                    mDragBitmap = getBitmapByView(mBindView);
                     // 给BubbleView设置一个bitmap
 //                    setDragBitmap(bitmap);
                     mBindView.setVisibility(INVISIBLE);
@@ -119,7 +114,8 @@ public class BubbleView extends BaseView{
         postDelayed(new Runnable() {
             @Override
             public void run() {
-                mWindowManager.removeView(BubbleView.this);
+                buWindowManager.removeBubbleView(BubbleView.this);
+                mBindView.setVisibility(VISIBLE);
             }
         },50);
     }
@@ -165,6 +161,12 @@ public class BubbleView extends BaseView{
     private void drawDragCircle(Canvas canvas) {
         // 拖拽圆
         canvas.drawCircle(mMovedPoint.x, mMovedPoint.y, mFixedPointRadiusMax, mPaint);
+        // 获取那个没有动的 View，然后去画
+        // 画图片  位置也是手指移动的位置，中心位置才是手指拖动的位置
+        if (null != mDragBitmap){
+            // 搞一个渐变动画
+            canvas.drawBitmap(mDragBitmap, mMovedPoint.x - mDragBitmap.getWidth()/2 , mMovedPoint.y - mDragBitmap.getHeight()/2  , null);
+        }
     }
 
     /**
