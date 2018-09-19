@@ -68,7 +68,7 @@ public class MessageBubbleView extends BaseView{
     }
 
     public static void bindView(View view, OnMessageBubbleTouchListener.OnViewDragDisappearListener disappearListener){
-        // 不能在BubbleView里处理Touch事件，要继承View.OnTouchListener重写onTouch方法处理BubbleView。
+        // 不能在MessageBubbleView里处理Touch事件，要继承View.OnTouchListener重写onTouch方法处理MessageBubbleView。
         view.setOnTouchListener(new OnMessageBubbleTouchListener(view, view.getContext(), disappearListener));
     }
 
