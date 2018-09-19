@@ -1,7 +1,6 @@
-package com.mrrun.module_view.bethel;
+package com.mrrun.module_view.widget;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -10,49 +9,40 @@ import android.graphics.PointF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
-import android.view.View;
 
 import com.mrrun.module_view.BaseView;
 import com.mrrun.module_view.Debug;
-import com.mrrun.module_view.R;
 
 /**
- * 贝塞尔 消息
+ * 普通贝塞尔消息
  *
  * @author lipin
- * @date 2018/09/14
+ * @date 2018/09/12
  * @version 1.0
  */
-public class BubbleView extends BaseView{
+public class MessageBubbleView extends BaseView{
 
     // 固定点和移动点
     private PointF mFixedPoint, mMovedPoint;
     private int mFixedPointRadiusMax = 8, mFixedPointRadiusMin = 3;
     private Paint mPaint;
     private float mFixedPointRadius;
-    private View mBindView;
-    private Bitmap mDragBitmap;
 
-    private BuWindowManager buWindowManager;
-
-    public BubbleView(Context context) {
+    public MessageBubbleView(Context context) {
         this(context, null);
     }
 
-    public BubbleView(Context context, @Nullable AttributeSet attrs) {
+    public MessageBubbleView(Context context, @Nullable AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public BubbleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public MessageBubbleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
     }
 
     @Override
     protected void init(AttributeSet attrs) {
-        buWindowManager = BuWindowManager.getInstance(mContext);
-        setBackgroundColor(getResources().getColor(R.color.color_77b300));
-        buWindowManager.addBubbleView(this);
         initData(attrs);
         initPaint();
     }
@@ -69,55 +59,19 @@ public class BubbleView extends BaseView{
         mPaint.setColor(Color.RED);
     }
 
-    /**
-     * 从一个View中获取 Bitmap
-     * @param view
-     * @return
-     */
-    private Bitmap getBitmapByView(View view) {
-        view.buildDrawingCache();
-        Bitmap bitmap = view.getDrawingCache();
-        return bitmap;
-    }
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         Debug.D("onTouchEvent--->event=" + event.getAction());
-        Debug.D("onTouchEvent--->mBindView=" + mBindView.toString());
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
-                if (null != mBindView && mBindView.isShown()){
-                    // 初始化贝塞尔View上边的点
-                    int[] location = new int[2];
-                    mBindView.getLocationOnScreen(location);
-                    mDragBitmap = getBitmapByView(mBindView);
-                    // 给BubbleView设置一个bitmap
-//                    setDragBitmap(bitmap);
-                    mBindView.setVisibility(INVISIBLE);
-                }
                 iniFixedPoint(event.getX(), event.getY());
                 break;
             case MotionEvent.ACTION_MOVE:
                 updateMovePoint(event.getX(), event.getY());
                 break;
-            case MotionEvent.ACTION_UP:
-                this.handleActionUp() ;
-                break;
         }
+        invalidate();
         return true;
-    }
-
-    /**
-     * 处理手指松开的时候，回弹的效果
-     */
-    private void handleActionUp() {
-        postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                buWindowManager.removeBubbleView(BubbleView.this);
-                mBindView.setVisibility(VISIBLE);
-            }
-        },50);
     }
 
     @Override
@@ -128,6 +82,7 @@ public class BubbleView extends BaseView{
         drawDragCircle(canvas);
         drawFixedCircle(canvas);
         drawBezierPath(canvas);
+
     }
 
     /**
@@ -161,12 +116,6 @@ public class BubbleView extends BaseView{
     private void drawDragCircle(Canvas canvas) {
         // 拖拽圆
         canvas.drawCircle(mMovedPoint.x, mMovedPoint.y, mFixedPointRadiusMax, mPaint);
-        // 获取那个没有动的 View，然后去画
-        // 画图片  位置也是手指移动的位置，中心位置才是手指拖动的位置
-        if (null != mDragBitmap){
-            // 搞一个渐变动画
-            canvas.drawBitmap(mDragBitmap, mMovedPoint.x - mDragBitmap.getWidth()/2 , mMovedPoint.y - mDragBitmap.getHeight()/2  , null);
-        }
     }
 
     /**
@@ -226,7 +175,6 @@ public class BubbleView extends BaseView{
         }
         mMovedPoint.x = x;
         mMovedPoint.y = y;
-        invalidate();
     }
 
     private void iniFixedPoint(float x, float y) {
@@ -235,9 +183,5 @@ public class BubbleView extends BaseView{
         }
         mFixedPoint.x = x;
         mFixedPoint.y = y;
-    }
-
-    public void setBindView(View view) {
-        mBindView = view;
     }
 }

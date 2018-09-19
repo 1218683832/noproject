@@ -1,6 +1,11 @@
 package com.mrrun.module_view.bethel;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -8,25 +13,46 @@ import android.graphics.Path;
 import android.graphics.PointF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
+import android.view.View;
+import android.view.animation.OvershootInterpolator;
 
 import com.mrrun.module_view.BaseView;
 import com.mrrun.module_view.Debug;
+import com.mrrun.module_view.R;
 
 /**
  * 贝塞尔 消息
  *
  * @author lipin
- * @date 2018/09/12
+ * @date 2018/09/14
  * @version 1.0
  */
 public class MessageBubbleView extends BaseView{
 
     // 固定点和移动点
-    private PointF mFixedPoint, mMovedPoint;
+    private PointF mFixedPoint, mDragPoint;
     private int mFixedPointRadiusMax = 8, mFixedPointRadiusMin = 3;
     private Paint mPaint;
     private float mFixedPointRadius;
+    private Bitmap mDragBitmap;
+    // 拖拽爆炸控件View消失和重置的监听
+    private OnMessageBubbleViewDragListener dragListener;
+
+    public void setOnMessageBubbleViewDragListener(OnMessageBubbleViewDragListener dragListener) {
+        this.dragListener = dragListener;
+    }
+
+    public void initPoint(int x, int y) {
+        mFixedPoint = new PointF(x, y);
+        mDragPoint = new PointF(x, y);
+    }
+
+    public interface OnMessageBubbleViewDragListener {
+
+        void onViewDragDisappear(PointF pointF);
+
+        void onViewDragRestore();
+    }
 
     public MessageBubbleView(Context context) {
         this(context, null);
@@ -39,6 +65,11 @@ public class MessageBubbleView extends BaseView{
     public MessageBubbleView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(attrs);
+    }
+
+    public static void bindView(View view, OnMessageBubbleTouchListener.OnViewDragDisappearListener disappearListener){
+        // 不能在BubbleView里处理Touch事件，要继承View.OnTouchListener重写onTouch方法处理BubbleView。
+        view.setOnTouchListener(new OnMessageBubbleTouchListener(view, view.getContext(), disappearListener));
     }
 
     @Override
@@ -60,29 +91,13 @@ public class MessageBubbleView extends BaseView{
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
-        Debug.D("onTouchEvent--->event=" + event.getAction());
-        switch (event.getAction()){
-            case MotionEvent.ACTION_DOWN:
-                iniFixedPoint(event.getX(), event.getY());
-                break;
-            case MotionEvent.ACTION_MOVE:
-                updateMovePoint(event.getX(), event.getY());
-                break;
-        }
-        invalidate();
-        return true;
-    }
-
-    @Override
     protected void onDraw(Canvas canvas) {
-        if (null == mFixedPoint || null == mMovedPoint) {
+        if (null == mFixedPoint || null == mDragPoint) {
             return;
         }
-        drawDragCircle(canvas);
         drawFixedCircle(canvas);
         drawBezierPath(canvas);
-
+        drawDragCircle(canvas);
     }
 
     /**
@@ -101,7 +116,7 @@ public class MessageBubbleView extends BaseView{
      * @param canvas
      */
     private void drawFixedCircle(Canvas canvas) {
-        double d = calculateDistanceTwoPoints(mFixedPoint, mMovedPoint);
+        double d = BubbleUtils.getDistanceBetween2Points(mFixedPoint, mDragPoint);
         Debug.D("onDraw--->计算两点之间的距离d=" + d);
         mFixedPointRadius = (float) (mFixedPointRadiusMax - d / 15);
         if (mFixedPointRadius >= mFixedPointRadiusMin){
@@ -115,7 +130,13 @@ public class MessageBubbleView extends BaseView{
      */
     private void drawDragCircle(Canvas canvas) {
         // 拖拽圆
-        canvas.drawCircle(mMovedPoint.x, mMovedPoint.y, mFixedPointRadiusMax, mPaint);
+        canvas.drawCircle(mDragPoint.x, mDragPoint.y, mFixedPointRadiusMax, mPaint);
+        // 获取那个没有动的 View，然后去画
+        // 画图片  位置也是手指移动的位置，中心位置才是手指拖动的位置
+        if (null != mDragBitmap){
+            // 搞一个渐变动画
+            canvas.drawBitmap(mDragBitmap, mDragPoint.x - mDragBitmap.getWidth()/2 , mDragPoint.y - mDragBitmap.getHeight()/2  , null);
+        }
     }
 
     /**
@@ -127,8 +148,8 @@ public class MessageBubbleView extends BaseView{
         }
         Path bezierPath = new Path();
         // 计算斜率
-        float dx = mMovedPoint.x - mFixedPoint.x;
-        float dy = mMovedPoint.y - mFixedPoint.y;
+        float dx = mDragPoint.x - mFixedPoint.x;
+        float dy = mDragPoint.y - mFixedPoint.y;
         if (dx == 0) {
             dx = 0.001f;
         }
@@ -139,18 +160,18 @@ public class MessageBubbleView extends BaseView{
         float P0X = (float) (mFixedPoint.x + mFixedPointRadius * Math.sin(arcTanA));
         float P0Y = (float) (mFixedPoint.y - mFixedPointRadius * Math.cos(arcTanA));
 
-        float P1X = (float) (mMovedPoint.x + mFixedPointRadiusMax * Math.sin(arcTanA));
-        float P1Y = (float) (mMovedPoint.y - mFixedPointRadiusMax * Math.cos(arcTanA));
+        float P1X = (float) (mDragPoint.x + mFixedPointRadiusMax * Math.sin(arcTanA));
+        float P1Y = (float) (mDragPoint.y - mFixedPointRadiusMax * Math.cos(arcTanA));
 
-        float P2X = (float) (mMovedPoint.x - mFixedPointRadiusMax * Math.sin(arcTanA));
-        float P2Y = (float) (mMovedPoint.y + mFixedPointRadiusMax * Math.cos(arcTanA));
+        float P2X = (float) (mDragPoint.x - mFixedPointRadiusMax * Math.sin(arcTanA));
+        float P2Y = (float) (mDragPoint.y + mFixedPointRadiusMax * Math.cos(arcTanA));
 
         float P3X = (float) (mFixedPoint.x - mFixedPointRadius * Math.sin(arcTanA));
         float P3Y = (float) (mFixedPoint.y + mFixedPointRadius * Math.cos(arcTanA));
 
         // 求控制点 两个点的中心位置作为控制点
 //        PointF controlPoint = BubbleUtils.getPointByPercent(mDragPoint, mFixationPoint, 0.5f);
-        PointF controlPoint = new PointF((mMovedPoint.x + mFixedPoint.x)/2, (mMovedPoint.y + mFixedPoint.y)/2);
+        PointF controlPoint = new PointF((mDragPoint.x + mFixedPoint.x)/2, (mDragPoint.y + mFixedPoint.y)/2);
         // 整合贝塞尔曲线路径
         bezierPath.moveTo(P0X, P0Y);
         bezierPath.quadTo(controlPoint.x, controlPoint.y, P1X, P1Y);
@@ -160,28 +181,54 @@ public class MessageBubbleView extends BaseView{
         return bezierPath;
     }
 
+    public void setDragBitmap(Bitmap dragBitmap) {
+        mDragBitmap = dragBitmap;
+    }
+
+    public void updateDragPoint(float x, float y) {
+        mDragPoint.x = x;
+        mDragPoint.y = y;
+        invalidate();
+    }
+
     /**
-     * 计算两点之间的距离
-     * @param p1
-     * @param p2
+     * 处理松手逻辑:
+     * 松手时,如果距离超过一定值,则显示爆炸效果;
+     * 如果没有超过一定值,则显示回弹效果
      */
-    private double calculateDistanceTwoPoints(PointF p1, PointF p2) {
-        return Math.sqrt(Math.pow((p1.x - p2.x), 2) + Math.pow((p1.y - p2.y), 2));
-    }
+    public void handleActionUP() {
+        if (mFixedPointRadius < mFixedPointRadiusMin){// 显示消失效果
+            if (dragListener != null) {
+                dragListener.onViewDragDisappear(mDragPoint);
+            }
+        } else {// 显示回弹效果
+            ValueAnimator animator = ObjectAnimator.ofFloat(1f);
+            animator.setDuration(300);
 
-    private void updateMovePoint(float x, float y) {
-        if (null == mMovedPoint){
-            mMovedPoint = new PointF();
-        }
-        mMovedPoint.x = x;
-        mMovedPoint.y = y;
-    }
+            final PointF startPoint = new PointF(mDragPoint.x, mDragPoint.y);
+            final PointF endPoint = new PointF(mFixedPoint.x, mFixedPoint.y);
 
-    private void iniFixedPoint(float x, float y) {
-        if (null == mFixedPoint){
-            mFixedPoint = new PointF();
+            animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator animation) {
+                    float percent = (float) animation.getAnimatedValue();
+                    // PointF pointF = BubbleUtils.getPointByPercent(mDragPoint,mFixationPoint,percent);
+                    // 这个起始点和结束点,不能这样传值(这样传值的话,起点和终点一直在发生变化),应该转的是固定点和刚开始放手时的坐标的点
+                    PointF pointF = BubbleUtils.getPointByPercent(startPoint, endPoint, percent);
+                    updateDragPoint(pointF.x, pointF.y);
+                }
+            });
+            animator.setInterpolator(new OvershootInterpolator(4f));
+            animator.start();
+            animator.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    // 当动画结束的时候,重新让View可拖动
+                    if (dragListener != null) {
+                        dragListener.onViewDragRestore();
+                    }
+                }
+            });
         }
-        mFixedPoint.x = x;
-        mFixedPoint.y = y;
     }
 }

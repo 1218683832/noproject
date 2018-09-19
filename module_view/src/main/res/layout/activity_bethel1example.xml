@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <com.mrrun.module_view.bethel.MessageBubbleView
+    <com.mrrun.module_view.widget.MessageBubbleView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/color_00ffff"/>
