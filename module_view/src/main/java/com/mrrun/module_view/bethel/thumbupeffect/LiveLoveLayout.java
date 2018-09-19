@@ -1,9 +1,16 @@
 package com.mrrun.module_view.bethel.thumbupeffect;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Path;
+import android.graphics.PointF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.DisplayMetrics;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -22,8 +29,22 @@ import java.util.Random;
 public class LiveLoveLayout extends RelativeLayout {
 
     private Context mContext;
+    /**
+     * 点赞的图片集
+     */
     private Drawable[] mLoveDrawables;
+    /**
+     * 图片数量
+     */
+    private int mDrawableNum;
+    /**
+     * 图片宽高
+     */
     private int mLoveDrawableHeight, mLoveDrawableWidth;
+    /**
+     * View宽高
+     */
+    private int mViewWidth, mViewHeight;
 
     public LiveLoveLayout(Context context) {
         this(context, null);
@@ -39,8 +60,23 @@ public class LiveLoveLayout extends RelativeLayout {
         init(attrs);
     }
 
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        mViewWidth = w;
+        mViewHeight = h;
+    }
+
     private void init(AttributeSet attrs) {
+        initData();
+        iniAttrs(attrs);
         initDrawable();
+    }
+
+    private void initData() {
+    }
+
+    private void iniAttrs(AttributeSet attrs) {
     }
 
     private void initDrawable() {
@@ -49,6 +85,7 @@ public class LiveLoveLayout extends RelativeLayout {
         mLoveDrawables[1] = getResources().getDrawable(R.drawable.love2);
         mLoveDrawables[2] = getResources().getDrawable(R.drawable.love3);
         mLoveDrawables[3] = getResources().getDrawable(R.drawable.love4);
+        mDrawableNum = mLoveDrawables.length;
 
         mLoveDrawableWidth = mLoveDrawables[0].getIntrinsicWidth();
         mLoveDrawableHeight = mLoveDrawables[0].getIntrinsicHeight();
@@ -64,19 +101,58 @@ public class LiveLoveLayout extends RelativeLayout {
                 break;
             case MotionEvent.ACTION_UP:
                 Debug.D("onTouchEvent--->MotionEvent.ACTION_UP:添加一个点赞图");
+                // View靠右下角位置不对，减去图片一半宽高矫正View位置
                 addLove(event.getX() - mLoveDrawableWidth / 2, event.getY() - mLoveDrawableHeight / 2);
                 break;
         }
         return true;
     }
 
+    /**
+     * 添加点赞图(随机)
+     * @param x
+     * @param y
+     */
     private void addLove(float x, float y) {
         Random random = new Random();
-        int num = random.nextInt(4);// 产生的随机数为0-4的整数,不包括4
+        int num = random.nextInt(mDrawableNum);// 产生的随机数为0-mDrawableNum的整数,不包括mDrawableNum
         final ImageView loveImgView = new ImageView(mContext);
         loveImgView.setImageDrawable(mLoveDrawables[num]);
-        loveImgView.setX(x);
-        loveImgView.setY(y);
-        this.addView(loveImgView);
+        setLoveOriginLocation(x, y, loveImgView);
+        addView(loveImgView);
+        loveAppearAnimation(loveImgView);
+
+        PointF pointFA = new PointF(x, y);
+        PointF pointFB = new PointF(0, 0);
+        PointF controlPoint1 = new PointF((pointFA.x - pointFB.x)/2, (pointFA.y - pointFB.y)/2);
+        // 贝塞尔曲线路径
+        Path path = new Path();
+        path.moveTo(pointFA.x, pointFA.y);
+        path.quadTo(controlPoint1.x, controlPoint1.y, pointFB.x, pointFB.y);
+    }
+
+    /**
+     * 点赞图出现的动画效果
+     * @param view
+     */
+    private void loveAppearAnimation(View view) {
+        ObjectAnimator animatorAlpha = ObjectAnimator.ofFloat(view, "alpha", 0.2f, 1.0f);
+        ObjectAnimator animatorScaleX = ObjectAnimator.ofFloat(view, "scaleX", 0.2f, 1.0f);
+        ObjectAnimator animatorScaleY = ObjectAnimator.ofFloat(view, "ScaleY", 0.2f, 1.0f);
+        AnimatorSet animatorSet = new AnimatorSet();
+        animatorSet.playTogether(animatorAlpha, animatorScaleX, animatorScaleY);
+        animatorSet.setDuration(250);
+        animatorSet.start();
+    }
+
+    /**
+     * 设置点赞起始位置
+     * @param x
+     * @param y
+     * @param view
+     */
+    private void setLoveOriginLocation(float x, float y, View view) {
+        view.setX(x);
+        view.setY(y);
     }
 }
