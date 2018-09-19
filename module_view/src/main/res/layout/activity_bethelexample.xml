@@ -16,4 +16,11 @@
         android:layout_height="wrap_content"
         android:text="任意View控件拖拽"
         />
+
+    <Button
+        android:id="@+id/btn_bethel_3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="仿花束直播点赞效果"
+        />
 </LinearLayout>
