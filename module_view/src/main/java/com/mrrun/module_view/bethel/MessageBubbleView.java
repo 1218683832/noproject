@@ -170,8 +170,7 @@ public class MessageBubbleView extends BaseView{
         float P3Y = (float) (mFixedPoint.y + mFixedPointRadius * Math.cos(arcTanA));
 
         // 求控制点 两个点的中心位置作为控制点
-//        PointF controlPoint = BubbleUtils.getPointByPercent(mDragPoint, mFixationPoint, 0.5f);
-        PointF controlPoint = new PointF((mDragPoint.x + mFixedPoint.x)/2, (mDragPoint.y + mFixedPoint.y)/2);
+        PointF controlPoint = BubbleUtils.getPointByPercent(mDragPoint, mFixedPoint, 0.5f);
         // 整合贝塞尔曲线路径
         bezierPath.moveTo(P0X, P0Y);
         bezierPath.quadTo(controlPoint.x, controlPoint.y, P1X, P1Y);
