@@ -1,4 +1,4 @@
-package com.mrrun.module_view.bethel;
+package com.mrrun.module_view.bethel.messagebubbleview;
 
 import android.content.Context;
 import android.graphics.PointF;

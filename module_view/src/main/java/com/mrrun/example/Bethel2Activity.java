@@ -9,8 +9,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.mrrun.module_view.R;
-import com.mrrun.module_view.bethel.MessageBubbleView;
-import com.mrrun.module_view.bethel.OnMessageBubbleTouchListener;
+import com.mrrun.module_view.bethel.messagebubbleview.MessageBubbleView;
+import com.mrrun.module_view.bethel.messagebubbleview.OnMessageBubbleTouchListener;
 
 public class Bethel2Activity extends AppCompatActivity {
 

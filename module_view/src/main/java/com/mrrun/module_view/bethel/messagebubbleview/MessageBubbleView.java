@@ -1,4 +1,4 @@
-package com.mrrun.module_view.bethel;
+package com.mrrun.module_view.bethel.messagebubbleview;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -18,7 +18,6 @@ import android.view.animation.OvershootInterpolator;
 
 import com.mrrun.module_view.BaseView;
 import com.mrrun.module_view.Debug;
-import com.mrrun.module_view.R;
 
 /**
  * 贝塞尔 消息
