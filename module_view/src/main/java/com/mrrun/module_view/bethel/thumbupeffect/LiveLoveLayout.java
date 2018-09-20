@@ -5,20 +5,16 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
-import android.graphics.Path;
 import android.graphics.PointF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.ViewAnimator;
 
 import com.mrrun.module_view.Debug;
 import com.mrrun.module_view.R;
-import com.mrrun.module_view.bethel.messagebubbleview.BubbleUtils;
 
 import java.util.Random;
 
