@@ -133,8 +133,8 @@ public class LiveLoveLayout extends RelativeLayout {
             xx = xx - mLoveDrawableWidth;
         }
         PointF pointFB = new PointF(xx, 0);// 终点
-        PointF controlPoint1 = new PointF((float) (Math.random() * mViewWidth), (float) (Math.random() * pointFA.y));// 控制点1
-        PointF controlPoint2 = new PointF((float) (Math.random() * mViewWidth),(float) (Math.random() * pointFA.y));// 控制点2
+        PointF controlPoint1 = getControlPointF(1, pointFA);// 控制点1
+        PointF controlPoint2 = getControlPointF(2, pointFA);// 控制点2
 
         // 估值器Evaluator,来控制view的路径（不断的修改point.x,point.y）
         Bezier3Evaluator evaluator = new Bezier3Evaluator(controlPoint1, controlPoint2);
@@ -171,6 +171,18 @@ public class LiveLoveLayout extends RelativeLayout {
             }
         });
         animator.start();
+    }
+
+    /**
+     * 获取控制点
+     * @param i
+     * @return
+     */
+    private PointF getControlPointF(int i, PointF touchPointF) {
+//        float x = (float) (Math.random() * mViewWidth);
+//        float y = (float) (Math.random() * touchPointF.y / 2) + (i - 1) * touchPointF.y / 2;
+//        return new PointF(x, y);
+        return new PointF((float) (Math.random() * mViewWidth), (float) (Math.random() * touchPointF.y));
     }
 
     private void updateLoveAlpha(View view, float alpha) {
