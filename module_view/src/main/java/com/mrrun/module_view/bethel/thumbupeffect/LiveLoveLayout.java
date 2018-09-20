@@ -148,12 +148,12 @@ public class LiveLoveLayout extends RelativeLayout {
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                LiveLoveLayout.this.removeView(view);
+                removeView(view);
             }
 
             @Override
             public void onAnimationCancel(Animator animation) {
-                LiveLoveLayout.this.removeView(view);
+                removeView(view);
             }
 
             @Override
