@@ -1,7 +1,9 @@
 package com.mrrun.module_view.bethel.thumbupeffect;
 
+import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Path;
 import android.graphics.PointF;
@@ -9,11 +11,14 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ViewAnimator;
 
 import com.mrrun.module_view.Debug;
 import com.mrrun.module_view.R;
+import com.mrrun.module_view.bethel.messagebubbleview.BubbleUtils;
 
 import java.util.Random;
 
@@ -21,8 +26,8 @@ import java.util.Random;
  * 仿花束直播点赞效果Layout
  *
  * @author lipin
- * @date 2018/09/19
  * @version 1.0
+ * @date 2018/09/19
  */
 public class LiveLoveLayout extends RelativeLayout {
 
@@ -92,7 +97,7 @@ public class LiveLoveLayout extends RelativeLayout {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         Debug.D("onTouchEvent--->event=" + event.getAction());
-        switch (event.getAction()){
+        switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 break;
             case MotionEvent.ACTION_MOVE:
@@ -108,6 +113,7 @@ public class LiveLoveLayout extends RelativeLayout {
 
     /**
      * 添加点赞图(随机)
+     *
      * @param x
      * @param y
      */
@@ -119,18 +125,56 @@ public class LiveLoveLayout extends RelativeLayout {
         setLoveOriginLocation(x, y, loveImgView);
         addView(loveImgView);
         loveAppearAnimation(loveImgView);
+        loveBezierAnimation(x, y, loveImgView);
+    }
 
-        PointF pointFA = new PointF(x, y);
-        PointF pointFB = new PointF(0, 0);
-        PointF controlPoint1 = new PointF((pointFA.x - pointFB.x)/2, (pointFA.y - pointFB.y)/2);
-        // 贝塞尔曲线路径
-        Path path = new Path();
-        path.moveTo(pointFA.x, pointFA.y);
-        path.quadTo(controlPoint1.x, controlPoint1.y, pointFB.x, pointFB.y);
+    private void loveBezierAnimation(float x, float y, final View view) {
+        PointF pointFA = new PointF(x, y);// 起点
+        PointF pointFB = new PointF((float) (Math.random() * mViewWidth), (float) (Math.random() * this.getTop()));// 终点
+        PointF controlPoint1 = new PointF((float) (Math.random() * mViewWidth), (float) (Math.random() * pointFA.y));// 控制点1
+        PointF controlPoint2 = new PointF((float) (Math.random() * mViewWidth),(float) (Math.random() * pointFA.y));// 控制点2
+
+        // 估值器Evaluator,来控制view的路径（不断的修改point.x,point.y）
+        Bezier3Evaluator evaluator = new Bezier3Evaluator(controlPoint1, controlPoint2);
+        ValueAnimator animator = ValueAnimator.ofObject(evaluator, pointFA, pointFB);
+        animator.setDuration(2500);
+        animator.addListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                LiveLoveLayout.this.removeView(view);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+                LiveLoveLayout.this.removeView(view);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        });
+        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+
+            @Override
+            public void onAnimationUpdate(ValueAnimator animation) {
+                PointF pointF = (PointF) animation.getAnimatedValue();
+                view.setX(pointF.x);
+                view.setY(pointF.y);
+                view.setAlpha(1 - animation.getAnimatedFraction() + 0.25f);// 得到百分比
+            }
+        });
+        animator.start();
     }
 
     /**
      * 点赞图出现的动画效果
+     *
      * @param view
      */
     private void loveAppearAnimation(View view) {
@@ -145,6 +189,7 @@ public class LiveLoveLayout extends RelativeLayout {
 
     /**
      * 设置点赞起始位置
+     *
      * @param x
      * @param y
      * @param view
