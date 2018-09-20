@@ -132,12 +132,11 @@ public class LiveLoveLayout extends RelativeLayout {
     private void loveBezierAnimation(float x, float y, final View view) {
         PointF pointFA = new PointF(x, y);// 起点
         float xx = (float) (Math.random() * mViewWidth);
-        float yy = (float) (Math.random() * this.getTop());
         if (xx > mLoveDrawableWidth){
             // 这里减去mLoveDrawableWidth是为了修正终点位置，让图片在布局内部
             xx = xx - mLoveDrawableWidth;
         }
-        PointF pointFB = new PointF(xx, yy);// 终点
+        PointF pointFB = new PointF(xx, 0);// 终点
         PointF controlPoint1 = new PointF((float) (Math.random() * mViewWidth), (float) (Math.random() * pointFA.y));// 控制点1
         PointF controlPoint2 = new PointF((float) (Math.random() * mViewWidth),(float) (Math.random() * pointFA.y));// 控制点2
 
