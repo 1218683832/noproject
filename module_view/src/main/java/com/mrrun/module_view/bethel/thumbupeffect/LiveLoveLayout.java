@@ -48,6 +48,7 @@ public class LiveLoveLayout extends RelativeLayout {
      * View宽高
      */
     private int mViewWidth, mViewHeight;
+    private Random mRandom;
 
     public LiveLoveLayout(Context context) {
         this(context, null);
@@ -77,6 +78,7 @@ public class LiveLoveLayout extends RelativeLayout {
     }
 
     private void initData() {
+        mRandom = new Random();
     }
 
     private void iniAttrs(AttributeSet attrs) {
@@ -118,8 +120,7 @@ public class LiveLoveLayout extends RelativeLayout {
      * @param y
      */
     private void addLove(float x, float y) {
-        Random random = new Random();
-        int num = random.nextInt(mDrawableNum);// 产生的随机数为0-mDrawableNum的整数,不包括mDrawableNum
+        int num = mRandom.nextInt(mDrawableNum);// 产生的随机数为0-mDrawableNum的整数,不包括mDrawableNum
         final ImageView loveImgView = new ImageView(mContext);
         loveImgView.setImageDrawable(mLoveDrawables[num]);
         setLoveOriginLocation(x, y, loveImgView);
@@ -130,7 +131,13 @@ public class LiveLoveLayout extends RelativeLayout {
 
     private void loveBezierAnimation(float x, float y, final View view) {
         PointF pointFA = new PointF(x, y);// 起点
-        PointF pointFB = new PointF((float) (Math.random() * mViewWidth), (float) (Math.random() * this.getTop()));// 终点
+        float xx = (float) (Math.random() * mViewWidth);
+        float yy = (float) (Math.random() * this.getTop());
+        if (xx > mLoveDrawableWidth){
+            // 这里减去mLoveDrawableWidth是为了修正终点位置，让图片在布局内部
+            xx = xx - mLoveDrawableWidth;
+        }
+        PointF pointFB = new PointF(xx, yy);// 终点
         PointF controlPoint1 = new PointF((float) (Math.random() * mViewWidth), (float) (Math.random() * pointFA.y));// 控制点1
         PointF controlPoint2 = new PointF((float) (Math.random() * mViewWidth),(float) (Math.random() * pointFA.y));// 控制点2
 
@@ -164,12 +171,15 @@ public class LiveLoveLayout extends RelativeLayout {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 PointF pointF = (PointF) animation.getAnimatedValue();
-                view.setX(pointF.x);
-                view.setY(pointF.y);
-                view.setAlpha(1 - animation.getAnimatedFraction() + 0.25f);// 得到百分比
+                updateLoveLocation(pointF.x, pointF.y, view);
+                updateLoveAlpha(view, 1 - animation.getAnimatedFraction() + 0.25f);// 得到百分比
             }
         });
         animator.start();
+    }
+
+    private void updateLoveAlpha(View view, float alpha) {
+        view.setAlpha(alpha);
     }
 
     /**
@@ -195,6 +205,18 @@ public class LiveLoveLayout extends RelativeLayout {
      * @param view
      */
     private void setLoveOriginLocation(float x, float y, View view) {
+        view.setX(x);
+        view.setY(y);
+    }
+
+    /**
+     * 更新点赞位置
+     *
+     * @param x
+     * @param y
+     * @param view
+     */
+    private void updateLoveLocation(float x, float y, View view) {
         view.setX(x);
         view.setY(y);
     }
