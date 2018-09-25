@@ -37,5 +37,7 @@
         <activity android:name="com.mrrun.example.Bethel1Activity"></activity>
         <activity android:name="com.mrrun.example.Bethel2Activity"></activity>
         <activity android:name="com.mrrun.example.Bethel3Activity"></activity>
+        <activity android:name="com.mrrun.example.ParallaxAnimationActivity"></activity>
+        <activity android:name="com.mrrun.example.ParallaxAnimation1Activity"></activity>
     </application>
 </manifest>

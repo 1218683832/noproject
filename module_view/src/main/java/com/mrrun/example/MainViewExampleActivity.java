@@ -52,6 +52,19 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiVerticalDragListView();
         uiImmersiveStatusBar();
         uiBethel();
+        uiParallaxAnimation();
+    }
+
+    /**
+     * 视差动画
+     */
+    private void uiParallaxAnimation() {
+        findViewById(R.id.btn_parallax_animation).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, ParallaxAnimationActivity.class));
+            }
+        });
     }
 
     /**

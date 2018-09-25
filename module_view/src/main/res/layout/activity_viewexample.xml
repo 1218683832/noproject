@@ -178,5 +178,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="贝塞尔" />
+
+        <Button
+            android:id="@+id/btn_parallax_animation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="视差动画" />
     </LinearLayout>
 </ScrollView>
