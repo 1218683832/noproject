@@ -26,7 +26,7 @@ public class ParallaxAnimation1Activity extends AppCompatActivity {
         parallaxVp = findViewById(R.id.parallax_vp);
 
         adapter = new ParallaxPagerAdapter(getSupportFragmentManager(),
-                new int[]{R.layout.fragment_page_first, R.layout.fragment_page_first, R.layout.fragment_page_first});
+                new int[]{R.layout.fragment_page_first, R.layout.fragment_page_second, R.layout.fragment_page_third});
         Debug.D("adapter = " + adapter.toString());
         parallaxVp.setAdapter(adapter);
         Debug.D("parallaxVp = " + parallaxVp.toString());
