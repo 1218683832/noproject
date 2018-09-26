@@ -1,4 +1,4 @@
-package com.mrrun.module_view.parallaxAnimation.parallaxanimation1;
+package com.mrrun.module_view.parallax.parallaxanimation1;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;

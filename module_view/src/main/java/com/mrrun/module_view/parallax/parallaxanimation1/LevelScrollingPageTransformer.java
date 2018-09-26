@@ -1,4 +1,4 @@
-package com.mrrun.module_view.parallaxAnimation.parallaxanimation1;
+package com.mrrun.module_view.parallax.parallaxanimation1;
 
 import android.support.annotation.NonNull;
 import android.support.v4.view.ViewPager;
