@@ -29,6 +29,7 @@ public class ParallaxViewPager extends ViewPager {
 
     private Context mContext;
     private List<ParallaxFragment> mFragments;
+    private int mCurrentPosition = 0;
 
     public ParallaxViewPager(@NonNull Context context) {
         this(context, null);
@@ -40,12 +41,12 @@ public class ParallaxViewPager extends ViewPager {
         mFragments = new ArrayList<>();
     }
 
-    public void setLayoutIds(FragmentManager fm, int[] layoutIds){
+    public void setLayoutIds(FragmentManager fm, int[] layoutIds) {
         mFragments.clear();
         // 1.例化Fragment
         for (int layoutId : layoutIds) {
             ParallaxFragment fragment = new ParallaxFragment();
-            Bundle bundle = new Bundle() ;
+            Bundle bundle = new Bundle();
             bundle.putInt(ParallaxFragment.LAYOUT_ID_KEY, layoutId);
             fragment.setArguments(bundle);
             mFragments.add(fragment);
@@ -64,6 +65,8 @@ public class ParallaxViewPager extends ViewPager {
              */
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                Debug.D("onPageScrolled--->mCurrentPosition:" + mCurrentPosition);
+                Debug.D("onPageScrolled--->position:" + position);
                 Debug.D("onPageScrolled--->positionOffset:" + positionOffset);
                 Debug.D("onPageScrolled--->positionOffsetPixels:" + positionOffsetPixels);
 
@@ -84,9 +87,8 @@ public class ParallaxViewPager extends ViewPager {
                     parallaxView.setTranslationY((-positionOffsetPixels) * tag.translationYOut);
                     Debug.D("onPageScrolled--->parallaxView x translationXOut:" + (-positionOffsetPixels) * tag.translationXOut);
                     Debug.D("onPageScrolled--->parallaxView y translationYOut:" + (-positionOffsetPixels) * tag.translationYOut);
-
-                    if (null != tag.alphaOut){
-                        float alpha = parallaxView.getAlpha() - positionOffset * (parallaxView.getAlpha() - tag.alphaOut);
+                    if (null != tag.alphaOut) {
+                        float alpha = tag.alphaOrigin - positionOffset * (tag.alphaOrigin - tag.alphaOut);
                         parallaxView.setAlpha(alpha);
                         Debug.D("onPageScrolled--->setAlpha alphaOut:" + alpha);
                     }
@@ -107,8 +109,8 @@ public class ParallaxViewPager extends ViewPager {
                         Debug.D("onPageScrolled--->parallaxView x translationXIn:" + (-positionOffsetPixels) * tag.translationXIn);
                         Debug.D("onPageScrolled--->parallaxView y translationYIn:" + (-positionOffsetPixels) * tag.translationYIn);
 
-                        if (null != tag.alphaIn){
-                            float alpha = parallaxView.getAlpha() + (1 - positionOffset) * (tag.alphaIn - parallaxView.getAlpha());
+                        if (null != tag.alphaIn) {
+                            float alpha = tag.alphaOrigin - positionOffset * (tag.alphaOrigin - tag.alphaIn);
                             parallaxView.setAlpha(alpha);
                             Debug.D("onPageScrolled--->setAlpha alphaIn:" + alpha);
                         }
@@ -128,7 +130,9 @@ public class ParallaxViewPager extends ViewPager {
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
+                if (state == SCROLL_STATE_IDLE) {// 滑动动画做完的状态。
+                    mCurrentPosition = getCurrentItem();
+                }
             }
         });
     }
@@ -136,7 +140,7 @@ public class ParallaxViewPager extends ViewPager {
     /**
      * 视差Fragment Adapter
      */
-    private class ParallaxPagerAdapter extends FragmentPagerAdapter{
+    private class ParallaxPagerAdapter extends FragmentPagerAdapter {
 
         public ParallaxPagerAdapter(FragmentManager fm) {
             super(fm);

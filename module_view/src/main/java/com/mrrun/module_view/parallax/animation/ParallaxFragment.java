@@ -131,15 +131,14 @@ public class ParallaxFragment extends Fragment implements LayoutInflaterFactory 
                 int attr = array.getIndex(i);
                 Debug.D("array.getIndex(i) = " + attr);
                 float alpha = view.getAlpha();
+                tag.alphaOrigin = alpha;
                 switch (attr) {
                     case 0:
                         tag.alphaIn = array.getFloat(attr, alpha);
-//                        tag.alphaIn = alpha == tag.alphaIn ? null : tag.alphaIn;
                         Debug.D("tag.alphaIn = " + tag.alphaIn);
                         break;
                     case 1:
                         tag.alphaOut = array.getFloat(attr, alpha);
-//                        tag.alphaOut = alpha == tag.alphaOut ? null : tag.alphaOut;
                         Debug.D("tag.alphaOut = " + tag.alphaOut);
                         break;
                     case 2:

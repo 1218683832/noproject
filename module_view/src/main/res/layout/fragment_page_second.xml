@@ -19,7 +19,9 @@
         app:layout_widthPercent="45%"
 
         app:translationXIn="0.4"
-        app:translationXOut="0.4"/>
+        app:translationXOut="0.4"
+        app:alphaIn="0.1"
+        app:alphaOut="0.1"/>
 
     <ImageView
         android:id="@+id/ivSecondImage"
