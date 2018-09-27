@@ -18,10 +18,12 @@
         app:layout_heightPercent="35%"
         app:layout_widthPercent="50%"
 
-        app:translationXIn="0.4"
-        app:translationYIn="0.4"
+        app:translationXIn="0.9"
+        app:translationYIn="0.9"
         app:translationYOut="0.4"
-        app:translationXOut="0.4" />
+        app:translationXOut="0.4"
+        app:alphaIn="1.0"
+        app:alphaOut="0.7"/>
 
     <ImageView
         android:id="@+id/ivSecondImage"
@@ -38,7 +40,9 @@
         app:translationXIn="0.12"
         app:translationYIn="0.82"
         app:translationYOut="0.82"
-        app:translationXOut="0.12" />
+        app:translationXOut="0.12"
+        app:alphaIn="0.7"
+        app:alphaOut="1.0"/>
 
     <ImageView
         android:id="@+id/ivThirdImage"

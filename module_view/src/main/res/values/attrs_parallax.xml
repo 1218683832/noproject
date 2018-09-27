@@ -8,5 +8,9 @@
         <!-- Y方向上的位移 -->
         <attr name="translationYIn" format="float"/>
         <attr name="translationYOut" format="float"/>
+
+        <!-- Alpha -->
+        <attr name="alphaIn" format="float"/>
+        <attr name="alphaOut" format="float"/>
     </declare-styleable>
 </resources>

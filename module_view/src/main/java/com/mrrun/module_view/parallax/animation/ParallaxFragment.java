@@ -39,9 +39,9 @@ public class ParallaxFragment extends Fragment implements LayoutInflaterFactory 
         // 拦截View的创建,自己解析属性
         // View创建的时候我们去解析，这里传inflater是有问题的，单例设计模式代表所有View的创建都是该Fragment去创建的
         // 克隆一个inflater出来
-        inflater = inflater.cloneInContext(getActivity()) ;
+        inflater = inflater.cloneInContext(getActivity());
         LayoutInflaterCompat.setFactory(inflater, this);
-        return inflater.inflate(layoutId , container , false);
+        return inflater.inflate(layoutId, container, false);
     }
 
     @Override
@@ -54,26 +54,29 @@ public class ParallaxFragment extends Fragment implements LayoutInflaterFactory 
         View view = createView(parent, name, context, attrs);
         // 2.一个activity/fragment的布局肯定对应多个这样的View
         Debug.D("2.一个activity/fragment的布局肯定对应多个这样的View");
-        if (view != null){
+        if (view != null) {
             // 解析所有的我们关注的属性
-            analysisAttrs(view , context , attrs) ;
+            analysisAttrs(view, context, attrs);
         }
         return view;
     }
 
     private CompatViewInflater mCompatViewInflater;
     // 存放所有的需要位移的View
-    private List<View> mParallaxViews = new ArrayList<>() ;
+    private List<View> mParallaxViews = new ArrayList<>();
     // 存放视差动画的属性
-    private int[] mParallaxAttrs = new int[]{R.attr.translationXIn, R.attr.translationXOut,
-            R.attr.translationYIn, R.attr.translationYOut};
+    private int[] mParallaxAttrs = new int[]
+            {
+                    R.attr.alphaIn, R.attr.alphaOut, R.attr.translationXIn, R.attr.translationXOut,
+                    R.attr.translationYIn, R.attr.translationYOut
+            };
 
     public View createView(View parent, final String name, @NonNull Context context,
                            @NonNull AttributeSet attrs) {
 
         final boolean isPre21 = Build.VERSION.SDK_INT < 21;
-        if (mCompatViewInflater == null){
-            mCompatViewInflater = new CompatViewInflater() ;
+        if (mCompatViewInflater == null) {
+            mCompatViewInflater = new CompatViewInflater();
         }
 
         // We only want the View to inherit it's context if we're running pre-v21
@@ -112,6 +115,7 @@ public class ParallaxFragment extends Fragment implements LayoutInflaterFactory 
 
     /**
      * 解析所有的 我们关注的属性
+     *
      * @param view
      * @param context
      * @param attrs
@@ -119,35 +123,52 @@ public class ParallaxFragment extends Fragment implements LayoutInflaterFactory 
     private void analysisAttrs(View view, Context context, AttributeSet attrs) {
         Debug.D("解析所有的我们关注的属性");
         TypedArray array = context.obtainStyledAttributes(attrs, mParallaxAttrs);
-        if (array != null && array.getIndexCount() != 0){
+        if (array != null && array.getIndexCount() != 0) {
             int n = array.getIndexCount();
+            Debug.D("getIndexCount = " + n);
             ParallaxTag tag = new ParallaxTag();
             for (int i = 0; i < n; i++) {
                 int attr = array.getIndex(i);
-                switch (attr){
+                Debug.D("array.getIndex(i) = " + attr);
+                float alpha = view.getAlpha();
+                switch (attr) {
                     case 0:
-                        tag.translationXIn = array.getFloat(attr , 0f) ;
+                        tag.alphaIn = array.getFloat(attr, alpha);
+//                        tag.alphaIn = alpha == tag.alphaIn ? null : tag.alphaIn;
+                        Debug.D("tag.alphaIn = " + tag.alphaIn);
                         break;
                     case 1:
-                        tag.translationXOut = array.getFloat(attr , 0f) ;
+                        tag.alphaOut = array.getFloat(attr, alpha);
+//                        tag.alphaOut = alpha == tag.alphaOut ? null : tag.alphaOut;
+                        Debug.D("tag.alphaOut = " + tag.alphaOut);
                         break;
                     case 2:
-                        tag.translationYIn = array.getFloat(attr , 0f) ;
+                        tag.translationXIn = array.getFloat(attr, 0f);
+                        Debug.D("tag.translationXIn = " + tag.translationXIn);
                         break;
                     case 3:
-                        tag.translationYOut = array.getFloat(attr , 0f) ;
+                        tag.translationXOut = array.getFloat(attr, 0f);
+                        Debug.D("tag.translationXOut = " + tag.translationXOut);
+                        break;
+                    case 4:
+                        tag.translationYIn = array.getFloat(attr, 0f);
+                        Debug.D("tag.translationYIn = " + tag.translationYIn);
+                        break;
+                    case 5:
+                        tag.translationYOut = array.getFloat(attr, 0f);
+                        Debug.D("tag.translationYOut = " + tag.translationYOut);
                         break;
                 }
             }
 
             // 自定义属性怎么存? 需要一一绑定，在View上边设置tag
-            view.setTag(R.id.parallax_tag , tag);
-            mParallaxViews.add(view) ;
+            view.setTag(R.id.parallax_tag, tag);
+            mParallaxViews.add(view);
         }
         array.recycle();
     }
 
-    public List<View> getParallaxViews(){
-        return mParallaxViews ;
+    public List<View> getParallaxViews() {
+        return mParallaxViews;
     }
 }

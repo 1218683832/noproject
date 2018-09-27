@@ -84,6 +84,12 @@ public class ParallaxViewPager extends ViewPager {
                     parallaxView.setTranslationY((-positionOffsetPixels) * tag.translationYOut);
                     Debug.D("onPageScrolled--->parallaxView x translationXOut:" + (-positionOffsetPixels) * tag.translationXOut);
                     Debug.D("onPageScrolled--->parallaxView y translationYOut:" + (-positionOffsetPixels) * tag.translationYOut);
+
+                    if (null != tag.alphaOut){
+                        float alpha = parallaxView.getAlpha() - positionOffset * (parallaxView.getAlpha() - tag.alphaOut);
+                        parallaxView.setAlpha(alpha);
+                        Debug.D("onPageScrolled--->setAlpha alphaOut:" + alpha);
+                    }
                     Debug.D("--->--->--->--->");
                 }
                 Debug.D("--->--->--->--->--->--->--->--->--->--->--->--->--->--->--->--->--->--->--->--->--->--->--->--->--->--->");
@@ -100,6 +106,12 @@ public class ParallaxViewPager extends ViewPager {
                         parallaxView.setTranslationY((getMeasuredWidth() - positionOffsetPixels) * tag.translationYIn);
                         Debug.D("onPageScrolled--->parallaxView x translationXIn:" + (-positionOffsetPixels) * tag.translationXIn);
                         Debug.D("onPageScrolled--->parallaxView y translationYIn:" + (-positionOffsetPixels) * tag.translationYIn);
+
+                        if (null != tag.alphaIn){
+                            float alpha = parallaxView.getAlpha() + (1 - positionOffset) * (tag.alphaIn - parallaxView.getAlpha());
+                            parallaxView.setAlpha(alpha);
+                            Debug.D("onPageScrolled--->setAlpha alphaIn:" + alpha);
+                        }
                         Debug.D("--->--->--->--->");
                     }
                 } catch (Exception e) {

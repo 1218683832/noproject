@@ -12,6 +12,8 @@ public class ParallaxTag {
     public float translationXOut ;
     public float translationYIn ;
     public float translationYOut ;
+    public Float alphaIn;
+    public Float alphaOut;
 
     @Override
     public String toString() {
