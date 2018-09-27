@@ -75,8 +75,11 @@ public class ParallaxViewPager extends ViewPager {
                     ParallaxTag tag = (ParallaxTag) parallaxView.getTag(R.id.parallax_tag);
                     Debug.D("onPageScrolled--->ParallaxTag:" + tag.toString());
                     Debug.D("onPageScrolled--->parallaxView:" + parallaxView.toString());
-                    // 为什么这样写?
-//                    parallaxView.scrollTo((int) ((-positionOffsetPixels) * tag.translationXOut), (int) ((-positionOffsetPixels) * tag.translationYOut));
+
+                    // 不管是scrollTo()还是scrollBy()其移动的本质都是View/ViewGroup中的内容。
+                    // parallaxView.scrollTo((int) ((positionOffsetPixels) * tag.translationXOut), (int) ((positionOffsetPixels) * tag.translationYOut));
+
+                    // 不同于TranslationX/TranslationY，移动的是View本身。
                     parallaxView.setTranslationX((-positionOffsetPixels) * tag.translationXOut);
                     parallaxView.setTranslationY((-positionOffsetPixels) * tag.translationYOut);
                     Debug.D("onPageScrolled--->parallaxView x translationXOut:" + (-positionOffsetPixels) * tag.translationXOut);
@@ -90,7 +93,9 @@ public class ParallaxViewPager extends ViewPager {
                     for (View parallaxView : parallaxViews) {
                         ParallaxTag tag = (ParallaxTag) parallaxView.getTag(R.id.parallax_tag);
                         Debug.D("onPageScrolled--->ParallaxTag:" + tag.toString());
-//                        parallaxView.scrollTo((int) ((getMeasuredWidth() - positionOffsetPixels) * tag.translationXIn), (int) ((getMeasuredWidth() - positionOffsetPixels) * tag.translationYIn));
+
+                        // parallaxView.scrollTo((int) ((getMeasuredWidth() - positionOffsetPixels) * tag.translationXIn), (int) ((getMeasuredWidth() - positionOffsetPixels) * tag.translationYIn));
+
                         parallaxView.setTranslationX((getMeasuredWidth() - positionOffsetPixels) * tag.translationXIn);
                         parallaxView.setTranslationY((getMeasuredWidth() - positionOffsetPixels) * tag.translationYIn);
                         Debug.D("onPageScrolled--->parallaxView x translationXIn:" + (-positionOffsetPixels) * tag.translationXIn);

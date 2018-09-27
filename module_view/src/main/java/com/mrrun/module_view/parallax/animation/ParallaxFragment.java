@@ -58,7 +58,7 @@ public class ParallaxFragment extends Fragment implements LayoutInflaterFactory 
             // 解析所有的我们关注的属性
             analysisAttrs(view , context , attrs) ;
         }
-        return null;
+        return view;
     }
 
     private CompatViewInflater mCompatViewInflater;
