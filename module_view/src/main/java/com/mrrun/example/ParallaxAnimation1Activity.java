@@ -7,12 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import com.mrrun.module_view.Debug;
 import com.mrrun.module_view.R;
 import com.mrrun.module_view.parallax.animation.ParallaxViewPager;
-import com.mrrun.module_view.parallax.parallaxanimation1.ParallaxPagerAdapter;
 
 public class ParallaxAnimation1Activity extends AppCompatActivity {
 
     ParallaxViewPager mParallaxVp;
-    ParallaxPagerAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

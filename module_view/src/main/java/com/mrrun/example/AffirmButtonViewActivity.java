@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
+import com.mrrun.module_view.Debug;
 import com.mrrun.module_view.R;
 import com.mrrun.module_view.affirmbutton.AffirmButtonView;
 
@@ -26,5 +28,7 @@ public class AffirmButtonViewActivity extends AppCompatActivity {
                 buttonView.startAnimation();
             }
         });
+        TextView text = findViewById(R.id.text);
+        Debug.D("text = " + text.toString());
     }
 }
