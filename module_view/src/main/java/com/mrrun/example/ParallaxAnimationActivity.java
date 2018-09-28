@@ -22,7 +22,13 @@ public class ParallaxAnimationActivity extends AppCompatActivity {
         findViewById(R.id.btn_parallax_animation_1).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ParallaxAnimationActivity.this, ParallaxAnimation1Activity.class));
+                startActivity(new Intent(ParallaxAnimationActivity.this, ParallaxAnimationKugouActivity.class));
+            }
+        });
+        findViewById(R.id.btn_parallax_animation_2).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ParallaxAnimationActivity.this, ParallaxAnimationYahuActivity.class));
             }
         });
     }

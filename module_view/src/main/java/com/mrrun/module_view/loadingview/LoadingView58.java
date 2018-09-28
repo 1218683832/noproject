@@ -296,7 +296,7 @@ public class LoadingView58 extends LinearLayout {
     }
 }
 
-class ShapeView extends BaseView {
+class ShapeView extends BaseView{
 
     private int mViewWidth;
     private int mViewHeight;
