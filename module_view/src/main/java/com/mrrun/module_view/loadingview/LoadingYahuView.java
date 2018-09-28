@@ -43,6 +43,7 @@ public class LoadingYahuView extends BaseView {
     private float mHoleRadius;
     private static final int R_DURATION = 3000;
     private static final int T_DURATION = 3000;
+    private static final int E_DURATION = 1500;
 
     private LoadingState mLoadingState;
     private Paint mPaint;
@@ -73,7 +74,7 @@ public class LoadingYahuView extends BaseView {
         mCircleColorIds = new int[]
                 {
                         R.color.color_00ff99, R.color.color_2e2eb8, R.color.color_77b300,
-                        R.color.color_646464
+                        R.color.color_646464, R.color.color_bf4080, R.color.color_99ebff
                 };
         mCircleCount = mCircleColorIds.length;
         mCirclePaints = new Paint[mCircleCount];
@@ -214,7 +215,7 @@ public class LoadingYahuView extends BaseView {
         }
 
         private Animator mergeAnimation() {
-            ValueAnimator mergeAnimation = ValueAnimator.ofFloat(mViewCenterRadius, mViewCenterRadius * 0.05f);
+            ValueAnimator mergeAnimation = ValueAnimator.ofFloat(mViewCenterRadius, mViewCenterRadius * 0.2f);
             mergeAnimation.setInterpolator(new AnticipateInterpolator(6.0f));
             mergeAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
@@ -242,7 +243,8 @@ public class LoadingYahuView extends BaseView {
             canvas.drawColor(mSplashColor);
             // 只需要知道第一个点的位置，其他点位置通过计算坐标系旋转的角度即可确定
             for (int i = 0; i < mCircleCount; i++) {
-                canvas.rotate(mCircleDegrees * i, mViewCenterPointf.x, mViewCenterPointf.y);
+                canvas.save();
+                canvas.rotate(mCircleDegrees * i + mCircleDegreesAdd, mViewCenterPointf.x, mViewCenterPointf.y);
                 // View中心点旋转某角度
                 canvas.drawCircle(mFirstCirclePointf.x, mFirstCirclePointf.y, mCircleRadius, mCirclePaints[i]);
                 canvas.restore();
@@ -268,7 +270,7 @@ public class LoadingYahuView extends BaseView {
         private Animator expandAnimation() {
             // 1200ms，计算某个时刻当前的大圆半径是多少？r~对角线一半的某个值
             ValueAnimator expandAnimation = ValueAnimator.ofFloat(mCircleRadius, mDiagonalDist);
-            expandAnimation.setDuration(3000);
+            expandAnimation.setDuration(E_DURATION);
             expandAnimation.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
