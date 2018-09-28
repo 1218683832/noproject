@@ -10,9 +10,11 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.view.ViewConfiguration;
 import android.view.animation.AnticipateInterpolator;
 import android.view.animation.LinearInterpolator;
 
+import com.mrrun.module_view.AnimatorUtil;
 import com.mrrun.module_view.BaseView;
 import com.mrrun.module_view.CalculateUtil;
 import com.mrrun.module_view.Debug;
@@ -29,7 +31,7 @@ public class LoadingYahuView extends BaseView {
     // View中心点
     private PointF mViewCenterPointf;
     // 每个圆距离View中心的距离
-    private int mViewCenterRadius = 80;
+    private int mViewCenterRadius = 60;
     // 每个圆固定的相隔角度
     private int mCircleDegrees = 30;
     // 球的半径
@@ -74,7 +76,7 @@ public class LoadingYahuView extends BaseView {
         mCircleColorIds = new int[]
                 {
                         R.color.color_00ff99, R.color.color_2e2eb8, R.color.color_77b300,
-                        R.color.color_646464, R.color.color_bf4080, R.color.color_99ebff
+                        R.color.color_646464, R.color.color_00ffff, R.color.color_99ebff
                 };
         mCircleCount = mCircleColorIds.length;
         mCirclePaints = new Paint[mCircleCount];
@@ -85,23 +87,25 @@ public class LoadingYahuView extends BaseView {
 
     /**
      * 根据角度更新第一个点的位置
+     *
      * @param degrees
      */
     private void updateFirstPointFByRateDegrees(int degrees) {
         // 在自定义view中，计算某个点在圆上的位置.
-        mFirstCirclePointf.x = (float) (mViewCenterPointf.x +  mViewCenterRadius * Math.cos((degrees) * 3.14 / 180));
-        mFirstCirclePointf.y = (float) (mViewCenterPointf.y +  mViewCenterRadius * Math.sin((degrees) * 3.14 / 180));
+        mFirstCirclePointf.x = (float) (mViewCenterPointf.x + mViewCenterRadius * Math.cos((degrees) * 3.14 / 180));
+        mFirstCirclePointf.y = (float) (mViewCenterPointf.y + mViewCenterRadius * Math.sin((degrees) * 3.14 / 180));
     }
 
     /**
      * 根据半径更新第一个点的位置
+     *
      * @param radius
      */
     private void updateFirstPointFByRadius(float radius) {
         // 在自定义view中，计算某个点在圆上的位置.
         // mCircleDegreesAdd已转过的角度
-        mFirstCirclePointf.x = (float) (mViewCenterPointf.x +  radius * Math.cos((mCircleDegreesAdd) * 3.14 / 180));
-        mFirstCirclePointf.y = (float) (mViewCenterPointf.y +  radius * Math.sin((mCircleDegreesAdd) * 3.14 / 180));
+        mFirstCirclePointf.x = (float) (mViewCenterPointf.x + radius * Math.cos((mCircleDegreesAdd) * 3.14 / 180));
+        mFirstCirclePointf.y = (float) (mViewCenterPointf.y + radius * Math.sin((mCircleDegreesAdd) * 3.14 / 180));
     }
 
     private void initPointF() {
@@ -128,12 +132,12 @@ public class LoadingYahuView extends BaseView {
         mViewWidth = w;
         mViewHeight = h;
         initPointF();
-        mDiagonalDist= (float) Math.sqrt(mViewCenterPointf.x * mViewCenterPointf.x + mViewCenterPointf.y * mViewCenterPointf.y);
+        mDiagonalDist = (float) Math.sqrt(mViewCenterPointf.x * mViewCenterPointf.x + mViewCenterPointf.y * mViewCenterPointf.y);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
-        if (null == mLoadingState){
+        if (null == mLoadingState) {
             // 开启旋转动画
             mLoadingState = new RotateState();
         }
@@ -141,7 +145,7 @@ public class LoadingYahuView extends BaseView {
     }
 
     // 策略模式实现三种动画状态
-    private abstract class LoadingState{
+    private abstract class LoadingState {
         public abstract void draw(Canvas canvas);
     }
 
@@ -156,7 +160,13 @@ public class LoadingYahuView extends BaseView {
             if (null == animator) {
                 animator = rotateAnimation();
             }
-            animator.start();
+            // 解决View开始显示动画不流畅问题
+            postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    animator.start();
+                }
+            }, AnimatorUtil.DELAY_START_TIME);
         }
 
         private Animator rotateAnimation() {
@@ -190,6 +200,7 @@ public class LoadingYahuView extends BaseView {
             // 绘制白色背景
             canvas.drawColor(mSplashColor);
             // 只需要知道第一个点的位置，其他点位置通过计算坐标系旋转的角度即可确定
+            Debug.D("mCircleDegreesAdd : " + mCircleDegreesAdd);
             for (int i = 0; i < mCircleCount; i++) {
                 canvas.save();
                 canvas.rotate(mCircleDegrees * i + mCircleDegreesAdd, mViewCenterPointf.x, mViewCenterPointf.y);
@@ -222,7 +233,7 @@ public class LoadingYahuView extends BaseView {
                 public void onAnimationUpdate(ValueAnimator animation) {
                     float radius = (float) animation.getAnimatedValue();
                     // updateFirstPointFByRadius(radius);
-                    mFirstCirclePointf = CalculateUtil.calculateCirclePoint(mViewCenterPointf, radius, mCircleDegreesAdd - mCircleDegrees);
+                    mFirstCirclePointf = CalculateUtil.calculateCirclePoint(mViewCenterPointf, radius, (int) (mCircleDegreesAdd - mCircleDegrees * 1.5f));
                     invalidate();
                 }
             });
@@ -242,6 +253,7 @@ public class LoadingYahuView extends BaseView {
             // 绘制白色背景
             canvas.drawColor(mSplashColor);
             // 只需要知道第一个点的位置，其他点位置通过计算坐标系旋转的角度即可确定
+            Debug.D("mCircleDegreesAdd : " + mCircleDegreesAdd);
             for (int i = 0; i < mCircleCount; i++) {
                 canvas.save();
                 canvas.rotate(mCircleDegrees * i + mCircleDegreesAdd, mViewCenterPointf.x, mViewCenterPointf.y);
