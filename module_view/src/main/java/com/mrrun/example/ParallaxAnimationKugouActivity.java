@@ -8,14 +8,14 @@ import com.mrrun.module_view.Debug;
 import com.mrrun.module_view.R;
 import com.mrrun.module_view.parallax.animation.ParallaxViewPager;
 
-public class ParallaxAnimation1Activity extends AppCompatActivity {
+public class ParallaxAnimationKugouActivity extends AppCompatActivity {
 
     ParallaxViewPager mParallaxVp;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parallaxanimation1example);
+        setContentView(R.layout.activity_parallaxanimationkugouexample);
         getSupportActionBar().setTitle(R.string.module_view);
         initView();
     }
