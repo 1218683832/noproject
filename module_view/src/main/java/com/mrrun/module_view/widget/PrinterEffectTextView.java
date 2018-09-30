@@ -6,10 +6,10 @@ import android.util.AttributeSet;
 
 /**
  * TextView实现打印机效果。
- * 思路：
- * 继承自TextView充分利用TextView自带的属性；
- * 重写onDraw()方法，用drawText()，用属性动画一个个绘制文字;
- * 对外暴露的方法,设置字符的方法少不了，接下来开启动画和停止动画，然后就是动画结束的回调。
+ * 实现思路：
+ * 1、继承自TextView充分利用TextView自带的属性；
+ * 2、重写onDraw()方法，用drawText()，用属性动画一个个绘制文字;
+ * 3、对外暴露的方法,设置字符的方法少不了，接下来开启动画和停止动画，然后就是动画结束的回调。
  * 如何使用：
  * printerTextView
  *   .setTextString("自定义view实现字符串逐字显示")
@@ -19,7 +19,7 @@ import android.util.AttributeSet;
  *      public void onAnimationFinish() {
  *      }
  *  });
- *  问题：
+ *  遗留问题：
  *  1、如果多行的话未显示的地方会是先空白区域占有；
  *
  * @author lipin
