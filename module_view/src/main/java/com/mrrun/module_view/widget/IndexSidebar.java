@@ -13,7 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.mrrun.module_view.Debug;
-import com.mrrun.module_view.DrawUtil;
+import com.mrrun.module_view.MeasureUtil;
 import com.mrrun.module_view.R;
 
 /**
@@ -176,7 +176,7 @@ public class IndexSidebar extends View {
         float y = 0;
         float cx = mViewWidth / 2;
         float cy = 0;
-        float dy = DrawUtil.textBaseLine2(mNormalPaint);
+        float dy = MeasureUtil.textBaseLine2(mNormalPaint);
         for (int i = 0; i <= MAX_INDEX; i++) {
             mNormalPaint.getTextBounds(mIndexTexts[i], 0, mIndexTexts[i].length(), mTextRect);
             // 计算让每个索引都居中

@@ -14,7 +14,6 @@ import android.view.animation.DecelerateInterpolator;
 
 import com.mrrun.module_view.AnimatorUtil;
 import com.mrrun.module_view.Debug;
-import com.mrrun.module_view.DrawUtil;
 import com.mrrun.module_view.MeasureUtil;
 
 /**
@@ -165,8 +164,8 @@ public class LineNumberProgressView extends View {
         mTextPaint.setColor(mSecondColor);
         canvas.drawRoundRect(mTextRecf, 0, 0, mTextPaint);
         mTextPaint.setColor(Color.WHITE);
-        canvas.drawText(text, mTextRecf.centerX() - DrawUtil.measureText(mTextPaint, text) / 2,
-                mTextRecf.centerY() + DrawUtil.textBaseLine2(mTextPaint), mTextPaint);
+        canvas.drawText(text, mTextRecf.centerX() - MeasureUtil.measureText(mTextPaint, text) / 2,
+                mTextRecf.centerY() + MeasureUtil.textBaseLine2(mTextPaint), mTextPaint);
     }
 
     /**

@@ -12,7 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.mrrun.module_view.Debug;
-import com.mrrun.module_view.DrawUtil;
+import com.mrrun.module_view.MeasureUtil;
 import com.mrrun.module_view.R;
 
 /**
@@ -110,7 +110,7 @@ public class AlphabeticIndexView extends View {
         for (int i = MIN_INDEX; i <= MAX_INDEX_LENGTH; i++) {// A-Z
             mPaint.getTextBounds(String.valueOf(mText[i - 1]), 0, 1, rect);
             x = 0;
-            y = y + rect.height() / 2 + DrawUtil.textBaseLine(mPaint) + mIndexInterval;
+            y = y + rect.height() / 2 + MeasureUtil.textBaseLine(mPaint) + mIndexInterval;
             if (i == mCurIndex){
                 mPaint.setColor(mIndexSelectedColor);
             } else {

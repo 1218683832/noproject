@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
 import com.mrrun.module_view.Debug;
-import com.mrrun.module_view.DrawUtil;
+import com.mrrun.module_view.MeasureUtil;
 
 /**
  * 玩转文字变色View
@@ -81,8 +81,8 @@ public class ColorTrackView extends View {
      * 测文字
      */
     private void measureText() {
-        mTextWidth = mTextPaint.measureText(mTextContent);
-        mTextPaint.getTextBounds(mTextContent, 0, mTextContent.length(), mTextRect);
+        mTextWidth = MeasureUtil.measureText(mTextPaint, mTextContent);
+        mTextRect = MeasureUtil.measureTextRect(mTextPaint, mTextContent);
     }
 
     private TextPaint mTextPaint;
@@ -168,7 +168,7 @@ public class ColorTrackView extends View {
         canvas.save();
         mTextPaint.setColor(color);
         canvas.clipRect(new RectF(l, 0, r, getHeight()));
-        canvas.drawText(mTextContent, mTextStartX, getHeight() / 2 + DrawUtil.textBaseLine(mTextPaint), mTextPaint);
+        canvas.drawText(mTextContent, mTextStartX, getHeight() / 2 + MeasureUtil.textBaseLine(mTextPaint), mTextPaint);
         canvas.restore();
     }
 
