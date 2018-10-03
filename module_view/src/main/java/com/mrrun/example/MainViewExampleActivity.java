@@ -50,9 +50,22 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiKugouSlidingMenu();
         uiTantanSlidingMenu();
         uiVerticalDragListView();
+        uiPrinterTextView();
         uiImmersiveStatusBar();
         uiBethel();
         uiParallaxAnimation();
+    }
+
+    /**
+     * TextView打印机效果
+     */
+    private void uiPrinterTextView() {
+        findViewById(R.id.btn_printertextview).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, PrinterTextViewActivity.class));
+            }
+        });
     }
 
     /**

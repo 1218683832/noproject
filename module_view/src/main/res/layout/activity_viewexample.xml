@@ -168,6 +168,12 @@
             android:text="汽车之家折叠效果" />
 
         <Button
+            android:id="@+id/btn_printertextview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView实现打印机效果" />
+
+        <Button
             android:id="@+id/btn_immersivestatusbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
