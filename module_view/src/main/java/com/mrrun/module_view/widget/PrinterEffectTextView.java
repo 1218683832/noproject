@@ -1,21 +1,15 @@
 package com.mrrun.module_view.widget;
 
-import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.graphics.Rect;
-import android.graphics.RectF;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 
 import com.mrrun.module_view.Debug;
 import com.mrrun.module_view.MeasureUtil;
-
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 /**
  * TextView实现打印机效果。
