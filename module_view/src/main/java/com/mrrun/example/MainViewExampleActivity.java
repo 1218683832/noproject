@@ -7,7 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import com.mrrun.module_view.R;
-import com.mrrun.module_view.menuview.ConditionListMenuView;
 
 /**
  * @author lipin
@@ -51,9 +50,22 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiTantanSlidingMenu();
         uiVerticalDragListView();
         uiPrinterTextView();
+        uiLoadingViewDuoYin();
         uiImmersiveStatusBar();
         uiBethel();
         uiParallaxAnimation();
+    }
+
+    /**
+     * 仿抖音加载View
+     */
+    private void uiLoadingViewDuoYin() {
+        findViewById(R.id.btn_LoadingViewDuoYin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, LoadingViewDuoYinActivity.class));
+            }
+        });
     }
 
     /**

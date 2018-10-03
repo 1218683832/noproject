@@ -41,5 +41,6 @@
         <activity android:name="com.mrrun.example.ParallaxAnimationKugouActivity"></activity>
         <activity android:name="com.mrrun.example.ParallaxAnimationYahuActivity"></activity>
         <activity android:name="com.mrrun.example.PrinterTextViewActivity"></activity>
+        <activity android:name="com.mrrun.example.LoadingViewDuoYinActivity"></activity>
     </application>
 </manifest>

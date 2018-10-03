@@ -174,6 +174,12 @@
             android:text="TextView实现打印机效果" />
 
         <Button
+            android:id="@+id/btn_LoadingViewDuoYin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="仿抖音加载View" />
+
+        <Button
             android:id="@+id/btn_immersivestatusbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
