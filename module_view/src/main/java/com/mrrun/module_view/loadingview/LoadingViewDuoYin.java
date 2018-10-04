@@ -38,8 +38,8 @@ public class LoadingViewDuoYin extends BaseView {
     // 右边圆颜色
     private int mRColor;
     // 左右圆的初始半径
-    private int INIT_RADIUS = 5;
-    private int MAX_RADIUS = 7;
+    private int INIT_RADIUS = 4;
+    private int MAX_RADIUS = 5;
     private int MIN_RADIUS = 3;
     // View的宽高
     private int mViewWidth, mViewHeight;
