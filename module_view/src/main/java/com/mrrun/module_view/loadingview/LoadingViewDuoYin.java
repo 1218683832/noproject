@@ -114,7 +114,7 @@ public class LoadingViewDuoYin extends BaseView {
     public void startLoading(){
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.playTogether(zoomInAnimation(), zoomOutAnimation());
-        animatorSet.setDuration(1500);
+        animatorSet.setDuration(1200);
         animatorSet.start();
     }
 
