@@ -48,6 +48,8 @@ public class LoadingViewDuoYin extends BaseView {
     private PointF mRightP = new PointF();
     private float mLCicrleRadius;
     private float mRCicrleRadius;
+    // 每个小圆距离中点的距离
+    private float mDistance;
 
     public LoadingViewDuoYin(Context context) {
         this(context, null);
@@ -77,6 +79,7 @@ public class LoadingViewDuoYin extends BaseView {
         MIN_RADIUS = dp2px(MIN_RADIUS);
         mLCicrleRadius = INIT_RADIUS;
         mRCicrleRadius = INIT_RADIUS;
+        mDistance = INIT_RADIUS;
     }
 
     @Override
@@ -111,7 +114,7 @@ public class LoadingViewDuoYin extends BaseView {
     public void startLoading(){
         AnimatorSet animatorSet = new AnimatorSet();
         animatorSet.playTogether(zoomInAnimation(), zoomOutAnimation());
-        animatorSet.setDuration(3000);
+        animatorSet.setDuration(1500);
         animatorSet.start();
     }
 
@@ -124,10 +127,10 @@ public class LoadingViewDuoYin extends BaseView {
                 mLCicrleRadius = (float) animation.getAnimatedValue();
                 if (animation.getAnimatedFraction() <= 0.5f){
                     // 左到右
-                    mLeftP.x = mViewCenterP.x - INIT_RADIUS + 4 * INIT_RADIUS * animation.getAnimatedFraction();
+                    mLeftP.x = mViewCenterP.x - mDistance + 4 * mDistance * animation.getAnimatedFraction();
                 } else {
                     // 右到左
-                    mLeftP.x = mViewCenterP.x + 3 * INIT_RADIUS - 4 * INIT_RADIUS * animation.getAnimatedFraction();
+                    mLeftP.x = mViewCenterP.x + 3 * mDistance - 4 * mDistance * animation.getAnimatedFraction();
                 }
                 invalidate();
             }
@@ -145,10 +148,10 @@ public class LoadingViewDuoYin extends BaseView {
                 mRCicrleRadius = (float) animation.getAnimatedValue();
                 if (animation.getAnimatedFraction() <= 0.5f){
                     // 右到左
-                    mRightP.x = mViewCenterP.x + INIT_RADIUS - 4 * INIT_RADIUS * animation.getAnimatedFraction();
+                    mRightP.x = mViewCenterP.x + mDistance - 4 * mDistance * animation.getAnimatedFraction();
                 } else {
                     // 左到右
-                    mRightP.x = mViewCenterP.x - 3 * INIT_RADIUS + 4 * INIT_RADIUS * animation.getAnimatedFraction();
+                    mRightP.x = mViewCenterP.x - 3 * mDistance + 4 * mDistance * animation.getAnimatedFraction();
                 }
                 invalidate();
             }
