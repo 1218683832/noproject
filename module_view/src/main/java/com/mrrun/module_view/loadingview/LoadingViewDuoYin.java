@@ -79,7 +79,7 @@ public class LoadingViewDuoYin extends BaseView {
         MIN_RADIUS = dp2px(MIN_RADIUS);
         mLCicrleRadius = INIT_RADIUS;
         mRCicrleRadius = INIT_RADIUS;
-        mDistance = INIT_RADIUS + dp2px(1);
+        mDistance = INIT_RADIUS + dp2px(0);
     }
 
     @Override

@@ -51,9 +51,22 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiVerticalDragListView();
         uiPrinterTextView();
         uiLoadingViewDuoYin();
+        uiDianZanViewDuoYin();
         uiImmersiveStatusBar();
         uiBethel();
         uiParallaxAnimation();
+    }
+
+    /**
+     * 仿抖音点赞动画
+     */
+    private void uiDianZanViewDuoYin() {
+        findViewById(R.id.btn_DianZanViewDuoYin).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, DianZanViewDuoYinActivity.class));
+            }
+        });
     }
 
     /**
