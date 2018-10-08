@@ -18,6 +18,11 @@ public abstract class BaseView extends View {
 
     protected Context mContext;
 
+    /**
+     * View宽高
+     */
+    protected int mViewWidth, mViewHeight;
+
     public BaseView(Context context) {
         this(context, null);
     }
@@ -49,6 +54,6 @@ public abstract class BaseView extends View {
     }
 
     protected final int dp2px(float dpValue) {
-        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, mContext.getResources().getDisplayMetrics());
+        return (int) (TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, mContext.getResources().getDisplayMetrics()) + 0.5f);
     }
 }
