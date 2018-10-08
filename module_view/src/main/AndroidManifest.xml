@@ -43,5 +43,6 @@
         <activity android:name="com.mrrun.example.PrinterTextViewActivity"></activity>
         <activity android:name="com.mrrun.example.LoadingViewDuoYinActivity"></activity>
         <activity android:name="com.mrrun.example.DianZanViewDuoYinActivity"></activity>
+        <activity android:name="com.mrrun.example.LoadingViewUCActivity"></activity>
     </application>
 </manifest>

@@ -186,6 +186,12 @@
             android:text="仿抖音点赞动画" />
 
         <Button
+            android:id="@+id/btn_loadingviewuc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="仿UC网页加载View动画" />
+
+        <Button
             android:id="@+id/btn_immersivestatusbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

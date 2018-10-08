@@ -1,5 +1,6 @@
 package com.mrrun.example;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -52,9 +53,22 @@ public class MainViewExampleActivity extends AppCompatActivity {
         uiPrinterTextView();
         uiLoadingViewDuoYin();
         uiDianZanViewDuoYin();
+        uiLoadingViewUC();
         uiImmersiveStatusBar();
         uiBethel();
         uiParallaxAnimation();
+    }
+
+    /**
+     * 仿UC网页加载View动画
+     */
+    private void uiLoadingViewUC() {
+        findViewById(R.id.btn_loadingviewuc).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainViewExampleActivity.this, LoadingViewUCActivity.class));
+            }
+        });
     }
 
     /**
