@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.mrrun.example.MainDesignExampleActivity;
+import com.mrrun.example.MainHybridAppExampleActivity;
 import com.mrrun.example.MainShareExampleActivity;
 import com.mrrun.example.MainViewExampleActivity;
 import com.mrrun.nbproject.R;
@@ -28,6 +29,13 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void intView() {
+        // 混合开发模块(H5与App)
+        findViewById(R.id.btn_module_hybridapp).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(HomeActivity.this, MainHybridAppExampleActivity.class));
+            }
+        });
         // View模块
         findViewById(R.id.btn_module_view).setOnClickListener(new View.OnClickListener() {
             @Override

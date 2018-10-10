@@ -1,1 +1,1 @@
-include ':app', ':module_share', ':module_view', ':module_utils', ':module_okhttp3', ':module_retrofit2', ':module_rajava1x', ':module_floatview', ':module_design'
+include ':app', ':module_share', ':module_view', ':module_utils', ':module_okhttp3', ':module_retrofit2', ':module_rajava1x', ':module_floatview', ':module_design', ':module_hybridapp'
