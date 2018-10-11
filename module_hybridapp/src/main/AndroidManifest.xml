@@ -3,5 +3,6 @@
     package="com.mrrun.module_hybridapp">
     <application>
         <activity android:name="com.mrrun.example.MainHybridAppExampleActivity"></activity>
+        <activity android:name="com.mrrun.example.WebviewLoadUrlActivity"></activity>
     </application>
 </manifest>
