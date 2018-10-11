@@ -5,13 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>H5与Navtive交互</title>
+
     <script type="text/javascript">
         function ok() {
-            android.toastMessageFromH5Js("哈哈, 来自H5的信息");
+            android.toastMessageFromH5Js("哈哈, 你好native!");
+        }
+    </script>
+
+    <script type="text/javascript">
+        function sum(i,m) {
+            document.getElementById("h").innerHTML= (i+m);
+            return i+m;
+        }
+    </script>
+
+    <script type="text/javascript">
+        function message(str) {
+            document.getElementById("h").innerHTML= ("来自native的调用消息:"+str);
         }
     </script>
 </head>
 <body>
+    <h1 id="h">欢迎光临启舰的blog</h1>
     <input type="button" value="js调native" onclick="ok()">
 </body>
 </html>

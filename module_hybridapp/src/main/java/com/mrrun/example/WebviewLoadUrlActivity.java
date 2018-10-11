@@ -43,7 +43,8 @@ public class WebviewLoadUrlActivity extends AppCompatActivity {
          * 那如果想要页面在App内中打开的话，就得设置setWebViewClient：
          */
         setWebViewClient();
-        mWebView.loadUrl("https://www.baidu.com");
+        // mWebView.loadUrl("https://www.baidu.com/");
+        mWebView.loadUrl("https://uat.cmpay.com/user/intoFetionAuthorize.xhtml?MBL_NO=13787164117&SIG_VAL=15D8EACF1B6917BE596DCDAD52B36233");
     }
 
     private void setWebViewClient() {

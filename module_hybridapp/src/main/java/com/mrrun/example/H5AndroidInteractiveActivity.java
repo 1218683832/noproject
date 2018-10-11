@@ -6,11 +6,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.view.View;
 import android.webkit.JavascriptInterface;
+import android.webkit.ValueCallback;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.mrrun.module_hybridapp.Debug;
@@ -18,8 +21,10 @@ import com.mrrun.module_hybridapp.R;
 
 /**
  * H5JS与Android代码交互
+ * 参考：https://blog.csdn.net/harvic880925/article/details/51464687
  * 1、JS调用Java代码主要是用到WebView下面的一个函数：public void addJavascriptInterface(Object obj, String interfaceName)；
- * https://blog.csdn.net/harvic880925/article/details/51464687
+ * 2、Java调用JS代码，String url = "javascript:methodName(params……);"; webView.loadUrl(url);
+ * javascript:伪协议让我们可以通过一个链接来调用JavaScript函数，中间methodName是JavaScript中实现的函数，params是传入的参数列表。
  *
  * @author lipin
  * @date 2018/10/11
@@ -28,12 +33,15 @@ import com.mrrun.module_hybridapp.R;
 public class H5AndroidInteractiveActivity extends AppCompatActivity {
 
     private WebView mWebView;
+    private Button btnNative2js1, btnNative2js2;
+    private Context mContext;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_h5androidinteractiveexample);
         getSupportActionBar().setTitle(R.string.module_hybridapp);
+        mContext = this;
         initView();
         initWebViewSetting();
         // 更多时候，网页中需要通过JS代码来调用本地的Android代码，比如H5页面需要判断当前用户是否登录等。
@@ -75,6 +83,47 @@ public class H5AndroidInteractiveActivity extends AppCompatActivity {
 
     private void initView() {
         mWebView = findViewById(R.id.webview);
+        btnNative2js1 = findViewById(R.id.btn_native2js1);
+        btnNative2js2 = findViewById(R.id.btn_native2js2);
+
+        btnNative2js1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                testNative调用JS1();
+            }
+        });
+
+        btnNative2js2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                testNative调用JS2();
+            }
+        });
+    }
+
+    /**
+     * 测试Native调用JS无返回值
+     */
+    private void testNative调用JS1() {
+        mWebView.loadUrl("javascript:message('哈哈，你好H5!')");
+    }
+
+    /**
+     * 测试Native调用JS有返回值
+     */
+    private void testNative调用JS2() {
+        // 1、JAVA中如何得到JS中的返回值(Android4.4以前)？？？
+        // Android在4.4之前并没有提供直接调用js函数并获取值的方法，也就是说，我们只能调用JS中的函数，并不能得到该函数的返回值，
+        // 想得到返回值我们就得想其它办法，所以在此之前，常用的思路是 java调用js方法，js方法执行完毕，再次调用java代码将值返回。
+
+        // 2、JAVA中如何得到JS中的返回值(Android4.4之后)？？？
+        // Android 4.4之后使用evaluateJavascript即可。这里展示一个简单的交互示例
+        mWebView.evaluateJavascript("sum(1,3)", new ValueCallback<String>() {
+            @Override
+            public void onReceiveValue(String value) {
+                Toast.makeText(mContext, "测试Native调用JS有返回值:" + value, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     /**
@@ -134,9 +183,13 @@ public class H5AndroidInteractiveActivity extends AppCompatActivity {
         // 为了解决addJavascriptInterface()函数的安全问题，在android:targetSdkVersion数值为17（Android4.2）及以上的APP中，JS只能访问
         // 带有 @JavascriptInterface注解的Java函数，所以如果你的android:targetSdkVersion是17+，与JS交互的Native函数中，
         // 必须添加JavascriptInterface注解，不然无效。
+        /**
+         * 测试JS调用Native
+         * @param message
+         */
         @JavascriptInterface
         public void toastMessageFromH5Js(String message){
-            Toast.makeText(applicationContext, "H5 JS调native，来自H5的消息:" + message, Toast.LENGTH_LONG).show();
+            Toast.makeText(applicationContext, "来自H5js的调用信息:" + message, Toast.LENGTH_LONG).show();
         }
     }
 }
