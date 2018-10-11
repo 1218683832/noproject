@@ -13,5 +13,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="在WebView中加载网页" />
+
+        <Button
+            android:id="@+id/btn_uih5_android_interactive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="H5JS与Android代码交互" />
     </LinearLayout>
 </ScrollView>

@@ -4,5 +4,6 @@
     <application>
         <activity android:name="com.mrrun.example.MainHybridAppExampleActivity"></activity>
         <activity android:name="com.mrrun.example.WebviewLoadUrlActivity"></activity>
+        <activity android:name="com.mrrun.example.H5AndroidInteractiveActivity"></activity>
     </application>
 </manifest>

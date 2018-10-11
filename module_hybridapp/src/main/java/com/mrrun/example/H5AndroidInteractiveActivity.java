@@ -1,49 +1,52 @@
 package com.mrrun.example;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import com.mrrun.module_hybridapp.Debug;
 import com.mrrun.module_hybridapp.R;
 
 /**
- * 在WebView中加载网页
+ * H5JS与Android代码交互
+ * 1、JS调用Java代码主要是用到WebView下面的一个函数：public void addJavascriptInterface(Object obj, String interfaceName)；
+ * https://blog.csdn.net/harvic880925/article/details/51464687
  *
  * @author lipin
  * @date 2018/10/11
  * @version 1.0
  */
-public class WebviewLoadUrlActivity extends AppCompatActivity {
+public class H5AndroidInteractiveActivity extends AppCompatActivity {
 
     private WebView mWebView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_webviewloadurlexample);
+        setContentView(R.layout.activity_h5androidinteractiveexample);
         getSupportActionBar().setTitle(R.string.module_hybridapp);
         initView();
         initWebViewSetting();
+        // 更多时候，网页中需要通过JS代码来调用本地的Android代码，比如H5页面需要判断当前用户是否登录等。
+        // 利用JS代码调用JAVA代码，主要是用到WebView下面的一个函数：public void addJavascriptInterface(Object obj, String interfaceName)
+        // 这句的意思是把obj对象注入到WebView中，在WebView中的对象别名叫interfaceName；
+        mWebView.addJavascriptInterface(new WebJsObject(this.getApplicationContext()), "android");
         loadUrl();
     }
 
     private void loadUrl() {
-        // 在Android中是通过webView来加载html页面的，根据HTML文件所在的位置不同写法也不同：
-        // 例如：加载assets文件夹下的test.html页面mWebView.loadUrl("file:///android_asset/test.html");
-        // 例如：加载网页mWebView.loadUrl("http://www.baidu.com");
-        /**
-         * 如果只是这样调用mWebView.loadUrl()加载的话,那么当你点击页面中的链接时，页面将会在你手机默认的浏览器上打开。
-         * 那如果想要页面在App内中打开的话，就得设置setWebViewClient：
-         */
         setWebViewClient();
-        mWebView.loadUrl("https://www.baidu.com");
+        // 加载assets目录文件
+        mWebView.loadUrl("file:///android_asset/localhtml1.html");
     }
 
     private void setWebViewClient() {
@@ -117,5 +120,23 @@ public class WebviewLoadUrlActivity extends AppCompatActivity {
             }
         }
         return super.onKeyDown(keyCode, event);
+    }
+
+    public static class WebJsObject {
+
+        private Context applicationContext;
+
+        public WebJsObject(Context context) {
+            this.applicationContext = context.getApplicationContext();
+        }
+
+        // addJavascriptInterface有注入漏洞
+        // 为了解决addJavascriptInterface()函数的安全问题，在android:targetSdkVersion数值为17（Android4.2）及以上的APP中，JS只能访问
+        // 带有 @JavascriptInterface注解的Java函数，所以如果你的android:targetSdkVersion是17+，与JS交互的Native函数中，
+        // 必须添加JavascriptInterface注解，不然无效。
+        @JavascriptInterface
+        public void toastMessageFromH5Js(String message){
+            Toast.makeText(applicationContext, "H5 JS调native，来自H5的消息:" + message, Toast.LENGTH_LONG).show();
+        }
     }
 }

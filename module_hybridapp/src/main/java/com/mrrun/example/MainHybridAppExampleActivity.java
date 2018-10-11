@@ -19,6 +19,19 @@ public class MainHybridAppExampleActivity extends AppCompatActivity {
 
     private void intView() {
         uiWebviewLoadUrl();
+        uiH5_Android_Interactive();
+    }
+
+    /**
+     * H5JS与Android代码交互
+     */
+    private void uiH5_Android_Interactive() {
+        findViewById(R.id.btn_uih5_android_interactive).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainHybridAppExampleActivity.this, H5AndroidInteractiveActivity.class));
+            }
+        });
     }
 
     /**
