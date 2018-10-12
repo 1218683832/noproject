@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.mrrun.module_view.loadingview.LoadingViewDuoYin
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/loadingviewduoyin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_f2f2f2">
-</com.mrrun.module_view.loadingview.LoadingViewDuoYin>
+    android:background="@color/color_000000">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/love"/>
+</FrameLayout>
